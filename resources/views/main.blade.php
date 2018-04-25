@@ -17,13 +17,11 @@
 
     </head>
     <body>
-      <h2>{{Auth::user()}}</h2>
-      <h2>{{ route('home') }}</h2>
+
       <div id="app">
         <app user-prop="{{Auth::user()}}"
              project-route-prop="{{ route('home') }}"
              route-dest-prop="home"></app>
-
       </div>
 
     </body>

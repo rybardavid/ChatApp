@@ -1,0 +1,30 @@
+.wrapper_flex_row{
+  height: 100%;
+  display: flex;
+}
+
+.wrapper_flex_collumn{
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+.flex_1{
+  flex: 1 1 0;
+}
+
+.flex_2_3{
+  flex: 2.3 2 0;
+}
+
+.flex_3{
+  flex: 3 3 0;
+}
+
+.border_debug_red{
+  border: 1px solid red;
+}
+
+.border_debug_green{
+  border: 1px solid green;
+}

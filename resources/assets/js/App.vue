@@ -1,6 +1,7 @@
 <template lang="html">
-  <div class="">
-    <h1>Ahoj</h1>
+  <div class="">  
+    <navbar></navbar>
+    <router-view/>
 
   </div>
 </template>
@@ -24,10 +25,11 @@ export default {
   created(){
     Vue.prototype.$user = JSON.parse(this.userProp);
     Vue.prototype.$path = this.projectPath(this.projectRouteProp,
-                                           this.routeDestProp);                                 
+                                           this.routeDestProp);
   }
 }
 </script>
 
-<style lang="css">
+<style lang="css" >
+  @import "../css/main.css";
 </style>
