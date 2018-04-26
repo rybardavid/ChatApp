@@ -21,7 +21,9 @@
       <div id="app">
         <app user-prop="{{Auth::user()}}"
              project-route-prop="{{ route('home') }}"
-             route-dest-prop="home"></app>
+             route-dest-prop="home"
+             app-name-prop="{{ ((config('app.name')) !== "") ? config('app.name') : 'Error: APP_NAME=NULL' }}"
+             ></app>
       </div>
 
     </body>

@@ -1,64 +1,49 @@
 <template lang="html">
-  <div class="navbar">
-        <ul>
-          <li>
-            <router-link class="link " :class="{ active: isActive == 'home' }"
-            v-on:click.native="active('home')"
+
+  <div id="split">
+    <div class="branding">
+      <h1>{{this.$appName}}</h1>
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <router-link class="link "
             :to="{ path: '/' }">
             Home</router-link>
-          </li>
+        </li>
 
-          <li>
-            <router-link class="link " :class="{ active: isActive == 'about' }"
-             v-on:click.native="active('about')"
-             :to="{ path: '/about' }">
-             About</router-link>
-          </li>
+        <li>
+          <router-link class="link "
+           :to="{ path: '/about' }">
+           About</router-link>
+        </li>
 
-          <li>
-            <router-link class="link " :class="{ active: isActive == 'news' }"
-             v-on:click.native="active('news')"
-             :to="{ path: '/news' }">
-             News</router-link>
-          </li>
+        <li>
+          <router-link class="link "
+           :to="{ path: '/news' }">
+           News</router-link>
+        </li>
 
-          <li>
-            <router-link class="link " :class="{ active: isActive == 'people' }"
-            v-on:click.native="active('people')"
+        <li>
+            <router-link class="link "
             :to="{ path: '/people' }">
             Find new friends</router-link>
           </li>
-        </ul>
 
-        <a :href="this.$path+'/logout'">
-          <p>Logout</p>
-        </a>
+        <li>
+          <div class="button">
+            <a :href="this.$path+'/logout'">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
 
-      </div>
+  </div>
+
 </template>
 
 <script>
 export default {
-
-  methods:{
-  active: function(activeEl){
-    this.isActive = activeEl;
-  },
-  setActive: function()
-  {
-    let route =  this.$route.path;
-
-    while( route.charAt( 0 ) === '/' )
-      route = route.slice( 1 );
-
-    this.isActive = route === '' ? "home" : route;
-  },
-  mounted()
-  {
-    this.setActive();
-  },
-
-},
 }
 </script>
 

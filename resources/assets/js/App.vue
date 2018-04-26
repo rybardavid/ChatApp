@@ -1,11 +1,11 @@
 <template lang="html">
   <div class="wrapper_flex_collumn">
 
-    <div class="flex_1 border_debug_red">
+    <div class="">
         <navbar></navbar>
     </div>
 
-    <div class="flex_25 border_debug_green">
+    <div class="flex_25">
         <router-view> </router-view>
     </div>
 
@@ -18,6 +18,7 @@ export default {
     'userProp',
     'projectRouteProp',
     'routeDestProp',
+    'appNameProp',
   ],
   methods:{
     projectPath: function(urlAtr,word){
@@ -29,9 +30,11 @@ export default {
     }
   },
   created(){
+    Vue.prototype.$appName = this.appNameProp;
     Vue.prototype.$user = JSON.parse(this.userProp);
     Vue.prototype.$path = this.projectPath(this.projectRouteProp,
                                            this.routeDestProp);
+
   }
 }
 </script>

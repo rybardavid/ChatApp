@@ -50862,7 +50862,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "html, body, #app{\r\n  height: 100%;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.wrapper_flex_row{\r\n  height: 100%;\r\n  display: flex;\r\n}\r\n\r\n.wrapper_flex_collumn{\r\n  display: flex;\r\n    flex-direction: column;\r\n\r\n    flex-wrap: nowrap;\r\n    justify-content: flex-start;\r\n    align-items: stretch;\r\n    align-content: stretch;\r\n\r\n    height: 100%;\r\n}\r\n\r\n.flex_1{\r\n  flex: 1 1 auto;\r\n}\r\n\r\n.flex_2_3{\r\n  flex: 2.3 2 auto;\r\n}\r\n\r\n.flex_3{\r\n  flex: 3 3 auto;\r\n}\r\n\r\n.flex_25{\r\n  flex: 25 25 auto;\r\n}\r\n\r\n.border_debug_red{\r\n  border: 1px solid red;\r\n}\r\n\r\n.border_debug_green{\r\n  border: 1px solid green;\r\n  background-color: grey;\r\n}\r\n", ""]);
+exports.push([module.i, "html, body, #app{\r\n  height: 100%;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.wrapper_flex_row{\r\n  height: 100%;\r\n  display: flex;\r\n}\r\n\r\n.wrapper_flex_collumn{\r\n    display: flex;\r\n    flex-direction: column;\r\n    flex-wrap: nowrap;\r\n    justify-content: flex-start;\r\n    align-items: stretch;\r\n    align-content: stretch;\r\n    height: 100%;\r\n}\r\n\r\n.flex_1{\r\n  flex: 1 1 auto;\r\n}\r\n\r\n.flex_2_3{\r\n  flex: 2.3 2 auto;\r\n}\r\n\r\n.flex_3{\r\n  flex: 3 3 auto;\r\n}\r\n\r\n.flex_25{\r\n  flex: 25 25 auto;\r\n}\r\n\r\n.border_debug_red{\r\n  border: 1px solid red;\r\n}\r\n\r\n.border_debug_green{\r\n  border: 1px solid green;\r\n  background-color: grey;\r\n}\r\n", ""]);
 
 // exports
 
@@ -50889,7 +50889,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['userProp', 'projectRouteProp', 'routeDestProp'],
+  props: ['userProp', 'projectRouteProp', 'routeDestProp', 'appNameProp'],
   methods: {
     projectPath: function projectPath(urlAtr, word) {
       var url = urlAtr;
@@ -50900,6 +50900,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   created: function created() {
+    Vue.prototype.$appName = this.appNameProp;
     Vue.prototype.$user = JSON.parse(this.userProp);
     Vue.prototype.$path = this.projectPath(this.projectRouteProp, this.routeDestProp);
   }
@@ -50914,14 +50915,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "wrapper_flex_collumn" }, [
-    _c("div", { staticClass: "flex_1 border_debug_red" }, [_c("navbar")], 1),
+    _c("div", {}, [_c("navbar")], 1),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "flex_25 border_debug_green" },
-      [_c("router-view")],
-      1
-    )
+    _c("div", { staticClass: "flex_25" }, [_c("router-view")], 1)
   ])
 }
 var staticRenderFns = []
@@ -51034,7 +51030,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".router-link-exact-active{\r\n  color: #868686;\r\n}\r\n\r\nbody {\r\n  margin: 0;\r\n  font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n#split {\r\n  background: #ccc;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  padding: 1rem 1rem 0;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  #split {\r\n    padding: 0 1rem;\r\n  }\r\n}\r\n.branding {\r\n  flex: 0 1 100%;\r\n}\r\n.branding h1 {\r\n  margin: 0;\r\n  color: #868686;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  .branding {\r\n    flex: 0 1 40%;\r\n  }\r\n}\r\n@media (min-width: 1300px) {\r\n  .branding {\r\n    flex: 0 1 75%;\r\n  }\r\n}\r\nnav {\r\n  flex: 0 1 100%;\r\n}\r\nnav a {\r\n  color: white;\r\n  text-decoration: none;\r\n}\r\nnav a:hover {\r\n  color: rgba(255, 255, 255, 0.7);\r\n}\r\nnav ul {\r\n  white-space: nowrap;\r\n  list-style: none;\r\n  padding: 0;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  nav {\r\n    flex: 0 1 40%;\r\n  }\r\n  nav ul {\r\n    justify-content: space-around;\r\n  }\r\n  nav li {\r\n    padding-left: 1%;\r\n    /*justify-content: space-around;*/\r\n  }\r\n}\r\n@media (min-width: 1300px) {\r\n  nav {\r\n    flex: 0 1 25%;\r\n  }\r\n}\r\n.button {\r\n  background: transparent;\r\n  border: 1px solid white;\r\n  padding: 10px;\r\n  color: white;\r\n}\r\n.button:hover {\r\n  background: white;\r\n  color: #aaa;\r\n  cursor: pointer;\r\n}\r\n\r\n.button:hover a {\r\n  color: #aaa;\r\n}\r\n", ""]);
 
 // exports
 
@@ -51084,25 +51080,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-  methods: {
-    active: function active(activeEl) {
-      this.isActive = activeEl;
-    },
-    setActive: function setActive() {
-      var route = this.$route.path;
-
-      while (route.charAt(0) === '/') {
-        route = route.slice(1);
-      }this.isActive = route === '' ? "home" : route;
-    },
-    mounted: function mounted() {
-      this.setActive();
-    }
-  }
-});
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 /* 76 */
@@ -51112,95 +51096,69 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "navbar" }, [
-    _c("ul", [
-      _c(
-        "li",
-        [
-          _c(
-            "router-link",
-            {
-              staticClass: "link ",
-              class: { active: _vm.isActive == "home" },
-              attrs: { to: { path: "/" } },
-              nativeOn: {
-                click: function($event) {
-                  _vm.active("home")
-                }
-              }
-            },
-            [_vm._v("\n          Home")]
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        [
-          _c(
-            "router-link",
-            {
-              staticClass: "link ",
-              class: { active: _vm.isActive == "about" },
-              attrs: { to: { path: "/about" } },
-              nativeOn: {
-                click: function($event) {
-                  _vm.active("about")
-                }
-              }
-            },
-            [_vm._v("\n           About")]
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        [
-          _c(
-            "router-link",
-            {
-              staticClass: "link ",
-              class: { active: _vm.isActive == "news" },
-              attrs: { to: { path: "/news" } },
-              nativeOn: {
-                click: function($event) {
-                  _vm.active("news")
-                }
-              }
-            },
-            [_vm._v("\n           News")]
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "li",
-        [
-          _c(
-            "router-link",
-            {
-              staticClass: "link ",
-              class: { active: _vm.isActive == "people" },
-              attrs: { to: { path: "/people" } },
-              nativeOn: {
-                click: function($event) {
-                  _vm.active("people")
-                }
-              }
-            },
-            [_vm._v("\n          Find new friends")]
-          )
-        ],
-        1
-      )
+  return _c("div", { attrs: { id: "split" } }, [
+    _c("div", { staticClass: "branding" }, [
+      _c("h1", [_vm._v(_vm._s(this.$appName))])
     ]),
     _vm._v(" "),
-    _c("a", { attrs: { href: this.$path + "/logout" } }, [
-      _c("p", [_vm._v("Logout")])
+    _c("nav", [
+      _c("ul", [
+        _c(
+          "li",
+          [
+            _c(
+              "router-link",
+              { staticClass: "link ", attrs: { to: { path: "/" } } },
+              [_vm._v("\n          Home")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          [
+            _c(
+              "router-link",
+              { staticClass: "link ", attrs: { to: { path: "/about" } } },
+              [_vm._v("\n         About")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          [
+            _c(
+              "router-link",
+              { staticClass: "link ", attrs: { to: { path: "/news" } } },
+              [_vm._v("\n         News")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          [
+            _c(
+              "router-link",
+              { staticClass: "link ", attrs: { to: { path: "/people" } } },
+              [_vm._v("\n          Find new friends")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "button" }, [
+            _c("a", { attrs: { href: this.$path + "/logout" } }, [
+              _vm._v("Logout")
+            ])
+          ])
+        ])
+      ])
     ])
   ])
 }

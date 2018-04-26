@@ -10,14 +10,12 @@ html, body, #app{
 }
 
 .wrapper_flex_collumn{
-  display: flex;
+    display: flex;
     flex-direction: column;
-
     flex-wrap: nowrap;
     justify-content: flex-start;
     align-items: stretch;
     align-content: stretch;
-
     height: 100%;
 }
 

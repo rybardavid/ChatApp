@@ -1,0 +1,92 @@
+.router-link-exact-active{
+  color: #868686;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+#split {
+  background: #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem 0;
+}
+
+@media (min-width: 550px) {
+  #split {
+    padding: 0 1rem;
+  }
+}
+.branding {
+  flex: 0 1 100%;
+}
+.branding h1 {
+  margin: 0;
+  color: #868686;
+}
+
+@media (min-width: 550px) {
+  .branding {
+    flex: 0 1 40%;
+  }
+}
+@media (min-width: 1300px) {
+  .branding {
+    flex: 0 1 75%;
+  }
+}
+nav {
+  flex: 0 1 100%;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+}
+nav a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+nav ul {
+  white-space: nowrap;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (min-width: 550px) {
+  nav {
+    flex: 0 1 40%;
+  }
+  nav ul {
+    justify-content: space-around;
+  }
+  nav li {
+    padding-left: 1%;
+    /*justify-content: space-around;*/
+  }
+}
+@media (min-width: 1300px) {
+  nav {
+    flex: 0 1 25%;
+  }
+}
+.button {
+  background: transparent;
+  border: 1px solid white;
+  padding: 10px;
+  color: white;
+}
+.button:hover {
+  background: white;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.button:hover a {
+  color: #aaa;
+}
