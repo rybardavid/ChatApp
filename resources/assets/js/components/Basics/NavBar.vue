@@ -9,25 +9,29 @@
         <li>
           <router-link class="link "
             :to="{ path: '/' }">
-            Home</router-link>
+              <p>Home</p>
+          </router-link>
         </li>
 
         <li>
           <router-link class="link "
            :to="{ path: '/about' }">
-           About</router-link>
+            <p>About</p>
+         </router-link>
         </li>
 
         <li>
           <router-link class="link "
            :to="{ path: '/news' }">
-           News</router-link>
+            <p>News</p>
+         </router-link>
         </li>
 
         <li>
             <router-link class="link "
             :to="{ path: '/people' }">
-            Find new friends</router-link>
+              <p>Find new friends</p>
+            </router-link>
           </li>
 
         <li>

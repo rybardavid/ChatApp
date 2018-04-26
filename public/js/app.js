@@ -51030,7 +51030,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, ".router-link-exact-active{\r\n  color: #868686;\r\n}\r\n\r\nbody {\r\n  margin: 0;\r\n  font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n#split {\r\n  background: #ccc;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  padding: 1rem 1rem 0;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  #split {\r\n    padding: 0 1rem;\r\n  }\r\n}\r\n.branding {\r\n  flex: 0 1 100%;\r\n}\r\n.branding h1 {\r\n  margin: 0;\r\n  color: #868686;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  .branding {\r\n    flex: 0 1 40%;\r\n  }\r\n}\r\n@media (min-width: 1300px) {\r\n  .branding {\r\n    flex: 0 1 75%;\r\n  }\r\n}\r\nnav {\r\n  flex: 0 1 100%;\r\n}\r\nnav a {\r\n  color: white;\r\n  text-decoration: none;\r\n}\r\nnav a:hover {\r\n  color: rgba(255, 255, 255, 0.7);\r\n}\r\nnav ul {\r\n  white-space: nowrap;\r\n  list-style: none;\r\n  padding: 0;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  nav {\r\n    flex: 0 1 40%;\r\n  }\r\n  nav ul {\r\n    justify-content: space-around;\r\n  }\r\n  nav li {\r\n    padding-left: 1%;\r\n    /*justify-content: space-around;*/\r\n  }\r\n}\r\n@media (min-width: 1300px) {\r\n  nav {\r\n    flex: 0 1 25%;\r\n  }\r\n}\r\n.button {\r\n  background: transparent;\r\n  border: 1px solid white;\r\n  padding: 10px;\r\n  color: white;\r\n}\r\n.button:hover {\r\n  background: white;\r\n  color: #aaa;\r\n  cursor: pointer;\r\n}\r\n\r\n.button:hover a {\r\n  color: #aaa;\r\n}\r\n", ""]);
+exports.push([module.i, ".router-link-exact-active{\r\n  color: #868686;\r\n}\r\n\r\nbody {\r\n  margin: 0;\r\n  font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n#split {\r\n  background: #ccc;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  padding: 1rem 1rem 0;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  #split {\r\n    padding: 0 1rem;\r\n  }\r\n}\r\n.branding {\r\n  flex: 0 1 100%;\r\n}\r\n.branding h1 {\r\n  margin: 0;\r\n  color: #868686;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  .branding {\r\n    flex: 0 1 40%;\r\n  }\r\n}\r\n@media (min-width: 1300px) {\r\n  .branding {\r\n    flex: 0 1 75%;\r\n  }\r\n}\r\nnav {\r\n  flex: 0 1 100%;\r\n}\r\nnav a {\r\n  color: white;\r\n  text-decoration: none;\r\n}\r\n\r\nnav p::first-letter{\r\n  color: #868686;\r\n}\r\n\r\nnav a:hover {\r\n  color: rgba(255, 255, 255, 0.7);\r\n}\r\nnav ul {\r\n  white-space: nowrap;\r\n  list-style: none;\r\n  padding: 0;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  nav {\r\n    flex: 0 1 40%;\r\n  }\r\n  nav ul {\r\n    justify-content: space-around;\r\n  }\r\n  nav li {\r\n    padding-left: 1%;\r\n    /*justify-content: space-around;*/\r\n  }\r\n}\r\n@media (min-width: 1300px) {\r\n  nav {\r\n    flex: 0 1 25%;\r\n  }\r\n}\r\n.button {\r\n  background: transparent;\r\n  border: 1px solid white;\r\n  padding: 10px;\r\n  color: white;\r\n}\r\n.button:hover {\r\n  background: white;\r\n  color: #aaa;\r\n  cursor: pointer;\r\n}\r\n\r\n.button:hover a {\r\n  color: #aaa;\r\n}\r\n", ""]);
 
 // exports
 
@@ -51041,6 +51041,10 @@ exports.push([module.i, ".router-link-exact-active{\r\n  color: #868686;\r\n}\r\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -51109,7 +51113,7 @@ var render = function() {
             _c(
               "router-link",
               { staticClass: "link ", attrs: { to: { path: "/" } } },
-              [_vm._v("\n          Home")]
+              [_c("p", [_vm._v("Home")])]
             )
           ],
           1
@@ -51121,7 +51125,7 @@ var render = function() {
             _c(
               "router-link",
               { staticClass: "link ", attrs: { to: { path: "/about" } } },
-              [_vm._v("\n         About")]
+              [_c("p", [_vm._v("About")])]
             )
           ],
           1
@@ -51133,7 +51137,7 @@ var render = function() {
             _c(
               "router-link",
               { staticClass: "link ", attrs: { to: { path: "/news" } } },
-              [_vm._v("\n         News")]
+              [_c("p", [_vm._v("News")])]
             )
           ],
           1
@@ -51145,7 +51149,7 @@ var render = function() {
             _c(
               "router-link",
               { staticClass: "link ", attrs: { to: { path: "/people" } } },
-              [_vm._v("\n          Find new friends")]
+              [_c("p", [_vm._v("Find new friends")])]
             )
           ],
           1
