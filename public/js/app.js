@@ -38992,9 +38992,9 @@ var routes = [{
   path: '/news',
   component: __webpack_require__(47)
 }, {
-  path: '/about',
+  path: '/chat',
 
-  component: __webpack_require__(52)
+  component: __webpack_require__(81)
 }, {
   path: '/people',
   component: __webpack_require__(57)
@@ -39286,130 +39286,11 @@ if (false) {
 }
 
 /***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(53)
-}
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(55)
-/* template */
-var __vue_template__ = __webpack_require__(56)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\Views\\About.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6a5b8358", Component.options)
-  } else {
-    hotAPI.reload("data-v-6a5b8358", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(54);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("117c4b8c", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6a5b8358\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./About.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6a5b8358\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./About.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 55 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("About view")])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6a5b8358", module.exports)
-  }
-}
-
-/***/ }),
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
 /* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -50862,7 +50743,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "html, body, #app{\r\n  height: 100%;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.wrapper_flex_row{\r\n  height: 100%;\r\n  display: flex;\r\n}\r\n\r\n.wrapper_flex_collumn{\r\n    display: flex;\r\n    flex-direction: column;\r\n    flex-wrap: nowrap;\r\n    justify-content: flex-start;\r\n    align-items: stretch;\r\n    align-content: stretch;\r\n    height: 100%;\r\n}\r\n\r\n.flex_1{\r\n  flex: 1 1 auto;\r\n}\r\n\r\n.flex_2_3{\r\n  flex: 2.3 2 auto;\r\n}\r\n\r\n.flex_3{\r\n  flex: 3 3 auto;\r\n}\r\n\r\n.flex_25{\r\n  flex: 25 25 auto;\r\n}\r\n\r\n.border_debug_red{\r\n  border: 1px solid red;\r\n}\r\n\r\n.border_debug_green{\r\n  border: 1px solid green;\r\n  background-color: grey;\r\n}\r\n", ""]);
+exports.push([module.i, "html, body, #app{\r\n  height: 100%;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.wrapper_flex_row{\r\n/*  height: 100%;*/\r\n  display: flex;\r\n}\r\n\r\n.wrapper_flex_collumn{\r\n    display: flex;\r\n    flex-direction: column;\r\n    flex-wrap: nowrap;\r\n    height: 100%;\r\n}\r\n\r\n.flex_0_1{\r\n  flex: 0.1 0.1 auto;\r\n}\r\n\r\n.flex_1{\r\n  flex: 1 1 0;\r\n}\r\n\r\n.flex_2_3{\r\n  flex: 2.3 2 0;\r\n}\r\n\r\n.flex_3{\r\n  flex: 3 3 auto;\r\n}\r\n\r\n.flex_25{\r\n  flex: 25 25 auto;\r\n}\r\n\r\n.border_debug_red{\r\n  border: 1px solid red;\r\n}\r\n\r\n.border_debug_green{\r\n  border: 1px solid green;\r\n  background-color: grey;\r\n}\r\n", ""]);
 
 // exports
 
@@ -50873,13 +50754,6 @@ exports.push([module.i, "html, body, #app{\r\n  height: 100%;\r\n  padding: 0px;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -50914,11 +50788,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "wrapper_flex_collumn" }, [
-    _c("div", {}, [_c("navbar")], 1),
-    _vm._v(" "),
-    _c("div", { staticClass: "flex_25" }, [_c("router-view")], 1)
-  ])
+  return _c(
+    "div",
+    { staticClass: "wrapper_flex_collumn" },
+    [_c("navbar"), _vm._v(" "), _c("router-view")],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -51030,7 +50905,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, ".router-link-exact-active{\r\n  color: #868686;\r\n}\r\n\r\nbody {\r\n  margin: 0;\r\n  font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n#split {\r\n  background: #ccc;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  padding: 1rem 1rem 0;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  #split {\r\n    padding: 0 1rem;\r\n  }\r\n}\r\n.branding {\r\n  flex: 0 1 100%;\r\n}\r\n.branding h1 {\r\n  margin: 0;\r\n  color: #868686;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  .branding {\r\n    flex: 0 1 40%;\r\n  }\r\n}\r\n@media (min-width: 1300px) {\r\n  .branding {\r\n    flex: 0 1 75%;\r\n  }\r\n}\r\nnav {\r\n  flex: 0 1 100%;\r\n}\r\nnav a {\r\n  color: white;\r\n  text-decoration: none;\r\n}\r\n\r\nnav p::first-letter{\r\n  color: #868686;\r\n}\r\n\r\nnav a:hover {\r\n  color: rgba(255, 255, 255, 0.7);\r\n}\r\nnav ul {\r\n  white-space: nowrap;\r\n  list-style: none;\r\n  padding: 0;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  nav {\r\n    flex: 0 1 40%;\r\n  }\r\n  nav ul {\r\n    justify-content: space-around;\r\n  }\r\n  nav li {\r\n    padding-left: 1%;\r\n    /*justify-content: space-around;*/\r\n  }\r\n}\r\n@media (min-width: 1300px) {\r\n  nav {\r\n    flex: 0 1 25%;\r\n  }\r\n}\r\n.button {\r\n  background: transparent;\r\n  border: 1px solid white;\r\n  padding: 10px;\r\n  color: white;\r\n}\r\n.button:hover {\r\n  background: white;\r\n  color: #aaa;\r\n  cursor: pointer;\r\n}\r\n\r\n.button:hover a {\r\n  color: #aaa;\r\n}\r\n", ""]);
+exports.push([module.i, ".router-link-exact-active{\r\n  color: #868686;\r\n}\r\n\r\nbody {\r\n  margin: 0;\r\n  font-family: \"Roboto\", sans-serif;\r\n}\r\n\r\n#split {\r\n  background: #ccc;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  padding: 1rem 1rem 0;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  #split {\r\n    padding: 0 1rem;\r\n  }\r\n}\r\n.branding {\r\n  flex: 0 1 100%;\r\n}\r\n.branding h1 {\r\n  margin: 0;\r\n  color: #868686;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  .branding {\r\n    flex: 0 1 40%;\r\n  }\r\n}\r\n@media (min-width: 1300px) {\r\n  .branding {\r\n    flex: 0 1 75%;\r\n  }\r\n}\r\nnav {\r\n  flex: 0 1 100%;\r\n}\r\nnav a {\r\n  color: white;\r\n  text-decoration: none;\r\n}\r\n\r\nnav p:hover {\r\n  color: rgba(255, 255, 255, 0.7);\r\n}\r\nnav ul {\r\n  white-space: nowrap;\r\n  list-style: none;\r\n  padding: 0;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n}\r\n\r\n@media (min-width: 550px) {\r\n  nav {\r\n    flex: 0 1 40%;\r\n  }\r\n  nav ul {\r\n    justify-content: space-around;\r\n  }\r\n  nav li {\r\n    padding-left: 1%;\r\n    /*justify-content: space-around;*/\r\n  }\r\n}\r\n@media (min-width: 1300px) {\r\n  nav {\r\n    flex: 0 1 25%;\r\n  }\r\n}\r\n.button {\r\n  background: transparent;\r\n  border: 1px solid white;\r\n  padding: 10px;\r\n  color: white;\r\n}\r\n.button:hover {\r\n  background: white;\r\n  color: #aaa;\r\n  cursor: pointer;\r\n}\r\n\r\n.button:hover a {\r\n  color: #aaa;\r\n}\r\n", ""]);
 
 // exports
 
@@ -51124,8 +50999,8 @@ var render = function() {
           [
             _c(
               "router-link",
-              { staticClass: "link ", attrs: { to: { path: "/about" } } },
-              [_c("p", [_vm._v("About")])]
+              { staticClass: "link ", attrs: { to: { path: "/chat" } } },
+              [_c("p", [_vm._v("Chat")])]
             )
           ],
           1
@@ -51181,6 +51056,200 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(82)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(84)
+/* template */
+var __vue_template__ = __webpack_require__(85)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Views\\Chat.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3a95dbdd", Component.options)
+  } else {
+    hotAPI.reload("data-v-3a95dbdd", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(83);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("5d2a44dc", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3a95dbdd\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Chat.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3a95dbdd\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Chat.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+exports.i(__webpack_require__(86), "");
+
+// module
+exports.push([module.i, "\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 84 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "flex_25 wrapper_flex_collumn" }, [
+      _c("div", { staticClass: "header flex_1 wrapper_flex_row" }, [
+        _c("div", { staticClass: "flex_1" }, [_c("p", [_vm._v("Contacts")])]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex_2_3" }, [_c("p", [_vm._v("John Doe")])]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex_1" }, [_c("p", [_vm._v("Requests")])])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content flex_25 wrapper_flex_row" }, [
+        _c("div", { staticClass: "flex_1" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex_2_3" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex_1" })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3a95dbdd", module.exports)
+  }
+}
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".wrapper{\r\n  height: 100%;\r\n}\r\n\r\n.header{\r\n  background-color: #e9e9e9;\r\n}\r\n\r\n.header p{\r\n  margin: auto;\r\n  margin: 6px 0px;\r\n  text-align: center;\r\n  color: rgb(134, 134, 134);\r\n}\r\n\r\n.header div, .content div{\r\n  border-right: 1px solid grey;\r\n}\r\n\r\n.header div:last-child, .content div:last-child{\r\n  border: 0;\r\n}\r\n\r\n.content{\r\n  background-color: #bfbfbf;\r\n}\r\n\r\n.test{\r\n  flex-grow: 25;\r\n  background-color: green;\r\n}\r\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

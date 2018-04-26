@@ -1,14 +1,7 @@
 <template lang="html">
   <div class="wrapper_flex_collumn">
-
-    <div class="">
-        <navbar></navbar>
-    </div>
-
-    <div class="flex_25">
-        <router-view> </router-view>
-    </div>
-
+    <navbar></navbar>
+    <router-view> </router-view>
   </div>
 </template>
 

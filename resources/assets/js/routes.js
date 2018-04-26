@@ -13,9 +13,9 @@ let routes =[
   },
 
   {
-    path:'/about',
+    path:'/chat',
 
-    component: require('./components/Views/About')
+    component: require('./components/Views/Chat')
   },
 
   {

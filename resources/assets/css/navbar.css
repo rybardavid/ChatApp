@@ -47,11 +47,7 @@ nav a {
   text-decoration: none;
 }
 
-nav p::first-letter{
-  color: #868686;
-}
-
-nav a:hover {
+nav p:hover {
   color: rgba(255, 255, 255, 0.7);
 }
 nav ul {

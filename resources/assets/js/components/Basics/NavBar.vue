@@ -15,8 +15,8 @@
 
         <li>
           <router-link class="link "
-           :to="{ path: '/about' }">
-            <p>About</p>
+           :to="{ path: '/chat' }">
+            <p>Chat</p>
          </router-link>
         </li>
 
