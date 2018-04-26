@@ -29,6 +29,11 @@
             Find new friends</router-link>
           </li>
         </ul>
+
+        <a :href="this.$path+'/logout'">
+          <p>Logout</p>
+        </a>
+
       </div>
 </template>
 

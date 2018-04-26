@@ -18,4 +18,9 @@ class MainController extends Controller
       return view('main');
     }
   }
+
+  public function logout(){
+    Auth::logout();
+    return redirect('/login');
+  }
 }
