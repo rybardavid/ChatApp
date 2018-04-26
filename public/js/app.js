@@ -50862,7 +50862,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, ".wrapper_flex_row{\r\n  height: 100%;\r\n  display: flex;\r\n}\r\n\r\n.wrapper_flex_collumn{\r\n  height: 100%;\r\n  display: flex;\r\n  flex-flow: column;\r\n}\r\n\r\n.flex_1{\r\n  flex: 1 1 0;\r\n}\r\n\r\n.flex_2_3{\r\n  flex: 2.3 2 0;\r\n}\r\n\r\n.flex_3{\r\n  flex: 3 3 0;\r\n}\r\n\r\n.border_debug_red{\r\n  border: 1px solid red;\r\n}\r\n\r\n.border_debug_green{\r\n  border: 1px solid green;\r\n}\r\n", ""]);
+exports.push([module.i, "html, body, #app{\r\n  height: 100%;\r\n  padding: 0px;\r\n  margin: 0px;\r\n}\r\n\r\n.wrapper_flex_row{\r\n  height: 100%;\r\n  display: flex;\r\n}\r\n\r\n.wrapper_flex_collumn{\r\n  display: flex;\r\n    flex-direction: column;\r\n\r\n    flex-wrap: nowrap;\r\n    justify-content: flex-start;\r\n    align-items: stretch;\r\n    align-content: stretch;\r\n\r\n    height: 100%;\r\n}\r\n\r\n.flex_1{\r\n  flex: 1 1 auto;\r\n}\r\n\r\n.flex_2_3{\r\n  flex: 2.3 2 auto;\r\n}\r\n\r\n.flex_3{\r\n  flex: 3 3 auto;\r\n}\r\n\r\n.flex_25{\r\n  flex: 25 25 auto;\r\n}\r\n\r\n.border_debug_red{\r\n  border: 1px solid red;\r\n}\r\n\r\n.border_debug_green{\r\n  border: 1px solid green;\r\n  background-color: grey;\r\n}\r\n", ""]);
 
 // exports
 
@@ -50873,6 +50873,12 @@ exports.push([module.i, ".wrapper_flex_row{\r\n  height: 100%;\r\n  display: fle
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -50907,7 +50913,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [_c("navbar"), _vm._v(" "), _c("router-view")], 1)
+  return _c("div", { staticClass: "wrapper_flex_collumn" }, [
+    _c("div", { staticClass: "flex_1 border_debug_red" }, [_c("navbar")], 1),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "flex_25 border_debug_green" },
+      [_c("router-view")],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

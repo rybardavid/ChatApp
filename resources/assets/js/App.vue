@@ -1,7 +1,13 @@
 <template lang="html">
-  <div class="">  
-    <navbar></navbar>
-    <router-view/>
+  <div class="wrapper_flex_collumn">
+
+    <div class="flex_1 border_debug_red">
+        <navbar></navbar>
+    </div>
+
+    <div class="flex_25 border_debug_green">
+        <router-view> </router-view>
+    </div>
 
   </div>
 </template>

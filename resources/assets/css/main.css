@@ -1,24 +1,40 @@
+html, body, #app{
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
 .wrapper_flex_row{
   height: 100%;
   display: flex;
 }
 
 .wrapper_flex_collumn{
-  height: 100%;
   display: flex;
-  flex-flow: column;
+    flex-direction: column;
+
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+
+    height: 100%;
 }
 
 .flex_1{
-  flex: 1 1 0;
+  flex: 1 1 auto;
 }
 
 .flex_2_3{
-  flex: 2.3 2 0;
+  flex: 2.3 2 auto;
 }
 
 .flex_3{
-  flex: 3 3 0;
+  flex: 3 3 auto;
+}
+
+.flex_25{
+  flex: 25 25 auto;
 }
 
 .border_debug_red{
@@ -27,4 +43,5 @@
 
 .border_debug_green{
   border: 1px solid green;
+  background-color: grey;
 }
