@@ -1,28 +1,21 @@
 <template lang="html">
-<div class="flex_25 wrapper_flex_collumn">
+<div class="chat_wrappper">
 
-  <div class="header flex_1 wrapper_flex_row">
-    <div class="flex_1">
-        <p>Contacts</p>
-      </div>
-
-      <div class="flex_2_3">
-        <p>John Doe</p>
-      </div>
-
-      <div class="flex_1">
-        <p>Requests</p>
-      </div>
+  <div class="header_wrapper">
+      <p>Contacts</p>
+      <p>John Doe</p>
+      <p>Requests</p> 
   </div>
 
   <div class="content flex_25 wrapper_flex_row">
     <div class="flex_1">
-
+      <!--
       <div class="scrollbar">
-        <div  v-for="n in 40">
+        <div  v-for="n in 0">
           <request> </request>
         </div>
       </div>
+    -->
 
     </div>
 

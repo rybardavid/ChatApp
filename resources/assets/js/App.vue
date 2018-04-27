@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="wrapper_flex_collumn">
+  <div class="app_wrapper">
     <navbar></navbar>
     <router-view> </router-view>
   </div>

@@ -1,46 +1,13 @@
-html, body, #app{
+body{
+  height: 100vh;
+}
+
+#app{
   height: 100%;
-  padding: 0px;
-  margin: 0px;
 }
 
-.wrapper_flex_row{
-/*  height: 100%;*/
+.app_wrapper{
+  height: 100%; 
   display: flex;
-}
-
-.wrapper_flex_collumn{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    height: 100%;
-}
-
-.flex_0_1{
-  flex: 0.1 0.1 auto;
-}
-
-.flex_1{
-  flex: 1 1 0;
-}
-
-.flex_2_3{
-  flex: 2.3 2 0;
-}
-
-.flex_3{
-  flex: 3 3 auto;
-}
-
-.flex_25{
-  flex: 25 25 auto;
-}
-
-.border_debug_red{
-  border: 1px solid red;
-}
-
-.border_debug_green{
-  border: 1px solid green;
-  background-color: grey;
+  flex-flow: column;
 }
