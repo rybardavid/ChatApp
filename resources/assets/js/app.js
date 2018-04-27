@@ -21,8 +21,10 @@ window.Vue.use(VueRouter);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
 Vue.component('app', require('./App.vue'));
 Vue.component('navbar', require('./components/Basics/NavBar.vue'));
+Vue.component('request', require('./components/ChatComponents/Request.vue'));
 
 const app = new Vue({
     el: '#app',

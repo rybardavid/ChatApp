@@ -18,6 +18,12 @@
   <div class="content flex_25 wrapper_flex_row">
     <div class="flex_1">
 
+      <div class="scrollbar">
+        <div  v-for="n in 40">
+          <request> </request>
+        </div>
+      </div>
+
     </div>
 
     <div class="flex_2_3">
@@ -37,6 +43,6 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped lang="css">
   @import "../../../css/chat.css";
 </style>
