@@ -39386,7 +39386,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: flex;\r\n  flex-flow: column;\r\n}\r\n\r\n.header_wrapper{\r\n\r\n}\r\n", ""]);
+exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: flex;\r\n  flex-flow: column;\r\n}\r\n\r\n.chat_header{\r\n  flex: 1 1 0;\r\n  display: flex;\r\n  flex-direction: row;\r\n  background-color: #e6e6e6;\r\n}\r\n\r\n.chat_flex_side{\r\n  flex: 1 1 0;\r\n}\r\n\r\n.chat_flex_mid{\r\n  flex: 2.3 2.3 0;\r\n}\r\n\r\n.chat_header > div{\r\n  height: 100%;\r\n  display:table;\r\n  color: #868686;\r\n  text-align: center;\r\n  border-right: 1px solid grey;\r\n}\r\n.chat_header > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.chat_header > div p{\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n  margin: 0;\r\n}\r\n\r\n.chat_content{\r\n  flex: 15 15 0;\r\n  display: flex;\r\n  flex-direction: row;\r\n  background-color: #ccc;\r\n}\r\n\r\n.chat_content > div{\r\n  border-right: 1px solid grey;\r\n}\r\n\r\n.chat_content > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.scrollbar{\r\n  overflow-y: scroll;\r\n}\r\n", ""]);
 
 // exports
 
@@ -39397,6 +39397,7 @@ exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: flex;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -39441,28 +39442,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "chat_wrappper" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "chat_content" }, [
+      _c(
+        "div",
+        { staticClass: "chat_flex_side scrollbar" },
+        _vm._l(40, function(n) {
+          return _c("div", [_c("request")], 1)
+        })
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "chat_flex_mid" }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "chat_flex_side scrollbar" },
+        _vm._l(40, function(n) {
+          return _c("div", [_c("request")], 1)
+        })
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat_wrappper" }, [
-      _c("div", { staticClass: "header_wrapper" }, [
-        _c("p", [_vm._v("Contacts")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("John Doe")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Requests")])
+    return _c("div", { staticClass: "chat_header" }, [
+      _c("div", { staticClass: "chat_flex_side" }, [
+        _c("p", [_vm._v("Contacts")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "content flex_25 wrapper_flex_row" }, [
-        _c("div", { staticClass: "flex_1" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex_2_3" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex_1" })
+      _c("div", { staticClass: "chat_flex_mid" }, [
+        _c("p", [_vm._v("John Doe")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "chat_flex_side" }, [
+        _c("p", [_vm._v("Requests")])
       ])
     ])
   }
@@ -50929,7 +50948,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "body{\r\n  height: 100vh;\r\n}\r\n\r\n#app{\r\n  height: 100%;\r\n}\r\n\r\n.app_wrapper{\r\n  height: 100%; \r\n  display: flex;\r\n  flex-flow: column;\r\n}\r\n", ""]);
+exports.push([module.i, "body{\r\n  height: 100vh;\r\n}\r\n\r\n#app{\r\n  height: 100%;\r\n}\r\n\r\n.app_wrapper{\r\n  height: 100%;\r\n  display: flex;\r\n  flex-flow: column;\r\n}\r\n\r\n/* Let's get this party started */\r\n::-webkit-scrollbar {\r\n    width: 6px;\r\n}\r\n\r\n/* Track */\r\n::-webkit-scrollbar-track {\r\n    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  \r\n}\r\n\r\n/* Handle */\r\n::-webkit-scrollbar-thumb {\r\n    -webkit-border-radius: 10px;\r\n    border-radius: 10px;\r\n    background: #686868;\r\n    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);\r\n}\r\n::-webkit-scrollbar-thumb:window-inactive {\r\n\tbackground: #a9a9a9;\r\n}\r\n", ""]);
 
 // exports
 

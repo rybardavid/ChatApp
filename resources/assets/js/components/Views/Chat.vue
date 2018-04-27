@@ -1,30 +1,31 @@
 <template lang="html">
 <div class="chat_wrappper">
 
-  <div class="header_wrapper">
-      <p>Contacts</p>
-      <p>John Doe</p>
-      <p>Requests</p> 
+  <div class="chat_header">
+      <div class="chat_flex_side">
+          <p>Contacts</p>
+      </div>
+      <div class="chat_flex_mid">
+          <p>John Doe</p>
+      </div>
+      <div class="chat_flex_side">
+          <p>Requests</p>
+      </div>
   </div>
 
-  <div class="content flex_25 wrapper_flex_row">
-    <div class="flex_1">
-      <!--
-      <div class="scrollbar">
-        <div  v-for="n in 0">
+  <div class="chat_content">
+    <div class="chat_flex_side scrollbar">
+        <div  v-for="n in 40">
           <request> </request>
         </div>
-      </div>
-    -->
-
     </div>
 
-    <div class="flex_2_3">
+    <div class="chat_flex_mid"></div>
 
-    </div>
-
-    <div class="flex_1">
-
+    <div class="chat_flex_side scrollbar">
+        <div  v-for="n in 40">
+          <request> </request>
+        </div>
     </div>
   </div>
 

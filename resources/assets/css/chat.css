@@ -4,6 +4,53 @@
   flex-flow: column;
 }
 
-.header_wrapper{
+.chat_header{
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: row;
+  background-color: #e6e6e6;
+}
 
+.chat_flex_side{
+  flex: 1 1 0;
+}
+
+.chat_flex_mid{
+  flex: 2.3 2.3 0;
+}
+
+.chat_header > div{
+  height: 100%;
+  display:table;
+  color: #868686;
+  text-align: center;
+  border-right: 1px solid grey;
+}
+.chat_header > div:last-child{
+  border-right: none;
+}
+
+.chat_header > div p{
+  display: table-cell;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.chat_content{
+  flex: 15 15 0;
+  display: flex;
+  flex-direction: row;
+  background-color: #ccc;
+}
+
+.chat_content > div{
+  border-right: 1px solid grey;
+}
+
+.chat_content > div:last-child{
+  border-right: none;
+}
+
+.scrollbar{
+  overflow-y: scroll;
 }
