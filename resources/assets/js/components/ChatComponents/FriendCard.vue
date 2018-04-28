@@ -2,7 +2,7 @@
   <div class="card">
       <a href="">
         <div class="name">
-            <p>Frenk Hoolan</p>
+            <p>{{this.user.name}}</p>
         </div>
       </a>
 
@@ -29,10 +29,16 @@ export default {
   data(){
     return{
       isOnline: 0,
+      user:{},
     }
   },
+  props:[
+    'userProp',
+  ],
   created(){
+    console.log(this.userProp);
     this.isOnline = Boolean(Math.floor(Math.random() * 2));
+    this.user = this.userProp;
   },
 }
 </script>

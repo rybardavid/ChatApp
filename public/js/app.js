@@ -39442,8 +39442,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      //Dummy data for testing
+      friendTest: {
+        name: "Frank Cordova",
+        mail: "cordovafrank@mail.com",
+        age: 42,
+        id: 0
+      },
+      requestTest: {
+        name: "John Evans",
+        mail: "evansjohn@mail.com",
+        age: 32,
+        id: 5
+      }
+    };
+  },
+  mounted: function mounted() {
+    //console.log(this.userTest.name);
+  }
+});
 
 /***/ }),
 /* 57 */
@@ -39460,8 +39484,12 @@ var render = function() {
       _c(
         "div",
         { staticClass: "chat_flex_side scrollbar" },
-        _vm._l(40, function(n) {
-          return _c("div", [_c("friend-card")], 1)
+        _vm._l(15, function(n) {
+          return _c(
+            "div",
+            [_c("friend-card", { attrs: { userProp: _vm.friendTest } })],
+            1
+          )
         })
       ),
       _vm._v(" "),
@@ -39470,8 +39498,12 @@ var render = function() {
       _c(
         "div",
         { staticClass: "chat_flex_side scrollbar" },
-        _vm._l(40, function(n) {
-          return _c("div", [_c("request-card")], 1)
+        _vm._l(16, function(n) {
+          return _c(
+            "div",
+            [_c("request-card", { attrs: { userProp: _vm.requestTest } })],
+            1
+          )
         })
       )
     ])
@@ -51465,11 +51497,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      isOnline: 0
+      isOnline: 0,
+      user: {}
     };
   },
+
+  props: ['userProp'],
   created: function created() {
+    console.log(this.userProp);
     this.isOnline = Boolean(Math.floor(Math.random() * 2));
+    this.user = this.userProp;
   }
 });
 
@@ -51482,11 +51519,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
-    _vm._m(0),
+    _c("a", { attrs: { href: "" } }, [
+      _c("div", { staticClass: "name" }, [
+        _c("p", [_vm._v(_vm._s(this.user.name))])
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "bottom_wraper" }, [
       _c("div", { staticClass: "bottom" }, [
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _c(
           "div",
@@ -51504,14 +51545,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "" } }, [
-      _c("div", { staticClass: "name" }, [_c("p", [_vm._v("Frenk Hoolan")])])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -51827,10 +51860,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      user: {}
+    };
+  },
+
+  props: ['userProp'],
+  created: function created() {
+    this.user = this.userProp;
+  }
+});
 
 /***/ }),
 /* 96 */
@@ -51840,24 +51882,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "name" }, [
+      _c("p", [
+        _vm._v(_vm._s(this.user.name)),
+        _c("span", [_vm._v(_vm._s(this.user.mail))])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "name" }, [
-        _c("p", [
-          _vm._v("John Doe"),
-          _c("span", [_vm._v("johndoe@mailinator.com")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "acceptBTN" }, [
-        _c("a", { attrs: { href: "" } }, [_vm._v("Accept Request")])
-      ])
+    return _c("div", { staticClass: "acceptBTN" }, [
+      _c("a", { attrs: { href: "" } }, [_vm._v("Accept Request")])
     ])
   }
 ]

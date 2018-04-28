@@ -2,10 +2,8 @@
 
   <div class="card">
       <div class="name">
-          <p>John Doe<span>johndoe@mailinator.com</span></p>
+          <p>{{this.user.name}}<span>{{this.user.mail}}</span></p>
       </div>
-
-
 
       <div class="acceptBTN">
           <a href="">Accept Request</a>
@@ -16,6 +14,17 @@
 
 <script>
 export default {
+  data(){
+    return{
+      user:{}
+    }
+  },
+  props:[
+    'userProp',
+  ],
+  created(){
+    this.user = this.userProp;
+  }
 }
 </script>
 

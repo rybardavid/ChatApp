@@ -15,9 +15,11 @@
 
   <div class="chat_content">
     <div class="chat_flex_side scrollbar">
-        <div  v-for="n in 40">
-          <friend-card> </friend-card>
+        <!--for debuging dummy data in local-->
+        <div  v-for="n in 15">
+          <friend-card :userProp="friendTest"> </friend-card>
         </div>
+
     </div>
 
     <div class="chat_flex_mid conversation_wrapper">
@@ -32,8 +34,9 @@
     </div>
 
     <div class="chat_flex_side scrollbar">
-        <div  v-for="n in 40">
-          <request-card> </request-card>
+        <!--for debuging dummy data in local-->
+        <div  v-for="n in 16">
+          <request-card :userProp="requestTest"> </request-card>
         </div>
     </div>
   </div>
@@ -43,6 +46,26 @@
 
 <script>
 export default {
+  data(){
+    return{
+      //Dummy data for testing
+      friendTest:{
+        name: "Frank Cordova",
+        mail: "cordovafrank@mail.com",
+        age: 42,
+        id: 0,
+      },
+      requestTest:{
+        name: "John Evans",
+        mail: "evansjohn@mail.com",
+        age: 32,
+        id: 5,
+      },
+    }
+  },
+  mounted(){
+    //console.log(this.userTest.name);
+  }
 }
 </script>
 
