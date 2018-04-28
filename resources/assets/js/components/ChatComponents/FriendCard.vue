@@ -1,8 +1,10 @@
 <template lang="html">
   <div class="card">
-      <div class="name">
-          <p>Frenk Hoolan</p>
-      </div>
+      <a href="">
+        <div class="name">
+            <p>Frenk Hoolan</p>
+        </div>
+      </a>
 
       <div class="bottom_wraper">
           <div class="bottom">

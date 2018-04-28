@@ -8,8 +8,13 @@
   border: 1px solid grey;
 }
 
-.name{
+.card a{
+  text-decoration: none;
   flex: 4 4 0;
+}
+
+.name{
+  width: 100%;
 }
 
 .name p{
@@ -23,7 +28,7 @@
 }
 
 .bottom_wraper{
-  flex: 2 2 0;
+  flex: 1 1 0;
 }
 
 .bottom{

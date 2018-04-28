@@ -1,0 +1,18 @@
+.people{
+  background-color: #e6e6e6;
+  height: 100%;
+  width: 100%;
+}
+.content{
+  margin: 0 10%;
+}
+
+.content h1{
+  text-align: center;
+  color: #868686;
+}
+
+.accounts{
+  max-width: 680px;
+  margin: auto;
+}

@@ -1,0 +1,57 @@
+.account_card{
+  margin: 2%;
+  height: 120Px;
+  width: 180px;
+  float: left;
+  border-radius: 4px;
+  display: flex;
+  flex-flow: column;
+}
+
+.top_card{
+  flex: 6 6 0;
+  background-color: #b4b4b4;
+  border-top: 1px solid #686868;
+  border-left: 1px solid #686868;
+  border-right: 1px solid #686868;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.top_card p{
+  color: white;
+  text-align: center;
+}
+
+.top_card p small{
+  display: inline-block;
+}
+
+.bottom_card:hover{
+  background-color: #7b7b7b;
+}
+
+.bottom_card{
+  flex: 3 3 0;
+  background-color: #686868;
+  border-radius: 0px 0px 4px 4px;
+}
+
+.bottom_card a{
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  display:block;
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+
+.bottom_card a p{
+  margin: 0;
+  display: table-cell;
+  vertical-align: middle;
+}
+.requestBTN{
+  height: 100%;
+  width: 100%;
+}
