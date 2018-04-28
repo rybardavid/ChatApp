@@ -24,7 +24,9 @@ window.Vue.use(VueRouter);
 
 Vue.component('app', require('./App.vue'));
 Vue.component('navbar', require('./components/Basics/NavBar.vue'));
-Vue.component('request', require('./components/ChatComponents/Request.vue'));
+Vue.component('friend-card', require('./components/ChatComponents/FriendCard.vue'));
+Vue.component('request-card', require('./components/ChatComponents/RequestCard.vue'));
+
 
 const app = new Vue({
     el: '#app',

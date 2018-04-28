@@ -16,15 +16,24 @@
   <div class="chat_content">
     <div class="chat_flex_side scrollbar">
         <div  v-for="n in 40">
-          <request> </request>
+          <friend-card> </friend-card>
         </div>
     </div>
 
-    <div class="chat_flex_mid"></div>
+    <div class="chat_flex_mid conversation_wrapper">
+        <div class="messages"></div>
+
+        <form class="input_msg">
+          <input class="input_area" type="text" placeholder="Start typing...">
+
+          <input class="send_BTN" type="submit" value="Send">
+        </form>
+
+    </div>
 
     <div class="chat_flex_side scrollbar">
         <div  v-for="n in 40">
-          <request> </request>
+          <request-card> </request-card>
         </div>
     </div>
   </div>
