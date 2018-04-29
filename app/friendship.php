@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Firendship extends Model
+class friendship extends Model
 {
     //
 }

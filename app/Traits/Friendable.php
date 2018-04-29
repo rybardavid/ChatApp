@@ -9,7 +9,7 @@ use App\User;
 trait Friendable
 {
 
-  public function addFriend()
+  public function addFriend($user_requested_id)
   {
       $request  = Friendship::where(function($query) use($user_requested_id){
                               $query->where('requester', $user_requested_id)
@@ -34,8 +34,31 @@ trait Friendable
       }
       else {
         return "Fail";
-      }        
+      }
   }
 
+  public function getPeople($myID)
+  {
+      $friendships = DB::table('friendships');
+
+      $myFriednships = $friendships->where('requester', $myID)
+                                   ->orWhere('user_requested', $myID)->get();
+
+      foreach ($myFriednships as $key => $friendship)
+      {
+        if($friendship->requester != $myID){
+          $avoidedUsersId[] = $friendship->requester;
+        }
+
+        if($friendship->user_requested != $myID){
+          $avoidedUsersId[] = $friendship->user_requested;
+        }
+      }
+
+      $avoidedUsersId[] = $myID;
+
+      $users = User::whereNotIn('id',$avoidedUsersId)->get();
+      return json_encode($users , JSON_FORCE_OBJECT);
+  }
 
 }

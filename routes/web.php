@@ -13,6 +13,7 @@
 
 Route::get('/', 'MainController@mainPage');
 Route::get('/logout', 'MainController@logout');
+Route::get('/getpeople', 'UserController@getNonFriendsUsers');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
