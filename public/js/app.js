@@ -51504,7 +51504,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   props: ['userProp'],
   created: function created() {
-    console.log(this.userProp);
     this.isOnline = Boolean(Math.floor(Math.random() * 2));
     this.user = this.userProp;
   }

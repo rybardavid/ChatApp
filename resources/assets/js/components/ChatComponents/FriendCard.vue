@@ -35,8 +35,7 @@ export default {
   props:[
     'userProp',
   ],
-  created(){
-    console.log(this.userProp);
+  created(){    
     this.isOnline = Boolean(Math.floor(Math.random() * 2));
     this.user = this.userProp;
   },
