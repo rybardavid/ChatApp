@@ -7,10 +7,11 @@
         <div class="accounts">
             <account-card v-for="(user, index) in people" :key="index"
                           :userProp="user"
-                          :indexProp="index">
+                          :indexProp="index"
+                          v-on:requestSent='refreshPeople'>
             </account-card>
         </div>
-        
+
       </div>
   </div>
 
@@ -29,6 +30,11 @@ export default {
       axios.get(this.$path+'/getpeople')
            .then(response => this.people = response.data);
     },
+    refreshPeople: function(index)
+    {
+      delete this.people[index];
+      this.$forceUpdate();
+    }
   },
   created(){
     this.getPeople();

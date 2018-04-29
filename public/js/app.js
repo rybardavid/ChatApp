@@ -39687,6 +39687,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -39702,6 +39703,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.get(this.$path + '/getpeople').then(function (response) {
         return _this.people = response.data;
       });
+    },
+    refreshPeople: function refreshPeople(index) {
+      delete this.people[index];
+      this.$forceUpdate();
     }
   },
   created: function created() {
@@ -39731,7 +39736,8 @@ var render = function() {
         _vm._l(_vm.people, function(user, index) {
           return _c("account-card", {
             key: index,
-            attrs: { userProp: user, indexProp: index }
+            attrs: { userProp: user, indexProp: index },
+            on: { requestSent: _vm.refreshPeople }
           })
         })
       )
@@ -51730,9 +51736,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       index: this.indexProp
     };
   },
-  created: function created() {
-    console.log(this.userProp);
+
+  methods: {
+    sendFriendRequest: function sendFriendRequest() {
+      var _this = this;
+
+      axios.post(this.$path + '/sendrequest', {
+        id: this.user.id
+      }).then(function (response) {
+        if (response.data == "OK") {
+          _this.$emit('requestSent', _this.index);
+        }
+      });
+    }
   }
+
 });
 
 /***/ }),
@@ -51753,23 +51771,26 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "bottom_card" }, [
+    _c("div", { staticClass: "bottom_card" }, [
       _c("div", { staticClass: "requestBTN" }, [
-        _c("a", { attrs: { href: "#" } }, [
-          _c("p", [_vm._v("Send friend request")])
-        ])
+        _c(
+          "a",
+          {
+            attrs: { href: "#" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.sendFriendRequest()
+              }
+            }
+          },
+          [_c("p", [_vm._v("Send friend request")])]
+        )
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

@@ -10,7 +10,7 @@
 
       <div class="bottom_card">
           <div class="requestBTN">
-            <a href="#"> <p>Send friend request</p> </a>
+            <a href="#"  v-on:click.prevent='sendFriendRequest()'> <p>Send friend request</p> </a>
           </div>
       </div>
 
@@ -29,9 +29,21 @@ export default {
       index: this.indexProp,
     }
   },
-  created(){
-    console.log(this.userProp);
-  }
+  methods:{
+    sendFriendRequest: function(){
+        axios.post(this.$path+'/sendrequest', {
+                id:this.user.id
+              })
+              .then(response => {
+                if(response.data == "OK"){
+                    this.$emit('requestSent', this.index);
+                }
+            });
+
+    },
+  },
+
+
 }
 </script>
 
