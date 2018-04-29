@@ -2,7 +2,10 @@
   <div class="account_card">
 
       <div class="top_card">
-          <p>John Doe<small>johdoe@mailinator.com</small></p>
+          <p>{{this.user.name}}
+            <br>
+            <small>{{this.user.email}}</small>
+          </p>
       </div>
 
       <div class="bottom_card">
@@ -16,6 +19,19 @@
 
 <script>
 export default {
+  props:[
+    'userProp',
+    'indexProp',
+  ],
+  data(){
+    return{
+      user: this.userProp,
+      index: this.indexProp,
+    }
+  },
+  created(){
+    console.log(this.userProp);
+  }
 }
 </script>
 

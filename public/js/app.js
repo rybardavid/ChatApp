@@ -39684,8 +39684,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      people: {}
+    };
+  },
+
+  methods: {
+    getPeople: function getPeople() {
+      var _this = this;
+
+      axios.get(this.$path + '/getpeople').then(function (response) {
+        return _this.people = response.data;
+      });
+    }
+  },
+  created: function created() {
+    this.getPeople();
+  },
+  mounted: function mounted() {
+    /*console.log(this.people);*/
+    console.log(this.$path + '/getpeople');
+  }
+});
 
 /***/ }),
 /* 63 */
@@ -39702,8 +39728,11 @@ var render = function() {
       _c(
         "div",
         { staticClass: "accounts" },
-        _vm._l(10, function(n) {
-          return _c("account-card", { key: n })
+        _vm._l(_vm.people, function(user, index) {
+          return _c("account-card", {
+            key: index,
+            attrs: { userProp: user, indexProp: index }
+          })
         })
       )
     ])
@@ -51689,8 +51718,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userProp', 'indexProp'],
+  data: function data() {
+    return {
+      user: this.userProp,
+      index: this.indexProp
+    };
+  },
+  created: function created() {
+    console.log(this.userProp);
+  }
+});
 
 /***/ }),
 /* 90 */
@@ -51700,26 +51743,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "account_card" }, [
+    _c("div", { staticClass: "top_card" }, [
+      _c("p", [
+        _vm._v(_vm._s(this.user.name) + "\n          "),
+        _c("br"),
+        _vm._v(" "),
+        _c("small", [_vm._v(_vm._s(this.user.email))])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "account_card" }, [
-      _c("div", { staticClass: "top_card" }, [
-        _c("p", [
-          _vm._v("John Doe"),
-          _c("small", [_vm._v("johdoe@mailinator.com")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "bottom_card" }, [
-        _c("div", { staticClass: "requestBTN" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("p", [_vm._v("Send friend request")])
-          ])
+    return _c("div", { staticClass: "bottom_card" }, [
+      _c("div", { staticClass: "requestBTN" }, [
+        _c("a", { attrs: { href: "#" } }, [
+          _c("p", [_vm._v("Send friend request")])
         ])
       ])
     ])
