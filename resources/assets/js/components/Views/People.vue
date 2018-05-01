@@ -38,10 +38,6 @@ export default {
   },
   created(){
     this.getPeople();
-  },
-  mounted(){
-    /*console.log(this.people);*/
-    console.log(this.$path+'/getpeople');
   }
 
 

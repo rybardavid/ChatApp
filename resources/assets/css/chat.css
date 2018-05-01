@@ -108,3 +108,8 @@
 .send_BTN:hover{
   background-color: #14CC7C;
 }
+
+.data_status{
+  color: #868686;
+  text-align: center;
+}

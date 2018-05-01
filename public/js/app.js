@@ -39388,7 +39388,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: column;\r\n}\r\n\r\n.chat_header{\r\n  -webkit-box-flex: 1 1 0;\r\n  -webkit-flex: 1 1 0;\r\n  flex: 1 1 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-direction: row;\r\n  background-color: #e6e6e6;\r\n}\r\n\r\n.chat_flex_side{\r\n  -webkit-box-flex: 1 1 0;\r\n  -webkit-flex: 1 1 0;\r\n  flex: 1 1 0;\r\n}\r\n\r\n.chat_flex_mid{\r\n  -webkit-box-flex: 2.3 2.3 0;\r\n  -webkit-flex: 2.3 2.3 0;\r\n  flex: 2.3 2.3 0;\r\n}\r\n\r\n.chat_header > div{\r\n  height: 100%;\r\n  display:table;\r\n  color: #868686;\r\n  text-align: center;\r\n  border-right: 1px solid grey;\r\n}\r\n.chat_header > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.chat_header > div p{\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n  margin: 0;\r\n}\r\n\r\n.chat_content{\r\n  flex: 15 15 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-direction: row;\r\n  background-color: #ccc;\r\n}\r\n\r\n.chat_content > div{\r\n  border-right: 1px solid grey;\r\n}\r\n\r\n.chat_content > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.scrollbar{\r\n  overflow-y: scroll;\r\n}\r\n\r\n.conversation_wrapper{\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: column;\r\n}\r\n\r\n.messages{\r\n  flex: 10 10 0;\r\n}\r\n\r\n.input_msg{\r\n  flex: 0.8 0.8 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: row;\r\n}\r\n\r\n.input_area{\r\n  flex: 10 10 0;\r\n}\r\n\r\n.send_BTN{\r\n  flex: 2 2 0;\r\n  background-color: #13C478;\r\n  color: white;\r\n  font-family: sans-serif;\r\n  text-transform: uppercase;\r\n  border:0 none;\r\n  cursor:pointer;\r\n}\r\n\r\n.send_BTN:hover{\r\n  background-color: #14CC7C;\r\n}\r\n", ""]);
+exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: column;\r\n}\r\n\r\n.chat_header{\r\n  -webkit-box-flex: 1 1 0;\r\n  -webkit-flex: 1 1 0;\r\n  flex: 1 1 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-direction: row;\r\n  background-color: #e6e6e6;\r\n}\r\n\r\n.chat_flex_side{\r\n  -webkit-box-flex: 1 1 0;\r\n  -webkit-flex: 1 1 0;\r\n  flex: 1 1 0;\r\n}\r\n\r\n.chat_flex_mid{\r\n  -webkit-box-flex: 2.3 2.3 0;\r\n  -webkit-flex: 2.3 2.3 0;\r\n  flex: 2.3 2.3 0;\r\n}\r\n\r\n.chat_header > div{\r\n  height: 100%;\r\n  display:table;\r\n  color: #868686;\r\n  text-align: center;\r\n  border-right: 1px solid grey;\r\n}\r\n.chat_header > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.chat_header > div p{\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n  margin: 0;\r\n}\r\n\r\n.chat_content{\r\n  flex: 15 15 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-direction: row;\r\n  background-color: #ccc;\r\n}\r\n\r\n.chat_content > div{\r\n  border-right: 1px solid grey;\r\n}\r\n\r\n.chat_content > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.scrollbar{\r\n  overflow-y: scroll;\r\n}\r\n\r\n.conversation_wrapper{\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: column;\r\n}\r\n\r\n.messages{\r\n  flex: 10 10 0;\r\n}\r\n\r\n.input_msg{\r\n  flex: 0.8 0.8 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: row;\r\n}\r\n\r\n.input_area{\r\n  flex: 10 10 0;\r\n}\r\n\r\n.send_BTN{\r\n  flex: 2 2 0;\r\n  background-color: #13C478;\r\n  color: white;\r\n  font-family: sans-serif;\r\n  text-transform: uppercase;\r\n  border:0 none;\r\n  cursor:pointer;\r\n}\r\n\r\n.send_BTN:hover{\r\n  background-color: #14CC7C;\r\n}\r\n\r\n.data_status{\r\n  color: #868686;\r\n  text-align: center;\r\n}\r\n", ""]);
 
 // exports
 
@@ -39399,6 +39399,15 @@ exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: -webk
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39461,11 +39470,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         mail: "evansjohn@mail.com",
         age: 32,
         id: 5
-      }
+      },
+      //Dummy data for testing
+
+      requests: {}
     };
   },
-  mounted: function mounted() {
-    //console.log(this.userTest.name);
+
+  methods: {
+    getRequests: function getRequests() {
+      var _this = this;
+
+      axios.get(this.$path + '/getrequests').then(function (response) {
+        if (response.status == 200) {
+          _this.requests = response.data;
+        } else {
+          _this.requests = 'You dont have any friend requests.';
+        }
+      });
+    },
+    removeReq: function removeReq(index) {
+      delete this.requests[index];
+      this.$forceUpdate();
+    },
+    sendMessage: function sendMessage() {
+      console.log(this.requests);
+    }
+  },
+  created: function created() {
+    this.getRequests();
   }
 });
 
@@ -39493,19 +39526,58 @@ var render = function() {
         })
       ),
       _vm._v(" "),
-      _vm._m(1),
+      _c("div", { staticClass: "chat_flex_mid conversation_wrapper" }, [
+        _c("div", { staticClass: "messages" }),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "input_msg",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                _vm.sendMessage()
+              }
+            }
+          },
+          [
+            _c("input", {
+              staticClass: "input_area",
+              attrs: { type: "text", placeholder: "Start typing..." }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "send_BTN",
+              attrs: { type: "submit", value: "Send" }
+            })
+          ]
+        )
+      ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "chat_flex_side scrollbar" },
-        _vm._l(16, function(n) {
-          return _c(
-            "div",
-            [_c("request-card", { attrs: { userProp: _vm.requestTest } })],
-            1
-          )
-        })
-      )
+      _c("div", { staticClass: "chat_flex_side scrollbar" }, [
+        typeof this.requests == "string"
+          ? _c("div", { staticClass: "data_status" }, [
+              _c("p", [_vm._v(_vm._s(this.requests))])
+            ])
+          : _c(
+              "div",
+              _vm._l(_vm.requests, function(request, index) {
+                return _c(
+                  "div",
+                  [
+                    _c("request-card", {
+                      attrs: {
+                        indexProp: index,
+                        userProp: request["requester"]
+                      },
+                      on: { removeReqEvent: _vm.removeReq }
+                    })
+                  ],
+                  1
+                )
+              })
+            )
+      ])
     ])
   ])
 }
@@ -39525,26 +39597,6 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("div", { staticClass: "chat_flex_side" }, [
         _c("p", [_vm._v("Requests")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat_flex_mid conversation_wrapper" }, [
-      _c("div", { staticClass: "messages" }),
-      _vm._v(" "),
-      _c("form", { staticClass: "input_msg" }, [
-        _c("input", {
-          staticClass: "input_area",
-          attrs: { type: "text", placeholder: "Start typing..." }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "send_BTN",
-          attrs: { type: "submit", value: "Send" }
-        })
       ])
     ])
   }
@@ -39711,10 +39763,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   created: function created() {
     this.getPeople();
-  },
-  mounted: function mounted() {
-    /*console.log(this.people);*/
-    console.log(this.$path + '/getpeople');
   }
 });
 
@@ -51744,7 +51792,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.post(this.$path + '/sendrequest', {
         id: this.user.id
       }).then(function (response) {
-        if (response.data == "OK") {
+        if (response.status == 200) {
           _this.$emit('requestSent', _this.index);
         }
       });
@@ -51929,13 +51977,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      user: {}
+      user: {},
+      index: 0
     };
   },
 
-  props: ['userProp'],
+  props: ['userProp', 'indexProp'],
+  methods: {
+    acceptRequest: function acceptRequest() {
+      var _this = this;
+
+      axios.post(this.$path + '/acceptrequest', {
+        requester: this.user.id
+      }).then(function (response) {
+        if (response.status == 200) {
+          _this.$emit('removeReqEvent', _this.index);
+        }
+      });
+    }
+  },
   created: function created() {
     this.user = this.userProp;
+    this.index = this.indexProp;
   }
 });
 
@@ -51955,19 +52018,24 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    _c("div", { staticClass: "acceptBTN" }, [
+      _c(
+        "a",
+        {
+          attrs: { href: "" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.acceptRequest()
+            }
+          }
+        },
+        [_vm._v("Accept Request")]
+      )
+    ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "acceptBTN" }, [
-      _c("a", { attrs: { href: "" } }, [_vm._v("Accept Request")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

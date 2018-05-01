@@ -13,9 +13,11 @@
 
 Route::get('/', 'MainController@mainPage');
 Route::get('/logout', 'MainController@logout');
-Route::get('/getpeople', 'UserController@getNonFriendsUsers');
+Route::get('/getpeople', 'UserController@getUsers');
+Route::get('/getrequests', 'UserController@getRequests');
 
 Route::post('/sendrequest', 'UserController@sendRequest');
+Route::post('/acceptrequest', 'UserController@acceptRequest');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

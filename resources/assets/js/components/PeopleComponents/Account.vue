@@ -34,8 +34,8 @@ export default {
         axios.post(this.$path+'/sendrequest', {
                 id:this.user.id
               })
-              .then(response => {
-                if(response.data == "OK"){
+              .then(response => {                
+                if(response.status == 200){
                     this.$emit('requestSent', this.index);
                 }
             });

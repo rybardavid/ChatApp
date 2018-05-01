@@ -7,15 +7,25 @@ use Auth;
 
 class UserController extends Controller
 {
-    public function sendRequest(Request $request)
-    {
-      $response = Auth::user()->addFriend($request['id']);
-      return $response;
-    }
-
-    public function getNonFriendsUsers()
+    public function getUsers()
     {
       $id = Auth::id();
-      return Auth::user()->getPeople($id);
+      return Auth::user()->getUsers($id);
+    }
+
+    public function getRequests()
+    {
+      return Auth::user()->getRequests();
+    }
+
+
+    public function sendRequest(Request $request)
+    {
+      return Auth::user()->sendRequest($request['id']);
+    }
+
+    public function acceptRequest(Request $request)
+    {
+      return Auth::user()->acceptRequest($request['requester']);
     }
 }

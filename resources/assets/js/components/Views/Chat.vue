@@ -25,20 +25,29 @@
     <div class="chat_flex_mid conversation_wrapper">
         <div class="messages"></div>
 
-        <form class="input_msg">
-          <input class="input_area" type="text" placeholder="Start typing...">
+        <form class="input_msg" v-on:submit.prevent='sendMessage()'>
 
-          <input class="send_BTN" type="submit" value="Send">
+            <input class="input_area" type="text" placeholder="Start typing...">
+            <input class="send_BTN" type="submit" value="Send">
         </form>
 
     </div>
 
     <div class="chat_flex_side scrollbar">
-        <!--for debuging dummy data in local-->
-        <div  v-for="n in 16">
-          <request-card :userProp="requestTest"> </request-card>
+        <div class="data_status" v-if="typeof(this.requests) == 'string'">
+            <p>{{this.requests}}</p>
+        </div>
+
+        <div v-else>
+            <div  v-for="(request, index) in requests">
+              <request-card :indexProp="index"
+                            :userProp="request['requester']"
+                            v-on:removeReqEvent='removeReq'>
+                            </request-card>
+            </div>
         </div>
     </div>
+
   </div>
 
 </div>
@@ -61,10 +70,36 @@ export default {
         age: 32,
         id: 5,
       },
+      //Dummy data for testing
+
+      requests:{},
     }
   },
-  mounted(){
-    //console.log(this.userTest.name);
+  methods:{
+    getRequests: function()
+    {
+        axios.get(this.$path + '/getrequests')
+            .then(response => {
+              if(response.status == 200){
+                 this.requests = response.data;
+              }
+              else {
+                  this.requests = 'You dont have any friend requests.'
+                }
+            });
+    },
+    removeReq: function(index)
+    {      
+      delete this.requests[index];
+      this.$forceUpdate();
+    },
+    sendMessage: function()
+    {
+      console.log(this.requests);
+    }
+  },
+  created(){
+      this.getRequests();
   }
 }
 </script>

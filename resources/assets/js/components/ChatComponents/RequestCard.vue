@@ -6,7 +6,7 @@
       </div>
 
       <div class="acceptBTN">
-          <a href="">Accept Request</a>
+          <a href="" v-on:click.prevent='acceptRequest()'>Accept Request</a>
       </div>
   </div>
 
@@ -16,14 +16,34 @@
 export default {
   data(){
     return{
-      user:{}
+      user:{},
+      index: 0,
     }
   },
   props:[
     'userProp',
+    'indexProp',
   ],
+  methods:{
+    acceptRequest: function()
+    {      
+      axios.post(this.$path + '/acceptrequest',
+      {
+          requester:this.user.id
+      })
+      .then(response => {
+          if(response.status == 200)
+          {
+            this.$emit('removeReqEvent', this.index);
+          }
+
+      });
+
+    }
+  },
   created(){
     this.user = this.userProp;
+    this.index = this.indexProp;
   }
 }
 </script>
