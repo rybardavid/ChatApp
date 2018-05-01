@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="card">
-      <a href="">
+      <a href="" v-on:click.prevent='openConversation()'>
         <div class="name">
             <p>{{this.user.name}}</p>
         </div>
@@ -10,7 +10,7 @@
           <div class="bottom">
 
               <div class="removeBTN">
-                <a href=""><p>Remove friend</p></a>
+                <a href="" v-on:click.prevent='removeFriend()'><p>Remove friend</p></a>
               </div>
               <div class="status"
                   :class="{'online': (isOnline == true),
@@ -37,6 +37,25 @@ export default {
     'userProp',
     'indexProp',
   ],
+  methods:{
+    removeFriend: function()
+    {
+        axios.post(this.$path +'/removefriend',
+          {
+            id: this.user.id
+          })
+          .then(response => {
+             if(response.status == 200){               
+                this.$emit('removeFriendEvent', this.index);
+             }
+          });
+
+    },
+    openConversation: function()
+    {
+      this.$emit('openConvEvent', this.index);
+    },
+  },
   created(){
     this.isOnline = Boolean(Math.floor(Math.random() * 2));
     this.user = this.userProp;

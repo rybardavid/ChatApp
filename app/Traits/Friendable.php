@@ -137,6 +137,23 @@ trait Friendable
       }
   }
 
+  public function removeFriend($friendUserId)
+  {
+      $friendships = DB::table('friendships');
+
+      $friendship = $friendships->where('status', 1)
+                                ->where(function($query) use($friendUserId) {
+                                  $query->where('requester', $friendUserId)
+                                        ->where('user_requested', $this->id);
+                                })
+                                ->orWhere(function($query) use($friendUserId) {
+                                  $query->where('requester', $this->id)
+                                        ->where('user_requested', $friendUserId);
+                                })->delete();
+
+      return Response::json('Friend was removed', 200);
+  }
+
   public function acceptRequest($requesterId)
   {
       $friendship = Friendship::where('requester',$requesterId)

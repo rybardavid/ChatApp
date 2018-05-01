@@ -26,7 +26,7 @@ export default {
   ],
   methods:{
     acceptRequest: function()
-    {      
+    {
       axios.post(this.$path + '/acceptrequest',
       {
           requester:this.user.id
@@ -38,12 +38,11 @@ export default {
           }
 
       });
-
     }
   },
   created(){
     this.user = this.userProp;
-    this.index = this.indexProp;
+    this.index = this.indexProp;    
   }
 }
 </script>

@@ -18,6 +18,7 @@ Route::get('/getfriends', 'UserController@getFriends');
 Route::get('/getrequests', 'UserController@getRequests');
 
 Route::post('/sendrequest', 'UserController@sendRequest');
+Route::post('/removefriend', 'UserController@removeFriend');
 Route::post('/acceptrequest', 'UserController@acceptRequest');
 
 Auth::routes();

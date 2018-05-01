@@ -30,6 +30,11 @@ class UserController extends Controller
       return Auth::user()->sendRequest($request['id']);
     }
 
+    public function removeFriend(Request $request)
+    {
+        return Auth::user()->removeFriend($request['id']);
+    }
+
     public function acceptRequest(Request $request)
     {
       return Auth::user()->acceptRequest($request['requester']);

@@ -39470,6 +39470,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -39490,7 +39491,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       //Dummy data for testing
 
       requests: {},
-      friends: {}
+      friends: {},
+      conversation: {
+        name: "",
+        id: 0
+      }
     };
   },
 
@@ -39507,6 +39512,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     removeReq: function removeReq(index) {
+      if (typeof this.friends == 'string') {
+        this.friends = {};
+      }
+
+      var newContact = this.requests[index].requester;
+      var test = Object.getOwnPropertyNames(this.friends);
+      this.friends[test.length] = newContact;
+
       delete this.requests[index];
       this.$forceUpdate();
     },
@@ -39519,11 +39532,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         } else if (response.status == 204) {
           _this2.friends = 'We can help you with finding new';
         }
+        _this2.initConversation();
       });
+    },
+    removeFriend: function removeFriend(index) {
+      delete this.friends[index];
+      this.$forceUpdate();
     },
     sendMessage: function sendMessage() {
       console.log(this.requests);
+    },
+    initConversation: function initConversation() {
+      if (typeof this.friends == 'string') {
+        this.conversation.name = "Chat";
+      } else {
+        this.conversation.name = this.friends[0].name;
+      }
+    },
+    openConversation: function openConversation(index) {
+      var user = this.friends[index];
+      this.conversation.name = user.name;
     }
+
   },
   created: function created() {
     this.getRequests();
@@ -39540,7 +39570,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "chat_wrappper" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "chat_header" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "chat_flex_mid" }, [
+        _c("p", [_vm._v(_vm._s(this.conversation.name))])
+      ]),
+      _vm._v(" "),
+      _vm._m(1)
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "chat_content" }, [
       _c("div", { staticClass: "chat_flex_side scrollbar" }, [
@@ -39571,9 +39609,14 @@ var render = function() {
               _vm._l(_vm.friends, function(friend, index) {
                 return _c(
                   "div",
+                  { key: index },
                   [
                     _c("friend-card", {
-                      attrs: { indexProp: index, userProp: friend }
+                      attrs: { indexProp: index, userProp: friend },
+                      on: {
+                        openConvEvent: _vm.openConversation,
+                        removeFriendEvent: _vm.removeFriend
+                      }
                     })
                   ],
                   1
@@ -39620,6 +39663,7 @@ var render = function() {
               _vm._l(_vm.requests, function(request, index) {
                 return _c(
                   "div",
+                  { key: index },
                   [
                     _c("request-card", {
                       attrs: {
@@ -39642,18 +39686,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat_header" }, [
-      _c("div", { staticClass: "chat_flex_side" }, [
-        _c("p", [_vm._v("Contacts")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "chat_flex_mid" }, [
-        _c("p", [_vm._v("John Doe")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "chat_flex_side" }, [
-        _c("p", [_vm._v("Requests")])
-      ])
+    return _c("div", { staticClass: "chat_flex_side" }, [
+      _c("p", [_vm._v("Contacts")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "chat_flex_side" }, [
+      _c("p", [_vm._v("Requests")])
     ])
   }
 ]
@@ -51643,6 +51685,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   props: ['userProp', 'indexProp'],
+  methods: {
+    removeFriend: function removeFriend() {
+      var _this = this;
+
+      axios.post(this.$path + '/removefriend', {
+        id: this.user.id
+      }).then(function (response) {
+        if (response.status == 200) {
+          _this.$emit('removeFriendEvent', _this.index);
+        }
+      });
+    },
+    openConversation: function openConversation() {
+      this.$emit('openConvEvent', this.index);
+    }
+  },
   created: function created() {
     this.isOnline = Boolean(Math.floor(Math.random() * 2));
     this.user = this.userProp;
@@ -51659,15 +51717,41 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
-    _c("a", { attrs: { href: "" } }, [
-      _c("div", { staticClass: "name" }, [
-        _c("p", [_vm._v(_vm._s(this.user.name))])
-      ])
-    ]),
+    _c(
+      "a",
+      {
+        attrs: { href: "" },
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            _vm.openConversation()
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "name" }, [
+          _c("p", [_vm._v(_vm._s(this.user.name))])
+        ])
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "bottom_wraper" }, [
       _c("div", { staticClass: "bottom" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "removeBTN" }, [
+          _c(
+            "a",
+            {
+              attrs: { href: "" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.removeFriend()
+                }
+              }
+            },
+            [_c("p", [_vm._v("Remove friend")])]
+          )
+        ]),
         _vm._v(" "),
         _c(
           "div",
@@ -51684,16 +51768,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "removeBTN" }, [
-      _c("a", { attrs: { href: "" } }, [_c("p", [_vm._v("Remove friend")])])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

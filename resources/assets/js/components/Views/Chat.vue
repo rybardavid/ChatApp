@@ -6,7 +6,7 @@
           <p>Contacts</p>
       </div>
       <div class="chat_flex_mid">
-          <p>John Doe</p>
+          <p>{{this.conversation.name}}</p>
       </div>
       <div class="chat_flex_side">
           <p>Requests</p>
@@ -27,10 +27,11 @@
             </p>
         </div>
         <div v-else>
-            <div  v-for="(friend, index) in friends">
+            <div  v-for="(friend, index) in friends" :key="index">
               <friend-card  :indexProp="index"
-                            :userProp="friend">
-                        <!--  v-on:removeFriendEvent='removeReq'> -->    
+                            :userProp="friend"
+                            v-on:openConvEvent="openConversation"
+                            v-on:removeFriendEvent="removeFriend">
                             </friend-card>
             </div>
         </div>
@@ -54,7 +55,7 @@
             <p>{{this.requests}}</p>
         </div>
         <div v-else>
-            <div  v-for="(request, index) in requests">
+            <div  v-for="(request, index) in requests" :key="index">
               <request-card :indexProp="index"
                             :userProp="request['requester']"
                             v-on:removeReqEvent='removeReq'>
@@ -90,6 +91,10 @@ export default {
 
       requests:{},
       friends:{},
+      conversation:{
+        name: "",
+        id: 0
+      }
     }
   },
   methods:{
@@ -107,6 +112,15 @@ export default {
     },
     removeReq: function(index)
     {
+      if(typeof(this.friends) == 'string')
+      {
+        this.friends = {};
+      }
+
+      let newContact = this.requests[index].requester;
+      let test = Object.getOwnPropertyNames(this.friends);
+      this.friends[test.length] = newContact;
+
       delete this.requests[index];
       this.$forceUpdate();
     },
@@ -120,17 +134,41 @@ export default {
             else if(response.status == 204) {
                 this.friends = 'We can help you with finding new';
               }
+            this.initConversation();
           });
+    },
+    removeFriend: function(index)
+    {
+      delete this.friends[index];
+      this.$forceUpdate();
     },
     sendMessage: function()
     {
       console.log(this.requests);
+    },
+    initConversation: function()
+    {
+        if(typeof(this.friends) == 'string')
+        {
+          this.conversation.name = "Chat";
+        }
+        else
+        {
+          this.conversation.name = this.friends[0].name;
+        }
+    },
+    openConversation: function(index)
+    {
+        let user = this.friends[index];
+        this.conversation.name = user.name;
     }
+
   },
   created(){
       this.getRequests();
       this.getFriends();
-  }
+  },
+
 }
 </script>
 
