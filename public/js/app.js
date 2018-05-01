@@ -39388,7 +39388,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: column;\r\n}\r\n\r\n.chat_header{\r\n  -webkit-box-flex: 1 1 0;\r\n  -webkit-flex: 1 1 0;\r\n  flex: 1 1 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-direction: row;\r\n  background-color: #e6e6e6;\r\n}\r\n\r\n.chat_flex_side{\r\n  -webkit-box-flex: 1 1 0;\r\n  -webkit-flex: 1 1 0;\r\n  flex: 1 1 0;\r\n}\r\n\r\n.chat_flex_mid{\r\n  -webkit-box-flex: 2.3 2.3 0;\r\n  -webkit-flex: 2.3 2.3 0;\r\n  flex: 2.3 2.3 0;\r\n}\r\n\r\n.chat_header > div{\r\n  height: 100%;\r\n  display:table;\r\n  color: #868686;\r\n  text-align: center;\r\n  border-right: 1px solid grey;\r\n}\r\n.chat_header > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.chat_header > div p{\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n  margin: 0;\r\n}\r\n\r\n.chat_content{\r\n  flex: 15 15 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-direction: row;\r\n  background-color: #ccc;\r\n}\r\n\r\n.chat_content > div{\r\n  border-right: 1px solid grey;\r\n}\r\n\r\n.chat_content > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.scrollbar{\r\n  overflow-y: scroll;\r\n}\r\n\r\n.conversation_wrapper{\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: column;\r\n}\r\n\r\n.messages{\r\n  flex: 10 10 0;\r\n}\r\n\r\n.input_msg{\r\n  flex: 0.8 0.8 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: row;\r\n}\r\n\r\n.input_area{\r\n  flex: 10 10 0;\r\n}\r\n\r\n.send_BTN{\r\n  flex: 2 2 0;\r\n  background-color: #13C478;\r\n  color: white;\r\n  font-family: sans-serif;\r\n  text-transform: uppercase;\r\n  border:0 none;\r\n  cursor:pointer;\r\n}\r\n\r\n.send_BTN:hover{\r\n  background-color: #14CC7C;\r\n}\r\n\r\n.data_status{\r\n  color: #868686;\r\n  text-align: center;\r\n}\r\n", ""]);
+exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: column;\r\n}\r\n\r\n.chat_header{\r\n  -webkit-box-flex: 1 1 0;\r\n  -webkit-flex: 1 1 0;\r\n  flex: 1 1 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-direction: row;\r\n  background-color: #e6e6e6;\r\n}\r\n\r\n.chat_flex_side{\r\n  -webkit-box-flex: 1 1 0;\r\n  -webkit-flex: 1 1 0;\r\n  flex: 1 1 0;\r\n}\r\n\r\n.chat_flex_mid{\r\n  -webkit-box-flex: 2.3 2.3 0;\r\n  -webkit-flex: 2.3 2.3 0;\r\n  flex: 2.3 2.3 0;\r\n}\r\n\r\n.chat_header > div{\r\n  height: 100%;\r\n  display:table;\r\n  color: #868686;\r\n  text-align: center;\r\n  border-right: 1px solid grey;\r\n}\r\n.chat_header > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.chat_header > div p{\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n  margin: 0;\r\n}\r\n\r\n.chat_content{\r\n  flex: 15 15 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-direction: row;\r\n  background-color: #ccc;\r\n}\r\n\r\n.chat_content > div{\r\n  border-right: 1px solid grey;\r\n}\r\n\r\n.chat_content > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.scrollbar{\r\n  overflow-y: scroll;\r\n}\r\n\r\n.conversation_wrapper{\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: column;\r\n}\r\n\r\n.messages{\r\n  flex: 10 10 0;\r\n}\r\n\r\n.input_msg{\r\n  flex: 0.8 0.8 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: row;\r\n}\r\n\r\n.input_area{\r\n  flex: 10 10 0;\r\n}\r\n\r\n.send_BTN{\r\n  flex: 2 2 0;\r\n  background-color: #13C478;\r\n  color: white;\r\n  font-family: sans-serif;\r\n  text-transform: uppercase;\r\n  border:0 none;\r\n  cursor:pointer;\r\n}\r\n\r\n.send_BTN:hover{\r\n  background-color: #14CC7C;\r\n}\r\n\r\n.data_status{\r\n  color: #868686;\r\n  text-align: center;\r\n}\r\n\r\n.link_firends{\r\n  color: #666666;\r\n}\r\n", ""]);
 
 // exports
 
@@ -39399,6 +39399,22 @@ exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: -webk
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39473,7 +39489,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       },
       //Dummy data for testing
 
-      requests: {}
+      requests: {},
+      friends: {}
     };
   },
 
@@ -39493,12 +39510,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       delete this.requests[index];
       this.$forceUpdate();
     },
+    getFriends: function getFriends() {
+      var _this2 = this;
+
+      axios.get(this.$path + '/getfriends').then(function (response) {
+        if (response.status == 200) {
+          _this2.friends = response.data;
+        } else if (response.status == 204) {
+          _this2.friends = 'We can help you with finding new';
+        }
+      });
+    },
     sendMessage: function sendMessage() {
       console.log(this.requests);
     }
   },
   created: function created() {
     this.getRequests();
+    this.getFriends();
   }
 });
 
@@ -39514,17 +39543,44 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "chat_content" }, [
-      _c(
-        "div",
-        { staticClass: "chat_flex_side scrollbar" },
-        _vm._l(15, function(n) {
-          return _c(
-            "div",
-            [_c("friend-card", { attrs: { userProp: _vm.friendTest } })],
-            1
-          )
-        })
-      ),
+      _c("div", { staticClass: "chat_flex_side scrollbar" }, [
+        typeof this.friends == "string"
+          ? _c("div", { staticClass: "data_status" }, [
+              _c(
+                "p",
+                [
+                  _vm._v(
+                    "\r\n              " +
+                      _vm._s(this.friends) +
+                      "\r\n              "
+                  ),
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "link_firends",
+                      attrs: { to: { path: "/people" } }
+                    },
+                    [_vm._v("friends.")]
+                  )
+                ],
+                1
+              )
+            ])
+          : _c(
+              "div",
+              _vm._l(_vm.friends, function(friend, index) {
+                return _c(
+                  "div",
+                  [
+                    _c("friend-card", {
+                      attrs: { indexProp: index, userProp: friend }
+                    })
+                  ],
+                  1
+                )
+              })
+            )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "chat_flex_mid conversation_wrapper" }, [
         _c("div", { staticClass: "messages" }),
@@ -51539,7 +51595,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, ".card{\r\n  margin: none;\r\n  margin: 4%;\r\n  display: flex;\r\n  flex-flow: column;\r\n  border-radius: 4px;\r\n  background-color: #e6e6e6;\r\n  border: 1px solid grey;\r\n}\r\n\r\n.card a{\r\n  text-decoration: none;\r\n  flex: 4 4 0;\r\n}\r\n\r\n.name{\r\n  width: 100%;\r\n}\r\n\r\n.name p{\r\n  margin: 0;\r\n  padding: 4%;\r\n  color: #868686;\r\n  font-family: sans-serif;\r\n  text-align: center;\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n}\r\n\r\n.bottom_wraper{\r\n  flex: 1 1 0;\r\n}\r\n\r\n.bottom{\r\n  display: flex;\r\n  flex-flow: row;\r\n}\r\n\r\n.removeBTN{\r\n  flex: 4 4 0;\r\n  background-color:#686868;\r\n  border-bottom-left-radius: 4px;\r\n}\r\n\r\n.removeBTN a{\r\n  width: 100%;\r\n  height: 100%;\r\n  display: table;\r\n  color: white;\r\n  text-decoration: none;\r\n}\r\n\r\n.removeBTN a p{\r\n  margin: 0;\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n  text-align: center;\r\n}\r\n\r\n.status{\r\n  padding: 2%;\r\n  flex: 1 1 0;\r\n  border-bottom-right-radius: 4px;\r\n}\r\n\r\n.status p{\r\n  margin: 0;\r\n  color: white;\r\n  text-transform: uppercase;\r\n}\r\n\r\n.online{\r\n    background-color: #39D65B;\r\n}\r\n\r\n.online p::before{\r\n  content: 'online';\r\n}\r\n\r\n.offline{\r\n    background-color: #D63631;\r\n}\r\n\r\n.offline p::before{\r\n  content: 'offline';\r\n}\r\n", ""]);
+exports.push([module.i, ".card{\r\n  margin: none;\r\n  margin: 4%;\r\n  display: flex;\r\n  flex-flow: column;\r\n  border-radius: 4px;\r\n  background-color: #e6e6e6;\r\n  border: 1px solid grey;\r\n}\r\n\r\n.card a{\r\n  text-decoration: none;\r\n  flex: 4 4 0;\r\n}\r\n\r\n.name{\r\n  width: 100%;\r\n  min-height: 42px;\r\n  display: flex;\r\n  flex-flow: row;\r\n  align-items:center;\r\n  justify-content:center;\r\n}\r\n\r\n.name p{\r\n  margin: 0;  \r\n  color: #868686;\r\n  font-family: sans-serif;\r\n  text-align: center;\r\n}\r\n\r\n.bottom_wraper{\r\n  flex: 1 1 0;\r\n}\r\n\r\n.bottom{\r\n  display: flex;\r\n  flex-flow: row;\r\n}\r\n\r\n.removeBTN{\r\n  flex: 4 4 0;\r\n  background-color:#686868;\r\n  border-bottom-left-radius: 4px;\r\n}\r\n\r\n.removeBTN a{\r\n  width: 100%;\r\n  height: 100%;\r\n  display: table;\r\n  color: white;\r\n  text-decoration: none;\r\n}\r\n\r\n.removeBTN a p{\r\n  margin: 0;\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n  text-align: center;\r\n}\r\n\r\n.status{\r\n  padding: 2%;\r\n  flex: 1 1 0;\r\n  border-bottom-right-radius: 4px;\r\n}\r\n\r\n.status p{\r\n  margin: 0;\r\n  color: white;\r\n  text-transform: uppercase;\r\n}\r\n\r\n.online{\r\n    background-color: #39D65B;\r\n}\r\n\r\n.online p::before{\r\n  content: 'online';\r\n}\r\n\r\n.offline{\r\n    background-color: #D63631;\r\n}\r\n\r\n.offline p::before{\r\n  content: 'offline';\r\n}\r\n", ""]);
 
 // exports
 
@@ -51580,15 +51636,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      index: 0,
       isOnline: 0,
       user: {}
     };
   },
 
-  props: ['userProp'],
+  props: ['userProp', 'indexProp'],
   created: function created() {
     this.isOnline = Boolean(Math.floor(Math.random() * 2));
     this.user = this.userProp;
+    this.index = this.indexProp;
   }
 });
 

@@ -13,10 +13,16 @@ class UserController extends Controller
       return Auth::user()->getUsers($id);
     }
 
+    public function getFriends()
+    {
+      return Auth::user()->getFriends();
+    }
+
     public function getRequests()
     {
       return Auth::user()->getRequests();
     }
+
 
 
     public function sendRequest(Request $request)

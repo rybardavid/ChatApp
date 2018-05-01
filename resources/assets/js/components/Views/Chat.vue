@@ -15,9 +15,24 @@
 
   <div class="chat_content">
     <div class="chat_flex_side scrollbar">
-        <!--for debuging dummy data in local-->
+        <!--for debuging dummy data in local
         <div  v-for="n in 15">
           <friend-card :userProp="friendTest"> </friend-card>
+        </div>-->
+
+        <div class="data_status" v-if="typeof(this.friends) == 'string'">
+            <p>
+              {{this.friends}}
+              <router-link class="link_firends"  :to="{ path: '/people' }">friends.</router-link>
+            </p>
+        </div>
+        <div v-else>
+            <div  v-for="(friend, index) in friends">
+              <friend-card  :indexProp="index"
+                            :userProp="friend">
+                        <!--  v-on:removeFriendEvent='removeReq'> -->    
+                            </friend-card>
+            </div>
         </div>
 
     </div>
@@ -34,10 +49,10 @@
     </div>
 
     <div class="chat_flex_side scrollbar">
+
         <div class="data_status" v-if="typeof(this.requests) == 'string'">
             <p>{{this.requests}}</p>
         </div>
-
         <div v-else>
             <div  v-for="(request, index) in requests">
               <request-card :indexProp="index"
@@ -46,6 +61,7 @@
                             </request-card>
             </div>
         </div>
+
     </div>
 
   </div>
@@ -73,6 +89,7 @@ export default {
       //Dummy data for testing
 
       requests:{},
+      friends:{},
     }
   },
   methods:{
@@ -89,9 +106,21 @@ export default {
             });
     },
     removeReq: function(index)
-    {      
+    {
       delete this.requests[index];
       this.$forceUpdate();
+    },
+    getFriends: function()
+    {
+      axios.get(this.$path + '/getfriends')
+          .then(response => {
+            if(response.status == 200){
+               this.friends = response.data;
+            }
+            else if(response.status == 204) {
+                this.friends = 'We can help you with finding new';
+              }
+          });
     },
     sendMessage: function()
     {
@@ -100,6 +129,7 @@ export default {
   },
   created(){
       this.getRequests();
+      this.getFriends();
   }
 }
 </script>

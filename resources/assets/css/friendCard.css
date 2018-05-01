@@ -15,16 +15,18 @@
 
 .name{
   width: 100%;
+  min-height: 42px;
+  display: flex;
+  flex-flow: row;
+  align-items:center;
+  justify-content:center;
 }
 
 .name p{
-  margin: 0;
-  padding: 4%;
+  margin: 0;  
   color: #868686;
   font-family: sans-serif;
   text-align: center;
-  display: table-cell;
-  vertical-align: middle;
 }
 
 .bottom_wraper{

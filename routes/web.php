@@ -14,6 +14,7 @@
 Route::get('/', 'MainController@mainPage');
 Route::get('/logout', 'MainController@logout');
 Route::get('/getpeople', 'UserController@getUsers');
+Route::get('/getfriends', 'UserController@getFriends');
 Route::get('/getrequests', 'UserController@getRequests');
 
 Route::post('/sendrequest', 'UserController@sendRequest');

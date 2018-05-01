@@ -28,16 +28,19 @@
 export default {
   data(){
     return{
+      index:0,
       isOnline: 0,
       user:{},
     }
   },
   props:[
     'userProp',
+    'indexProp',
   ],
-  created(){    
+  created(){
     this.isOnline = Boolean(Math.floor(Math.random() * 2));
     this.user = this.userProp;
+    this.index = this.indexProp;
   },
 }
 </script>

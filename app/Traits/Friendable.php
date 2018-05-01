@@ -34,6 +34,45 @@ trait Friendable
       return json_encode($users , JSON_FORCE_OBJECT);
   }
 
+  public function getFriends()
+  {
+
+      if( Friendship::where('status', 1)->exists())
+      {
+        $userId = $this->id;
+        $friendshipsList = Friendship::where('status', 1)
+                                     ->where(function($query) use($userId) {
+                                        $query->where('requester', $userId)
+                                              ->orWhere('user_requested', $userId);
+                                     })->get();
+
+        foreach ($friendshipsList as $key => $friendship)
+        {
+          if($friendship->requester != $userId)
+          {
+              $friendList[] = User::where('id', $friendship->requester)->first();
+          }
+          else
+          {
+              $friendList[] = User::where('id', $friendship->user_requested)->first();
+          }
+
+        }
+
+
+
+        if(isset($friendList))
+        {
+          return json_encode($friendList , JSON_FORCE_OBJECT);
+        }
+        else
+        {
+          return Response::json('Cant find any friends.',202);
+        }
+      }
+      return Response::json('',204);
+  }
+
   public function getRequests()
   {
     if(Friendship::where('status', 0)->exists())
