@@ -27,7 +27,14 @@ export default {
     Vue.prototype.$user = JSON.parse(this.userProp);
     Vue.prototype.$path = this.projectPath(this.projectRouteProp,
                                            this.routeDestProp);
-
+    Vue.prototype.$objIsEmpty = function(obj)
+    {
+      for(var prop in obj){
+            if(obj.hasOwnProperty(prop))
+                return false;
+      }
+      return true;
+    };
   }
 }
 </script>
