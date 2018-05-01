@@ -39500,6 +39500,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    isEmpty: function isEmpty(obj) {
+      for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) return false;
+      }
+      return true;
+    },
     getRequests: function getRequests() {
       var _this = this;
 
@@ -39537,6 +39543,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     removeFriend: function removeFriend(index) {
       delete this.friends[index];
+      if (this.isEmpty(this.friends)) {
+        this.friends = 'We can help you with finding new';
+      }
       this.$forceUpdate();
     },
     sendMessage: function sendMessage() {

@@ -98,6 +98,14 @@ export default {
     }
   },
   methods:{
+    isEmpty: function(obj)
+    {
+      for(var prop in obj){
+            if(obj.hasOwnProperty(prop))
+                return false;
+      }
+      return true;
+    },
     getRequests: function()
     {
         axios.get(this.$path + '/getrequests')
@@ -139,7 +147,10 @@ export default {
     },
     removeFriend: function(index)
     {
-      delete this.friends[index];
+      delete this.friends[index];      
+      if(this.isEmpty(this.friends)){
+        this.friends = 'We can help you with finding new';
+      }
       this.$forceUpdate();
     },
     sendMessage: function()
