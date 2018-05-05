@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Traits\Friendable;
+use App\Traits\Conversationable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -10,7 +11,8 @@ class User extends Authenticatable
 {
     use Notifiable;
     use Friendable;
-    
+    use Conversationable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -28,4 +30,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function Conversations()
+    {
+        return $this->belongsToMany('App\Conversation', 'user_conversation')->withTimestamps();
+    }
 }

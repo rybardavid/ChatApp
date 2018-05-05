@@ -24,7 +24,6 @@ class UserController extends Controller
     }
 
 
-
     public function sendRequest(Request $request)
     {
       return Auth::user()->sendRequest($request['id']);
@@ -37,6 +36,26 @@ class UserController extends Controller
 
     public function acceptRequest(Request $request)
     {
-      return Auth::user()->acceptRequest($request['requester']);
+      $requesterId = $request['requester'];
+      //$response = Auth::user()->createOneToOne($requesterId);
+
+      return Auth::user()->createOneToOne($requesterId);
+
+      if($response)
+      {
+          return Auth::user()->acceptRequest($requesterId);
+      }
+      else
+      {
+          return 'Fail';
+      }
+
     }
+
+
+    public function test()
+    {
+        return Auth::user()->testMore(3);
+    }
+
 }

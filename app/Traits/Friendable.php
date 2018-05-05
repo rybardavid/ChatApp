@@ -108,7 +108,6 @@ trait Friendable
     return Response::json('Dont have any requests.', 202);
   }
 
-
   public function sendRequest($userRequesedId)
   {
       $request  = Friendship::where(function($query) use($userRequesedId){
@@ -136,7 +135,7 @@ trait Friendable
         return Response::json('Request was not able to send.', 400);
       }
   }
-
+  
   public function removeFriend($friendUserId)
   {
       $friendships = DB::table('friendships');
