@@ -17,8 +17,6 @@ Route::get('/getpeople', 'UserController@getUsers');
 Route::get('/getfriends', 'UserController@getFriends');
 Route::get('/getrequests', 'UserController@getRequests');
 
-//Route::get('/test', 'UserController@test');
-
 Route::post('/sendrequest', 'UserController@sendRequest');
 Route::post('/removefriend', 'UserController@removeFriend');
 Route::post('/acceptrequest', 'UserController@acceptRequest');

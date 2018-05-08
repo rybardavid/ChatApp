@@ -37,11 +37,10 @@ class UserController extends Controller
     public function acceptRequest(Request $request)
     {
       $requesterId = $request['requester'];
-      //$response = Auth::user()->createOneToOne($requesterId);
 
-      return Auth::user()->createOneToOne($requesterId);
+      $response = Auth::user()->createOneToOne($requesterId);
 
-      if($response)
+      if($response == true)
       {
           return Auth::user()->acceptRequest($requesterId);
       }
@@ -51,11 +50,4 @@ class UserController extends Controller
       }
 
     }
-
-
-    public function test()
-    {
-        return Auth::user()->testMore(3);
-    }
-
 }

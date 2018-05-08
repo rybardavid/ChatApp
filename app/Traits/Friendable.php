@@ -4,6 +4,8 @@ namespace App\Traits;
 
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\DB;
+
+use App\ReugularConversation;
 use App\Friendship;
 use App\User;
 
@@ -135,7 +137,7 @@ trait Friendable
         return Response::json('Request was not able to send.', 400);
       }
   }
-  
+
   public function removeFriend($friendUserId)
   {
       $friendships = DB::table('friendships');
@@ -165,6 +167,10 @@ trait Friendable
           'status' => 1
         ]);
 
+        $newConv = new ReugularConversation;
+        $newConv->friendship_id  = $friendship->id;
+        $newConv->save();
+        
         return Response::json('Request was accepted.', 200);
       }
 
