@@ -30,17 +30,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    public function Conversations()
-    {
-        return $this->belongsToMany('App\Conversation', 'user_conversation')->withTimestamps();
-    }
-
-    public function Friendships()
-    {
-        return $this->hasMany('App\friendship');
-    }
-
+    
     public function Messages()
     {
         return $this->hasMany('App\Messsage');

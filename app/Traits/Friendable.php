@@ -165,12 +165,8 @@ trait Friendable
       {
         $friendship->update([
           'status' => 1
-        ]);
+        ]);       
 
-        $newConv = new ReugularConversation;
-        $newConv->friendship_id  = $friendship->id;
-        $newConv->save();
-        
         return Response::json('Request was accepted.', 200);
       }
 

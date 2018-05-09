@@ -10,12 +10,7 @@ class friendship extends Model
         'requester', 'user_requested', 'status',
     ];
 
-    public function Conversations()
-    {
-        return $this->hasMany('App\Conversation');
-    }
-
-    public function ReuglarConversation()
+    public function Conversation()
     {
         return $this->hasOne('App\ReugularConversation');
     }

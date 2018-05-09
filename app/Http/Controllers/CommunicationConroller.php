@@ -4,15 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
-
-use App\ReugularConversation;
-use App\Messsage;
-use App\friendship;
 use Auth;
 
 class CommunicationConroller extends Controller
 {
-    public function testMsg()
+    /*public function testMsg()
     {
         $convId = 4;
         $message = "fhdsuifndsnfj dfs ndsihfnusdinfi fhdsui";
@@ -74,15 +70,15 @@ class CommunicationConroller extends Controller
       return $friendships;
       $friendships = friendship::find($friendshipsIDs);
       return $friendships;
-    /*  foreach ($friendships as $key => $friendship)
-      {
-        $conversation = $friendship->ReuglarConversation()->first();
-        $conversations[] = array(
-          'name' => $friendship->
-        );
-      }
-      */
+
 
       return $conversations;
+    }
+
+    */
+
+    public function getConversations()
+    {
+      return Auth::user()->getConversations();
     }
 }

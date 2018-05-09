@@ -17,11 +17,12 @@ export default {
   data(){
     return{
       user:{},
+      request:{},
       index: 0,
     }
   },
   props:[
-    'userProp',
+    'requestProp',
     'indexProp',
   ],
   methods:{
@@ -29,7 +30,7 @@ export default {
     {
       axios.post(this.$path + '/acceptrequest',
       {
-          requester:this.user.id
+          obj:this.request
       })
       .then(response => {
           if(response.status == 200)
@@ -41,8 +42,9 @@ export default {
     }
   },
   created(){
-    this.user = this.userProp;
-    this.index = this.indexProp;    
+    this.request = this.requestProp;
+    this.index = this.indexProp;
+    this.user = this.request.requester;
   }
 }
 </script>

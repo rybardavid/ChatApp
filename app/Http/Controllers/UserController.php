@@ -35,19 +35,10 @@ class UserController extends Controller
     }
 
     public function acceptRequest(Request $request)
-    {
-      $requesterId = $request['requester'];
-
-      $response = Auth::user()->createOneToOne($requesterId);
-
-      if($response == true)
-      {
-          return Auth::user()->acceptRequest($requesterId);
-      }
-      else
-      {
-          return 'Fail';
-      }
-
+    {      
+      $friendshipID = $request['obj']['request']['id'];
+      $requesterID = $request['obj']['requester']['id'];
+      $response = Auth::user()->createOneToOne($friendshipID);
+      return Auth::user()->acceptRequest($requesterID);
     }
 }

@@ -17012,8 +17012,10 @@ if (token) {
  */
 
 /*import Echo from 'laravel-echo'
- window.Pusher = require('pusher-js');
- window.Echo = new Echo({
+
+window.Pusher = require('pusher-js');
+
+window.Echo = new Echo({
     broadcaster: 'pusher',
     key: process.env.MIX_PUSHER_APP_KEY,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
@@ -39682,10 +39684,7 @@ var render = function() {
                   { key: index },
                   [
                     _c("request-card", {
-                      attrs: {
-                        indexProp: index,
-                        userProp: request["requester"]
-                      },
+                      attrs: { indexProp: index, requestProp: request },
                       on: { removeReqEvent: _vm.removeReq }
                     })
                   ],
@@ -52133,17 +52132,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       user: {},
+      request: {},
       index: 0
     };
   },
 
-  props: ['userProp', 'indexProp'],
+  props: ['requestProp', 'indexProp'],
   methods: {
     acceptRequest: function acceptRequest() {
       var _this = this;
 
       axios.post(this.$path + '/acceptrequest', {
-        requester: this.user.id
+        obj: this.request
       }).then(function (response) {
         if (response.status == 200) {
           _this.$emit('removeReqEvent', _this.index);
@@ -52152,8 +52152,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   created: function created() {
-    this.user = this.userProp;
+    this.request = this.requestProp;
     this.index = this.indexProp;
+    this.user = this.request.requester;
   }
 });
 

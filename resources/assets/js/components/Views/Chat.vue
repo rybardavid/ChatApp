@@ -57,7 +57,7 @@
         <div v-else>
             <div  v-for="(request, index) in requests" :key="index">
               <request-card :indexProp="index"
-                            :userProp="request['requester']"
+                            :requestProp="request"
                             v-on:removeReqEvent='removeReq'>
                             </request-card>
             </div>
@@ -165,7 +165,7 @@ export default {
     },
     openConversation: function(index)
     {
-        let user = this.friends[index];      
+        let user = this.friends[index];
         this.conversation.name = user.name;
     },
     sendMessage: function()
