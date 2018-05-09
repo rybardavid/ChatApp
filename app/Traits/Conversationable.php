@@ -22,7 +22,12 @@ trait Conversationable
 
     public function getConversations()
     {
-        $friendships = friendship::where('requester', $this->id)->orWhere('user_requested', $this->id)->get();
+        $myID = $this->id;
+        $friendships = friendship::where('status', 1)
+                                 ->where(function($query) use($myID) {
+                                           $query->where('requester', $myID)
+                                                 ->orWhere('user_requested', $myID);
+                                        })->get();
 
         foreach ($friendships as $friendship)
         {
@@ -46,7 +51,7 @@ trait Conversationable
         }
 
 
-        return $conversations;
+        return (isset($conversations)) ? $conversations : Response::json('No one like you.',204);;
     }
 
 

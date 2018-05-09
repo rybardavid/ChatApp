@@ -2,7 +2,7 @@
   <div class="card">
       <a href="" v-on:click.prevent='openConversation()'>
         <div class="name">
-            <p>{{this.user.name}}</p>
+            <p>{{this.user.userName}}</p>
         </div>
       </a>
 
@@ -42,10 +42,10 @@ export default {
     {
         axios.post(this.$path +'/removefriend',
           {
-            id: this.user.id
+            id: this.user.userID
           })
           .then(response => {
-             if(response.status == 200){               
+             if(response.status == 200){
                 this.$emit('removeFriendEvent', this.index);
              }
           });

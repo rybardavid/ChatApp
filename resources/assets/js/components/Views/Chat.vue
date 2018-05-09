@@ -15,10 +15,6 @@
 
   <div class="chat_content">
     <div class="chat_flex_side scrollbar">
-        <!--for debuging dummy data in local
-        <div  v-for="n in 15">
-          <friend-card :userProp="friendTest"> </friend-card>
-        </div>-->
 
         <div class="data_status" v-if="typeof(this.friends) == 'string'">
             <p>
@@ -74,26 +70,12 @@
 export default {
   data(){
     return{
-      //Dummy data for testing
-      friendTest:{
-        name: "Frank Cordova",
-        mail: "cordovafrank@mail.com",
-        age: 42,
-        id: 0,
-      },
-      requestTest:{
-        name: "John Evans",
-        mail: "evansjohn@mail.com",
-        age: 32,
-        id: 5,
-      },
-      //Dummy data for testing
-
       requests:{},
       friends:{},
       conversation:{
         name: "",
-        id: 0
+        userID: 0,
+        id: 0,
       },
     }
   },
@@ -112,23 +94,24 @@ export default {
     },
     removeReq: function(index)
     {
-      if(typeof(this.friends) == 'string')
+      /*if(typeof(this.friends) == 'string')
       {
         this.friends = {};
       }
 
       let newContact = this.requests[index].requester;
       let test = Object.getOwnPropertyNames(this.friends);
-      this.friends[test.length] = newContact;
+      this.friends[test.length] = newContact;*/
 
 
       delete this.requests[index];
-      this.$forceUpdate();
+      //this.$forceUpdate();
+      this.getFriends();
       this.initConversation();
     },
     getFriends: function()
     {
-      axios.get(this.$path + '/getfriends')
+      axios.get(this.$path + '/getconversations')
           .then(response => {
             if(response.status == 200){
                this.friends = response.data;
@@ -141,7 +124,7 @@ export default {
     },
     removeFriend: function(index)
     {
-      delete this.friends[index];
+      this.friends.splice(index,1);
       if(this.$objIsEmpty(this.friends)){
         this.friends = 'We can help you with finding new';
       }
@@ -160,13 +143,16 @@ export default {
         else
         {
           let firstIndex = Object.keys(this.friends);
-          this.conversation.name = this.friends[firstIndex[0]].name;
+          this.conversation.name = this.friends[firstIndex[0]].conversationName;
+          this.conversation.id = this.friends[firstIndex[0]].conversationID;
         }
     },
     openConversation: function(index)
     {
         let user = this.friends[index];
-        this.conversation.name = user.name;
+        this.conversation.name = user.conversationName;
+        this.conversation.id = user.conversationID;
+        this.conversation.userID = user.userID;
     },
     sendMessage: function()
     {
@@ -188,6 +174,11 @@ export default {
       this.getRequests();
       this.getFriends();
   },
+  beforeUpdate () {
+    /*console.log('type: ' +  typeof(this.friends));
+    console.log(JSON.stringify(this.friends));*/
+    console.log(this.conversation);
+  }
 
 }
 </script>

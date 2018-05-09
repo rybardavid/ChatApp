@@ -39471,33 +39471,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      //Dummy data for testing
-      friendTest: {
-        name: "Frank Cordova",
-        mail: "cordovafrank@mail.com",
-        age: 42,
-        id: 0
-      },
-      requestTest: {
-        name: "John Evans",
-        mail: "evansjohn@mail.com",
-        age: 32,
-        id: 5
-      },
-      //Dummy data for testing
-
       requests: {},
       friends: {},
       conversation: {
         name: "",
+        userID: 0,
         id: 0
       }
     };
@@ -39516,22 +39498,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     removeReq: function removeReq(index) {
-      if (typeof this.friends == 'string') {
+      /*if(typeof(this.friends) == 'string')
+      {
         this.friends = {};
       }
-
-      var newContact = this.requests[index].requester;
-      var test = Object.getOwnPropertyNames(this.friends);
-      this.friends[test.length] = newContact;
+        let newContact = this.requests[index].requester;
+      let test = Object.getOwnPropertyNames(this.friends);
+      this.friends[test.length] = newContact;*/
 
       delete this.requests[index];
-      this.$forceUpdate();
+      //this.$forceUpdate();
+      this.getFriends();
       this.initConversation();
     },
     getFriends: function getFriends() {
       var _this2 = this;
 
-      axios.get(this.$path + '/getfriends').then(function (response) {
+      axios.get(this.$path + '/getconversations').then(function (response) {
         if (response.status == 200) {
           _this2.friends = response.data;
         } else if (response.status == 204) {
@@ -39541,7 +39524,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     removeFriend: function removeFriend(index) {
-      delete this.friends[index];
+      this.friends.splice(index, 1);
       if (this.$objIsEmpty(this.friends)) {
         this.friends = 'We can help you with finding new';
       }
@@ -39555,14 +39538,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.conversation.name = "Chat";
       } else {
         var firstIndex = Object.keys(this.friends);
-        this.conversation.name = this.friends[firstIndex[0]].name;
+        this.conversation.name = this.friends[firstIndex[0]].conversationName;
+        this.conversation.id = this.friends[firstIndex[0]].conversationID;
       }
     },
     openConversation: function openConversation(index) {
       var user = this.friends[index];
-      this.conversation.name = user.name;
+      this.conversation.name = user.conversationName;
+      this.conversation.id = user.conversationID;
+      this.conversation.userID = user.userID;
     }
-  }, "sendMessage", function sendMessage() {
+  }, 'sendMessage', function sendMessage() {
     var _this3 = this;
 
     axios.post(this.$path + '/sendmessage', {
@@ -39576,6 +39562,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   created: function created() {
     this.getRequests();
     this.getFriends();
+  },
+  beforeUpdate: function beforeUpdate() {
+    /*console.log('type: ' +  typeof(this.friends));
+    console.log(JSON.stringify(this.friends));*/
+    console.log(this.conversation);
   }
 });
 
@@ -51711,7 +51702,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       axios.post(this.$path + '/removefriend', {
-        id: this.user.id
+        id: this.user.userID
       }).then(function (response) {
         if (response.status == 200) {
           _this.$emit('removeFriendEvent', _this.index);
@@ -51751,7 +51742,7 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "name" }, [
-          _c("p", [_vm._v(_vm._s(this.user.name))])
+          _c("p", [_vm._v(_vm._s(this.user.userName))])
         ])
       ]
     ),
