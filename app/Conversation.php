@@ -10,4 +10,5 @@ class Conversation extends Model
     {
        return $this->belongsToMany('App\User', 'user_conversation')->withTimestamps();
     }
+    
 }

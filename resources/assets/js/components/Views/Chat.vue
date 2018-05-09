@@ -97,7 +97,7 @@ export default {
       },
     }
   },
-  methods:{  
+  methods:{
     getRequests: function()
     {
         axios.get(this.$path + '/getrequests')
@@ -121,8 +121,10 @@ export default {
       let test = Object.getOwnPropertyNames(this.friends);
       this.friends[test.length] = newContact;
 
+
       delete this.requests[index];
       this.$forceUpdate();
+      this.initConversation();
     },
     getFriends: function()
     {
@@ -157,13 +159,28 @@ export default {
         }
         else
         {
-          this.conversation.name = this.friends[0].name;
+          let firstIndex = Object.keys(this.friends);
+          this.conversation.name = this.friends[firstIndex[0]].name;
         }
     },
     openConversation: function(index)
     {
-        let user = this.friends[index];
+        let user = this.friends[index];      
         this.conversation.name = user.name;
+    },
+    sendMessage: function()
+    {
+        axios.post(this.$path + '/sendmessage',
+        {
+            conversationId:this.user.id
+        })
+        .then(response => {
+            if(response.status == 200)
+            {
+              this.$emit('removeReqEvent', this.index);
+            }
+
+        });
     }
 
   },

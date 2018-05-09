@@ -15,9 +15,8 @@ class CreateReugularConversationsTable extends Migration
     {
         Schema::create('reugular_conversations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('friendship_id')->references('id')
-                                            ->on('friendships')
-                                            ->onDelete('cascade');
+            $table->integer('friendship_id')->unsigned();
+            $table->foreign('friendship_id')->references('id')->on('friendships')->onDelete('cascade');
             $table->string('name')->nullable($value = true);
             $table->timestamps();
         });

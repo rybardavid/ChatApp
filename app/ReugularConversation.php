@@ -10,4 +10,10 @@ class ReugularConversation extends Model
     {
         return $this->belongsTo('App\friendship');
     }
+
+    public function Messages()
+    {
+        return $this->hasMany('App\Messsage');
+    }
+
 }

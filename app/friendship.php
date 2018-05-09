@@ -19,4 +19,5 @@ class friendship extends Model
     {
         return $this->hasOne('App\ReugularConversation');
     }
+
 }

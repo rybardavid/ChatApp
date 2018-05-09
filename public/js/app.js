@@ -39399,6 +39399,8 @@ exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: -webk
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -39499,7 +39501,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
 
-  methods: {
+  methods: _defineProperty({
     getRequests: function getRequests() {
       var _this = this;
 
@@ -39522,6 +39524,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       delete this.requests[index];
       this.$forceUpdate();
+      this.initConversation();
     },
     getFriends: function getFriends() {
       var _this2 = this;
@@ -39549,15 +39552,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (typeof this.friends == 'string') {
         this.conversation.name = "Chat";
       } else {
-        this.conversation.name = this.friends[0].name;
+        var firstIndex = Object.keys(this.friends);
+        this.conversation.name = this.friends[firstIndex[0]].name;
       }
     },
     openConversation: function openConversation(index) {
       var user = this.friends[index];
       this.conversation.name = user.name;
     }
+  }, "sendMessage", function sendMessage() {
+    var _this3 = this;
 
-  },
+    axios.post(this.$path + '/sendmessage', {
+      conversationId: this.user.id
+    }).then(function (response) {
+      if (response.status == 200) {
+        _this3.$emit('removeReqEvent', _this3.index);
+      }
+    });
+  }),
   created: function created() {
     this.getRequests();
     this.getFriends();

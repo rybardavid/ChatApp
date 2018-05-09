@@ -35,4 +35,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Conversation', 'user_conversation')->withTimestamps();
     }
+
+    public function Friendships()
+    {
+        return $this->hasMany('App\friendship');
+    }
+
+    public function Messages()
+    {
+        return $this->hasMany('App\Messsage');
+    }
 }
