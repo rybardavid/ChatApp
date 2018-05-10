@@ -24,9 +24,12 @@ window.Vue.use(VueRouter);
 
 Vue.component('app', require('./App.vue'));
 Vue.component('navbar', require('./components/Basics/NavBar.vue'));
-Vue.component('friend-card', require('./components/ChatComponents/FriendCard.vue'));
 Vue.component('account-card', require('./components/PeopleComponents/Account.vue'));
+Vue.component('friend-card', require('./components/ChatComponents/FriendCard.vue'));
+Vue.component('message-card', require('./components/ChatComponents/MessageCard.vue'));
 Vue.component('request-card', require('./components/ChatComponents/RequestCard.vue'));
+
+
 
 
 

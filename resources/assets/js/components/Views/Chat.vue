@@ -35,7 +35,13 @@
     </div>
 
     <div class="chat_flex_mid conversation_wrapper">
-        <div class="messages"></div>
+        <div class="messages">
+            <div  v-for="(message, index) in messages" :key="index">              
+              <message-card :messageProp="message.msg"
+                            :myMsgProp="message.myMsg">
+                            </message-card>
+            </div>
+        </div>
 
         <form class="input_msg" v-on:submit.prevent='sendMessage()'>
 
@@ -78,7 +84,40 @@ export default {
         id: 0,
       },
       inputText: "",
-      messages:[],
+      messages:{
+        0:{
+          msg:"lbla bla bla motherfucker! you undestand ? ",
+          myMsg: false
+        },
+        1:{
+          msg:"fhndusfgfsdjdnsjf  you know what ia mean :D  ",
+          myMsg: true
+        },
+        2:{
+          msg:"another message oooh jeeeez, plesae can we go home rick ? ia don like this chat ",
+          myMsg: true
+        },
+        3:{
+          msg:"shut your mouth morty! you are dump and anoying like your father, i have better stuff to do then go home",
+          myMsg: false
+        },
+        4:{
+          msg:"lbla bla bla motherfucker! you undestand ? ",
+          myMsg: false
+        },
+        5:{
+          msg:"fhndusfgfsdjdnsjf  you know what ia mean :D  ",
+          myMsg: true
+        },
+        6:{
+          msg:"another message oooh jeeeez, plesae can we go home rick ? ia don like this chat ",
+          myMsg: true
+        },
+        7:{
+          msg:"shut your mouth morty! you are dump and anoying like your father, i have better stuff to do then go home",
+          myMsg: false
+        },
+      },
     }
   },
   methods:{
@@ -179,7 +218,7 @@ export default {
     },
     getMesages(chatID)
     {
-      
+
     }
 
   },

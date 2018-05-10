@@ -80,6 +80,8 @@
 
 .messages{
   flex: 10 10 0;
+  overflow-y: scroll;
+  transform: rotate(-180deg);
 }
 
 .input_msg{

@@ -16916,7 +16916,7 @@ if (inBrowser && window.Vue) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(16);
-module.exports = __webpack_require__(97);
+module.exports = __webpack_require__(103);
 
 
 /***/ }),
@@ -16952,9 +16952,10 @@ window.Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 Vue.component('app', __webpack_require__(67));
 Vue.component('navbar', __webpack_require__(73));
-Vue.component('friend-card', __webpack_require__(79));
-Vue.component('account-card', __webpack_require__(85));
-Vue.component('request-card', __webpack_require__(91));
+Vue.component('account-card', __webpack_require__(79));
+Vue.component('friend-card', __webpack_require__(85));
+Vue.component('message-card', __webpack_require__(91));
+Vue.component('request-card', __webpack_require__(97));
 
 var app = new Vue({
   el: '#app',
@@ -39390,7 +39391,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: column;\r\n}\r\n\r\n.chat_header{\r\n  -webkit-box-flex: 1 1 0;\r\n  -webkit-flex: 1 1 0;\r\n  flex: 1 1 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-direction: row;\r\n  background-color: #e6e6e6;\r\n}\r\n\r\n.chat_flex_side{\r\n  -webkit-box-flex: 1 1 0;\r\n  -webkit-flex: 1 1 0;\r\n  flex: 1 1 0;\r\n}\r\n\r\n.chat_flex_mid{\r\n  -webkit-box-flex: 2.3 2.3 0;\r\n  -webkit-flex: 2.3 2.3 0;\r\n  flex: 2.3 2.3 0;\r\n}\r\n\r\n.chat_header > div{\r\n  height: 100%;\r\n  display:table;\r\n  color: #868686;\r\n  text-align: center;\r\n  border-right: 1px solid grey;\r\n}\r\n.chat_header > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.chat_header > div p{\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n  margin: 0;\r\n}\r\n\r\n.chat_content{\r\n  flex: 15 15 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-direction: row;\r\n  background-color: #ccc;\r\n}\r\n\r\n.chat_content > div{\r\n  border-right: 1px solid grey;\r\n}\r\n\r\n.chat_content > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.scrollbar{\r\n  overflow-y: scroll;\r\n}\r\n\r\n.conversation_wrapper{\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: column;\r\n}\r\n\r\n.messages{\r\n  flex: 10 10 0;\r\n}\r\n\r\n.input_msg{\r\n  flex: 0.8 0.8 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: row;\r\n}\r\n\r\n.input_area{\r\n  flex: 10 10 0;\r\n}\r\n\r\n.send_BTN{\r\n  flex: 2 2 0;\r\n  background-color: #13C478;\r\n  color: white;\r\n  font-family: sans-serif;\r\n  text-transform: uppercase;\r\n  border:0 none;\r\n  cursor:pointer;\r\n}\r\n\r\n.send_BTN:hover{\r\n  background-color: #14CC7C;\r\n}\r\n\r\n.data_status{\r\n  color: #868686;\r\n  text-align: center;\r\n}\r\n\r\n.link_firends{\r\n  color: #666666;\r\n}\r\n", ""]);
+exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: column;\r\n}\r\n\r\n.chat_header{\r\n  -webkit-box-flex: 1 1 0;\r\n  -webkit-flex: 1 1 0;\r\n  flex: 1 1 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-direction: row;\r\n  background-color: #e6e6e6;\r\n}\r\n\r\n.chat_flex_side{\r\n  -webkit-box-flex: 1 1 0;\r\n  -webkit-flex: 1 1 0;\r\n  flex: 1 1 0;\r\n}\r\n\r\n.chat_flex_mid{\r\n  -webkit-box-flex: 2.3 2.3 0;\r\n  -webkit-flex: 2.3 2.3 0;\r\n  flex: 2.3 2.3 0;\r\n}\r\n\r\n.chat_header > div{\r\n  height: 100%;\r\n  display:table;\r\n  color: #868686;\r\n  text-align: center;\r\n  border-right: 1px solid grey;\r\n}\r\n.chat_header > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.chat_header > div p{\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n  margin: 0;\r\n}\r\n\r\n.chat_content{\r\n  flex: 15 15 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-direction: row;\r\n  background-color: #ccc;\r\n}\r\n\r\n.chat_content > div{\r\n  border-right: 1px solid grey;\r\n}\r\n\r\n.chat_content > div:last-child{\r\n  border-right: none;\r\n}\r\n\r\n.scrollbar{\r\n  overflow-y: scroll;\r\n}\r\n\r\n.conversation_wrapper{\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: column;\r\n}\r\n\r\n.messages{\r\n  flex: 10 10 0;\r\n  overflow-y: scroll;\r\n  transform: rotate(-180deg);\r\n}\r\n\r\n.input_msg{\r\n  flex: 0.8 0.8 0;\r\n  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */\r\n  display: -ms-flexbox;  /* TWEENER - IE 10 */\r\n  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */\r\n  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */\r\n  flex-flow: row;\r\n}\r\n\r\n.input_area{\r\n  flex: 10 10 0;\r\n}\r\n\r\n.send_BTN{\r\n  flex: 2 2 0;\r\n  background-color: #13C478;\r\n  color: white;\r\n  font-family: sans-serif;\r\n  text-transform: uppercase;\r\n  border:0 none;\r\n  cursor:pointer;\r\n}\r\n\r\n.send_BTN:hover{\r\n  background-color: #14CC7C;\r\n}\r\n\r\n.data_status{\r\n  color: #868686;\r\n  text-align: center;\r\n}\r\n\r\n.link_firends{\r\n  color: #666666;\r\n}\r\n", ""]);
 
 // exports
 
@@ -39401,6 +39402,12 @@ exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: -webk
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39481,7 +39488,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         id: 0
       },
       inputText: "",
-      messages: []
+      messages: {
+        0: {
+          msg: "lbla bla bla motherfucker! you undestand ? ",
+          myMsg: false
+        },
+        1: {
+          msg: "fhndusfgfsdjdnsjf  you know what ia mean :D  ",
+          myMsg: true
+        },
+        2: {
+          msg: "another message oooh jeeeez, plesae can we go home rick ? ia don like this chat ",
+          myMsg: true
+        },
+        3: {
+          msg: "shut your mouth morty! you are dump and anoying like your father, i have better stuff to do then go home",
+          myMsg: false
+        },
+        4: {
+          msg: "lbla bla bla motherfucker! you undestand ? ",
+          myMsg: false
+        },
+        5: {
+          msg: "fhndusfgfsdjdnsjf  you know what ia mean :D  ",
+          myMsg: true
+        },
+        6: {
+          msg: "another message oooh jeeeez, plesae can we go home rick ? ia don like this chat ",
+          myMsg: true
+        },
+        7: {
+          msg: "shut your mouth morty! you are dump and anoying like your father, i have better stuff to do then go home",
+          myMsg: false
+        }
+      }
     };
   },
 
@@ -39639,7 +39679,22 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "chat_flex_mid conversation_wrapper" }, [
-        _c("div", { staticClass: "messages" }),
+        _c(
+          "div",
+          { staticClass: "messages" },
+          _vm._l(_vm.messages, function(message, index) {
+            return _c(
+              "div",
+              { key: index },
+              [
+                _c("message-card", {
+                  attrs: { messageProp: message.msg, myMsgProp: message.myMsg }
+                })
+              ],
+              1
+            )
+          })
+        ),
         _vm._v(" "),
         _c(
           "form",
@@ -51589,6 +51644,209 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\PeopleComponents\\Account.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-791654a6", Component.options)
+  } else {
+    hotAPI.reload("data-v-791654a6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(81);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("18ea1644", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-791654a6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Account.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-791654a6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Account.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+exports.i(__webpack_require__(82), "");
+
+// module
+exports.push([module.i, "\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".account_card{\r\n  margin: 2%;\r\n  height: 120Px;\r\n  width: 180px;\r\n  float: left;\r\n  border-radius: 4px;\r\n  display: flex;\r\n  flex-flow: column;\r\n}\r\n\r\n.top_card{\r\n  flex: 6 6 0;\r\n  background-color: #b4b4b4;\r\n  border-top: 1px solid #686868;\r\n  border-left: 1px solid #686868;\r\n  border-right: 1px solid #686868;\r\n  border-radius: 4px 4px 0px 0px;\r\n}\r\n\r\n.top_card p{\r\n  color: white;\r\n  text-align: center;\r\n}\r\n\r\n.top_card p small{\r\n  display: inline-block;\r\n}\r\n\r\n.bottom_card:hover{\r\n  background-color: #7b7b7b;\r\n}\r\n\r\n.bottom_card{\r\n  flex: 3 3 0;\r\n  background-color: #686868;\r\n  border-radius: 0px 0px 4px 4px;\r\n}\r\n\r\n.bottom_card a{\r\n  text-decoration: none;\r\n  color: white;\r\n  text-align: center;\r\n  display:block;\r\n  height: 100%;\r\n  width: 100%;\r\n  display: table;\r\n}\r\n\r\n.bottom_card a p{\r\n  margin: 0;\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n}\r\n.requestBTN{\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['userProp', 'indexProp'],
+  data: function data() {
+    return {
+      user: this.userProp,
+      index: this.indexProp
+    };
+  },
+
+  methods: {
+    sendFriendRequest: function sendFriendRequest() {
+      var _this = this;
+
+      axios.post(this.$path + '/sendrequest', {
+        id: this.user.id
+      }).then(function (response) {
+        if (response.status == 200) {
+          _this.$emit('requestSent', _this.index);
+        }
+      });
+    }
+  }
+
+});
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "account_card" }, [
+    _c("div", { staticClass: "top_card" }, [
+      _c("p", [
+        _vm._v(_vm._s(this.user.name) + "\n          "),
+        _c("br"),
+        _vm._v(" "),
+        _c("small", [_vm._v(_vm._s(this.user.email))])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "bottom_card" }, [
+      _c("div", { staticClass: "requestBTN" }, [
+        _c(
+          "a",
+          {
+            attrs: { href: "#" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.sendFriendRequest()
+              }
+            }
+          },
+          [_c("p", [_vm._v("Send friend request")])]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-791654a6", module.exports)
+  }
+}
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(86)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(89)
+/* template */
+var __vue_template__ = __webpack_require__(90)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
 var __vue_scopeId__ = "data-v-246c34d6"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
@@ -51622,13 +51880,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 80 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(81);
+var content = __webpack_require__(87);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -51648,12 +51906,12 @@ if(false) {
 }
 
 /***/ }),
-/* 81 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
 // imports
-exports.i(__webpack_require__(82), "");
+exports.i(__webpack_require__(88), "");
 
 // module
 exports.push([module.i, "\n", ""]);
@@ -51662,7 +51920,7 @@ exports.push([module.i, "\n", ""]);
 
 
 /***/ }),
-/* 82 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -51676,7 +51934,7 @@ exports.push([module.i, ".card{\r\n  margin: none;\r\n  margin: 4%;\r\n  display
 
 
 /***/ }),
-/* 83 */
+/* 89 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51742,7 +52000,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 84 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51812,19 +52070,19 @@ if (false) {
 }
 
 /***/ }),
-/* 85 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(86)
+  __webpack_require__(92)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(89)
+var __vue_script__ = __webpack_require__(95)
 /* template */
-var __vue_template__ = __webpack_require__(90)
+var __vue_template__ = __webpack_require__(96)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -51841,7 +52099,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\PeopleComponents\\Account.vue"
+Component.options.__file = "resources\\assets\\js\\components\\ChatComponents\\MessageCard.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -51850,9 +52108,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-791654a6", Component.options)
+    hotAPI.createRecord("data-v-232cad00", Component.options)
   } else {
-    hotAPI.reload("data-v-791654a6", Component.options)
+    hotAPI.reload("data-v-232cad00", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -51863,23 +52121,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 86 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(87);
+var content = __webpack_require__(93);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("18ea1644", content, false, {});
+var update = __webpack_require__(2)("94964916", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-791654a6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Account.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-791654a6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Account.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-232cad00\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MessageCard.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-232cad00\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MessageCard.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -51889,12 +52147,12 @@ if(false) {
 }
 
 /***/ }),
-/* 87 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
 // imports
-exports.i(__webpack_require__(88), "");
+exports.i(__webpack_require__(94), "");
 
 // module
 exports.push([module.i, "\n", ""]);
@@ -51903,7 +52161,7 @@ exports.push([module.i, "\n", ""]);
 
 
 /***/ }),
-/* 88 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -51911,13 +52169,13 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, ".account_card{\r\n  margin: 2%;\r\n  height: 120Px;\r\n  width: 180px;\r\n  float: left;\r\n  border-radius: 4px;\r\n  display: flex;\r\n  flex-flow: column;\r\n}\r\n\r\n.top_card{\r\n  flex: 6 6 0;\r\n  background-color: #b4b4b4;\r\n  border-top: 1px solid #686868;\r\n  border-left: 1px solid #686868;\r\n  border-right: 1px solid #686868;\r\n  border-radius: 4px 4px 0px 0px;\r\n}\r\n\r\n.top_card p{\r\n  color: white;\r\n  text-align: center;\r\n}\r\n\r\n.top_card p small{\r\n  display: inline-block;\r\n}\r\n\r\n.bottom_card:hover{\r\n  background-color: #7b7b7b;\r\n}\r\n\r\n.bottom_card{\r\n  flex: 3 3 0;\r\n  background-color: #686868;\r\n  border-radius: 0px 0px 4px 4px;\r\n}\r\n\r\n.bottom_card a{\r\n  text-decoration: none;\r\n  color: white;\r\n  text-align: center;\r\n  display:block;\r\n  height: 100%;\r\n  width: 100%;\r\n  display: table;\r\n}\r\n\r\n.bottom_card a p{\r\n  margin: 0;\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n}\r\n.requestBTN{\r\n  height: 100%;\r\n  width: 100%;\r\n}\r\n", ""]);
+exports.push([module.i, ".card_wrapper{\r\n  transform: rotate(180deg);\r\n  display: flex;\r\n  flex-flow: row;\r\n}\r\n\r\n.space{\r\n  flex: 2 2 0;\r\n}\r\n\r\n.send{\r\n  /*float:right;*/\r\n  background-color: #13C478;\r\n}\r\n\r\n.received{\r\n  /*float:left;*/\r\n  background-color: grey;\r\n}\r\n\r\n.message{\r\n  flex: 7 7 0;\r\n  color: white;\r\n  padding: 2px;\r\n  text-align: left;\r\n  margin: 8px;\r\n  border-radius: 4px;\r\n}\r\n.message p{\r\n  padding: 6px;\r\n  margin: 2px;\r\n}\r\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 89 */
+/* 95 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51936,72 +52194,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['userProp', 'indexProp'],
   data: function data() {
     return {
-      user: this.userProp,
-      index: this.indexProp
+      messageTex: "",
+      myMsg: true
     };
   },
 
-  methods: {
-    sendFriendRequest: function sendFriendRequest() {
-      var _this = this;
-
-      axios.post(this.$path + '/sendrequest', {
-        id: this.user.id
-      }).then(function (response) {
-        if (response.status == 200) {
-          _this.$emit('requestSent', _this.index);
-        }
-      });
-    }
+  props: ['messageProp', 'myMsgProp'],
+  created: function created() {
+    this.messageTex = this.messageProp;
+    this.myMsg = this.myMsgProp;
   }
-
 });
 
 /***/ }),
-/* 90 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "account_card" }, [
-    _c("div", { staticClass: "top_card" }, [
-      _c("p", [
-        _vm._v(_vm._s(this.user.name) + "\n          "),
-        _c("br"),
-        _vm._v(" "),
-        _c("small", [_vm._v(_vm._s(this.user.email))])
-      ])
-    ]),
+  return _c("div", { staticClass: "card_wrapper" }, [
+    _c("div", { class: { space: this.myMsg == true } }),
     _vm._v(" "),
-    _c("div", { staticClass: "bottom_card" }, [
-      _c("div", { staticClass: "requestBTN" }, [
-        _c(
-          "a",
-          {
-            attrs: { href: "#" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.sendFriendRequest()
-              }
-            }
-          },
-          [_c("p", [_vm._v("Send friend request")])]
-        )
-      ])
-    ])
+    _c(
+      "div",
+      {
+        staticClass: "message ",
+        class: {
+          send: this.myMsg == true,
+          received: this.myMsg == false
+        }
+      },
+      [_c("p", [_vm._v(_vm._s(this.messageTex))])]
+    ),
+    _vm._v(" "),
+    _c("div", { class: { space: this.myMsg == false } })
   ])
 }
 var staticRenderFns = []
@@ -52010,24 +52242,24 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-791654a6", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-232cad00", module.exports)
   }
 }
 
 /***/ }),
-/* 91 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(92)
+  __webpack_require__(98)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(95)
+var __vue_script__ = __webpack_require__(101)
 /* template */
-var __vue_template__ = __webpack_require__(96)
+var __vue_template__ = __webpack_require__(102)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52066,13 +52298,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 92 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(93);
+var content = __webpack_require__(99);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -52092,12 +52324,12 @@ if(false) {
 }
 
 /***/ }),
-/* 93 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
 // imports
-exports.i(__webpack_require__(94), "");
+exports.i(__webpack_require__(100), "");
 
 // module
 exports.push([module.i, "\n", ""]);
@@ -52106,7 +52338,7 @@ exports.push([module.i, "\n", ""]);
 
 
 /***/ }),
-/* 94 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
@@ -52120,7 +52352,7 @@ exports.push([module.i, ".card{\r\n  margin: none;\r\n  margin: 4%;\r\n  display
 
 
 /***/ }),
-/* 95 */
+/* 101 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52171,7 +52403,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 96 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -52214,7 +52446,7 @@ if (false) {
 }
 
 /***/ }),
-/* 97 */
+/* 103 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
