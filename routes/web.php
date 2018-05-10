@@ -23,8 +23,11 @@ Route::post('/sendrequest', 'UserController@sendRequest');
 Route::post('/removefriend', 'UserController@removeFriend');
 Route::post('/acceptrequest', 'UserController@acceptRequest');
 
+
+Route::post('/sendmessage', 'CommunicationConroller@sendMessage');
+
 Route::get('/getconversations', 'CommunicationConroller@getConversations');
-Route::get('/sendmessage', 'CommunicationConroller@testMsg');
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

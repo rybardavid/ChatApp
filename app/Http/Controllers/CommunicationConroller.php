@@ -81,4 +81,9 @@ class CommunicationConroller extends Controller
     {
       return Auth::user()->getConversations();
     }
+
+    public function sendMessage(Request $request)
+    {
+      return Auth::user()->sendMessage($request);
+    }
 }

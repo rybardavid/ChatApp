@@ -39401,8 +39401,6 @@ exports.push([module.i, ".chat_wrappper{\r\n  flex: 15 15 0;\r\n  display: -webk
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -39481,11 +39479,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         name: "",
         userID: 0,
         id: 0
-      }
+      },
+      inputText: "",
+      messages: []
     };
   },
 
-  methods: _defineProperty({
+  methods: {
     getRequests: function getRequests() {
       var _this = this;
 
@@ -39530,9 +39530,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
       this.$forceUpdate();
     },
-    sendMessage: function sendMessage() {
-      console.log(this.requests);
-    },
     initConversation: function initConversation() {
       if (typeof this.friends == 'string') {
         this.conversation.name = "Chat";
@@ -39540,6 +39537,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var firstIndex = Object.keys(this.friends);
         this.conversation.name = this.friends[firstIndex[0]].conversationName;
         this.conversation.id = this.friends[firstIndex[0]].conversationID;
+        this.conversation.userID = this.friends[firstIndex[0]].userID;
       }
     },
     openConversation: function openConversation(index) {
@@ -39547,25 +39545,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.conversation.name = user.conversationName;
       this.conversation.id = user.conversationID;
       this.conversation.userID = user.userID;
+    },
+    sendMessage: function sendMessage() {
+      axios.post(this.$path + '/sendmessage', {
+        message: this.inputText,
+        convID: this.conversation.id,
+        friendUserID: 3 //this.conversation.userID,
+      }).then(function (response) {
+        if (response.status == 200) {
+          console.log('message was sent');
+        } else {
+          console.log('sending message faild');
+        }
+      });
+      this.inputText = '';
     }
-  }, 'sendMessage', function sendMessage() {
-    var _this3 = this;
 
-    axios.post(this.$path + '/sendmessage', {
-      conversationId: this.user.id
-    }).then(function (response) {
-      if (response.status == 200) {
-        _this3.$emit('removeReqEvent', _this3.index);
-      }
-    });
-  }),
+  },
   created: function created() {
     this.getRequests();
     this.getFriends();
   },
   beforeUpdate: function beforeUpdate() {
-    /*console.log('type: ' +  typeof(this.friends));
-    console.log(JSON.stringify(this.friends));*/
     console.log(this.conversation);
   }
 });
@@ -39650,8 +39651,25 @@ var render = function() {
           },
           [
             _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.inputText,
+                  expression: "inputText"
+                }
+              ],
               staticClass: "input_area",
-              attrs: { type: "text", placeholder: "Start typing..." }
+              attrs: { type: "text", placeholder: "Start typing..." },
+              domProps: { value: _vm.inputText },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.inputText = $event.target.value
+                }
+              }
             }),
             _vm._v(" "),
             _c("input", {

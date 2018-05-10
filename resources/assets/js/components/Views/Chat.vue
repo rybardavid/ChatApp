@@ -39,7 +39,7 @@
 
         <form class="input_msg" v-on:submit.prevent='sendMessage()'>
 
-            <input class="input_area" type="text" placeholder="Start typing...">
+            <input class="input_area" type="text" placeholder="Start typing..." v-model="inputText">
             <input class="send_BTN" type="submit" value="Send">
         </form>
 
@@ -77,6 +77,8 @@ export default {
         userID: 0,
         id: 0,
       },
+      inputText: "",
+      messages:[],
     }
   },
   methods:{
@@ -130,10 +132,6 @@ export default {
       }
       this.$forceUpdate();
     },
-    sendMessage: function()
-    {
-      console.log(this.requests);
-    },
     initConversation: function()
     {
         if(typeof(this.friends) == 'string')
@@ -145,6 +143,7 @@ export default {
           let firstIndex = Object.keys(this.friends);
           this.conversation.name = this.friends[firstIndex[0]].conversationName;
           this.conversation.id = this.friends[firstIndex[0]].conversationID;
+          this.conversation.userID =  this.friends[firstIndex[0]].userID;
         }
     },
     openConversation: function(index)
@@ -158,15 +157,21 @@ export default {
     {
         axios.post(this.$path + '/sendmessage',
         {
-            conversationId:this.user.id
+            message: this.inputText,
+            convID: this.conversation.id,
+            friendUserID: 3,//this.conversation.userID,
         })
         .then(response => {
             if(response.status == 200)
             {
-              this.$emit('removeReqEvent', this.index);
+              console.log('message was sent');
+            }
+            else {
+              console.log('sending message faild');
             }
 
         });
+        this.inputText = '';
     }
 
   },
@@ -175,8 +180,6 @@ export default {
       this.getFriends();
   },
   beforeUpdate () {
-    /*console.log('type: ' +  typeof(this.friends));
-    console.log(JSON.stringify(this.friends));*/
     console.log(this.conversation);
   }
 

@@ -54,49 +54,39 @@ trait Conversationable
         return (isset($conversations)) ? $conversations : Response::json('No one like you.',204);;
     }
 
-
-    /*public function SaveMessage($conversationId)
+    public function sendMessage($request)
     {
-        //$conversation = ReugularConversation::where('id', $conversationId)->first();
+       $friendID = $request['friendUserID'];
+       //return $friendID;
 
+       $verif = DB::table('friendships')->where(function ($query) use($friendID)
+                                         {
+                                           $query->where(function ($query) use($friendID)
+                                                   {
+                                                     $query->where('requester', $this->id)
+                                                           ->orWhere('user_requested', $friendID);
+                                                   })
+                                                   ->orWhere(function ($query) use($friendID)
+                                                   {
+                                                     $query->where('requester', $friendID)
+                                                           ->orWhere('user_requested',  $this->id);
+                                                   });
+                                         })
+                                         ->where('status',1)->get();
 
-    }
+        return json_encode($verif , JSON_FORCE_OBJECT);
 
-    public function testMsg()
-    {
-        $convId = 4;
-        $message = "fhdsuifndsnfj dfs ndsihfnusdinfi fhdsui";
-
-        $conv = ReugularConversation::where('id', $convId)->first();
-
-        if(isset($conv))
+        if(isset($verif))
         {
-           $status = $conv->Friendship()->pluck('status');
-           $status = (integer)$status[0];
-
-           if($status)
-           {
-              $message = new Messsage;
-              $message->user_id = Auth::id();
-              $message->conversation_id = $convId;
-              $message->body = "jkurvap ico";
-              $message->save();
-              return Response::json('message was sent',200);
-           }
-           else
-           {
-             return Response::json('Friendship doesnt exists.',202);
-           }
+          return 'friendship exists';
         }
         else
         {
-           return Response::json('Friendship doesnt exists.',202);
+          return 'friendship doesnt exists';
         }
 
-        $friendship = $conv->Friendship()->get();
-
-        return $friendship;
-    }*/
+       return $request;
+    }
 
 }
 
