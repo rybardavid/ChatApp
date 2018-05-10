@@ -155,23 +155,31 @@ export default {
     },
     sendMessage: function()
     {
-        axios.post(this.$path + '/sendmessage',
+        if(this.inputText != '')
         {
-            message: this.inputText,
-            convID: this.conversation.id,
-            friendUserID: this.conversation.userID,
-        })
-        .then(response => {
-            if(response.status == 200)
-            {
-              console.log('message was sent');
-            }
-            else {
-              console.log('sending message faild');
-            }
+          axios.post(this.$path + '/sendmessage',
+          {
+              message: this.inputText,
+              convID: this.conversation.id,
+              friendUserID: this.conversation.userID,
+          })
+          .then(response => {
+              if(response.status == 200)
+              {
+                console.log('message was sent');
+              }
+              else {
+                console.log('sending message faild');
+              }
 
-        });
+          });
+        }
+
         this.inputText = '';
+    },
+    getMesages(chatID)
+    {
+      
     }
 
   },

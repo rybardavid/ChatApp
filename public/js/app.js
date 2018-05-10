@@ -39547,20 +39547,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.conversation.userID = user.userID;
     },
     sendMessage: function sendMessage() {
-      axios.post(this.$path + '/sendmessage', {
-        message: this.inputText,
-        convID: this.conversation.id,
-        friendUserID: this.conversation.userID
-      }).then(function (response) {
-        if (response.status == 200) {
-          console.log('message was sent');
-        } else {
-          console.log('sending message faild');
-        }
-      });
-      this.inputText = '';
-    }
+      if (this.inputText != '') {
+        axios.post(this.$path + '/sendmessage', {
+          message: this.inputText,
+          convID: this.conversation.id,
+          friendUserID: this.conversation.userID
+        }).then(function (response) {
+          if (response.status == 200) {
+            console.log('message was sent');
+          } else {
+            console.log('sending message faild');
+          }
+        });
+      }
 
+      this.inputText = '';
+    },
+    getMesages: function getMesages(chatID) {}
   },
   created: function created() {
     this.getRequests();

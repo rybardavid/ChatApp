@@ -2,7 +2,6 @@
 namespace App\Traits;
 
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\DB;
 
 use App\ReugularConversation;
 use App\friendship;
@@ -57,27 +56,31 @@ trait Conversationable
     public function sendMessage($request)
     {
        $friendID = $request['friendUserID'];
-       //return $friendID;
-
-       $verif = DB::table('friendships')->where(function ($query) use($friendID)
-                                         {
-                                           $query->where(function ($query) use($friendID)
-                                                   {
-                                                     $query->where('requester', $this->id)
-                                                           ->Where('user_requested', $friendID);
-                                                   })
-                                                   ->orWhere(function ($query) use($friendID)
-                                                   {
-                                                     $query->where('requester', $friendID)
-                                                           ->Where('user_requested',  $this->id);
-                                                   });
-                                         })
-                                         ->where('status',1)->get();
-
-        return json_encode($verif , JSON_FORCE_OBJECT);
+       $message =  $request['message'];
+       $convID = $request['convID'];
+       
+       $verif = friendship::where(function ($query) use($friendID)
+                           {
+                             $query->where(function ($query) use($friendID)
+                                     {
+                                       $query->where('requester', $this->id)
+                                             ->Where('user_requested', $friendID);
+                                     })
+                                     ->orWhere(function ($query) use($friendID)
+                                     {
+                                       $query->where('requester', $friendID)
+                                             ->Where('user_requested',  $this->id);
+                                     });
+                           })
+                           ->where('status',1)->get();
 
         if(isset($verif))
         {
+          $newMessage = new Messsage;
+          $newMessage->body = $message;
+          $newMessage->user_id = $this->id;
+          $newMessage->conversation_id = $convID;
+          $newMessage->save();
           return 'friendship exists';
         }
         else
