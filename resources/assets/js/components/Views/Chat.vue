@@ -159,7 +159,7 @@ export default {
         {
             message: this.inputText,
             convID: this.conversation.id,
-            friendUserID: 3,//this.conversation.userID,
+            friendUserID: this.conversation.userID,
         })
         .then(response => {
             if(response.status == 200)

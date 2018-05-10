@@ -64,12 +64,12 @@ trait Conversationable
                                            $query->where(function ($query) use($friendID)
                                                    {
                                                      $query->where('requester', $this->id)
-                                                           ->orWhere('user_requested', $friendID);
+                                                           ->Where('user_requested', $friendID);
                                                    })
                                                    ->orWhere(function ($query) use($friendID)
                                                    {
                                                      $query->where('requester', $friendID)
-                                                           ->orWhere('user_requested',  $this->id);
+                                                           ->Where('user_requested',  $this->id);
                                                    });
                                          })
                                          ->where('status',1)->get();

@@ -39550,7 +39550,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.post(this.$path + '/sendmessage', {
         message: this.inputText,
         convID: this.conversation.id,
-        friendUserID: 3 //this.conversation.userID,
+        friendUserID: this.conversation.userID
       }).then(function (response) {
         if (response.status == 200) {
           console.log('message was sent');
