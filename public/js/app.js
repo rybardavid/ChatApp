@@ -39522,7 +39522,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             myMsg: false
           },
         },*/
-      messages: {}
+      messages: []
     };
   },
 
@@ -39589,7 +39589,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.getMesages(user.conversationID);
     },
     sendMessage: function sendMessage() {
+
       if (this.inputText != '') {
+        var objMsg = {
+          message: this.inputText,
+          messageID: this.messages.length,
+          myMsg: true
+        };
+
+        this.messages.unshift(objMsg);
+        this.messages = this.messages;
+        this.$forceUpdate();
+
         axios.post(this.$path + '/sendmessage', {
           message: this.inputText,
           convID: this.conversation.id,
@@ -39606,11 +39617,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.inputText = '';
     },
     getMesages: function getMesages(chatID) {
+      var _this3 = this;
+
+      this.messages = {};
+
       axios.post(this.$path + '/getmesages', {
         chatID: chatID,
         pageID: 0
       }).then(function (response) {
-        console.log(response.data);
+
+        if (response.status == 200) {
+          _this3.messages = Object.values(response.data);
+        }
       });
     }
   },
@@ -39620,7 +39638,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     this.getMesages(this.conversation.id);
   },
   beforeUpdate: function beforeUpdate() {
-    console.log(this.conversation);
+    //console.log(this.messages);
   }
 });
 
@@ -39692,13 +39710,13 @@ var render = function() {
         _c(
           "div",
           { staticClass: "messages" },
-          _vm._l(_vm.messages, function(message, index) {
+          _vm._l(_vm.messages, function(msg, index) {
             return _c(
               "div",
-              { key: index },
+              { key: msg.messageID },
               [
                 _c("message-card", {
-                  attrs: { messageProp: message.msg, myMsgProp: message.myMsg }
+                  attrs: { messageProp: msg.message, myMsgProp: msg.myMsg }
                 })
               ],
               1

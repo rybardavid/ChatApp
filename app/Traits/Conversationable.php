@@ -93,10 +93,27 @@ trait Conversationable
 
     public function messagePaginate($conversationID,$perPages,$pageId)
     {
-      /*$conversationID =4;
-      $perPages = 8;
-      $pageId = 0;*/
-      return Messsage::LitPaginate($conversationID, $perPages, $pageId);
+      $msgResult = Messsage::LitPaginate($conversationID, $perPages, $pageId);
+      $messages = $msgResult['messages'];
+
+      foreach ($messages as $key => $message)
+      {
+        $myMessage = ($message->user_id == $this->id) ? true : false;
+        $result[] = array(
+                          'messageID' => $message->id,
+                          'message' => $message->body,
+                          'myMsg' => $myMessage
+                         );
+      }
+
+      if(isset($result))
+      {
+          return json_encode($result , JSON_FORCE_OBJECT);
+      }
+      else {
+          return Response::json('You dont have any message yet.',202);
+      }
+
     }
 }
 

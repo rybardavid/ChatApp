@@ -36,9 +36,9 @@
 
     <div class="chat_flex_mid conversation_wrapper">
         <div class="messages">
-            <div  v-for="(message, index) in messages" :key="index">
-              <message-card :messageProp="message.msg"
-                            :myMsgProp="message.myMsg">
+            <div  v-for="(msg, index) in messages" :key="msg.messageID">
+              <message-card :messageProp="msg.message"
+                            :myMsgProp="msg.myMsg">
                             </message-card>
             </div>
         </div>
@@ -118,7 +118,7 @@ export default {
           myMsg: false
         },
       },*/
-      messages:{},
+      messages:[],
     }
   },
   methods:{
@@ -196,8 +196,19 @@ export default {
     },
     sendMessage: function()
     {
+
         if(this.inputText != '')
         {
+          let objMsg =  {
+            message:this.inputText,
+            messageID: this.messages.length,
+            myMsg: true
+          };
+
+          this.messages.unshift(objMsg);
+          this.messages = this.messages;
+          this.$forceUpdate();
+
           axios.post(this.$path + '/sendmessage',
           {
               message: this.inputText,
@@ -218,19 +229,23 @@ export default {
 
         this.inputText = '';
     },
-    getMesages(chatID)
+    getMesages: function(chatID)
     {
+        this.messages = {};
+
         axios.post(this.$path + '/getmesages',
         {
             chatID: chatID,
             pageID: 0,
         })
         .then(response => {
-            console.log(response.data);
+
+            if(response.status == 200){
+               this.messages = Object.values(response.data);              
+            }
 
         });
-    }
-
+    },
   },
   created(){
       this.getRequests();
@@ -238,8 +253,8 @@ export default {
       this.getMesages(this.conversation.id);
   },
   beforeUpdate () {
-    console.log(this.conversation);
-  }
+    //console.log(this.messages);
+  },
 
 }
 </script>

@@ -44,6 +44,6 @@
                         'messages' => $messages,
                       );
 
-      return json_encode($reuslts , JSON_FORCE_OBJECT);
+      return $reuslts;
     }
   }
