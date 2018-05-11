@@ -28,6 +28,8 @@ Route::post('/sendmessage', 'CommunicationConroller@sendMessage');
 
 Route::get('/getconversations', 'CommunicationConroller@getConversations');
 
+Route::get('/paginatetest', 'CommunicationConroller@messagePaginate');
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

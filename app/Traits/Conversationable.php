@@ -58,7 +58,7 @@ trait Conversationable
        $friendID = $request['friendUserID'];
        $message =  $request['message'];
        $convID = $request['convID'];
-       
+
        $verif = friendship::where(function ($query) use($friendID)
                            {
                              $query->where(function ($query) use($friendID)
@@ -91,6 +91,11 @@ trait Conversationable
        return $request;
     }
 
+    public function messagePaginate()
+    {
+      $conversationID =4;
+      return Messsage::LitPaginate($conversationID);
+    }
 }
 
 ?>
