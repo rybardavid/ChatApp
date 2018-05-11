@@ -17,9 +17,9 @@ class Messsage extends Model
       return $this->belongsTo('App\ReugularConversation');
     }
 
-    public static function LitPaginate($conversationID)
+    public static function LitPaginate($conversationID, $perPages, $pageId)
     {
       $lit = new LittlePaginte('messsages');
-      return $lit->LitPaginate($conversationID);
+      return $lit->LitPaginate($conversationID, $perPages, $pageId);
     }
 }

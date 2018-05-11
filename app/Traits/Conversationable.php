@@ -94,7 +94,7 @@ trait Conversationable
     public function messagePaginate()
     {
       $conversationID =4;
-      return Messsage::LitPaginate($conversationID);
+      return Messsage::LitPaginate($conversationID, 4, 3);
     }
 }
 
