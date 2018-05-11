@@ -39488,40 +39488,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         id: 0
       },
       inputText: "",
-      messages: {
-        0: {
-          msg: "lbla bla bla motherfucker! you undestand ? ",
-          myMsg: false
-        },
-        1: {
-          msg: "fhndusfgfsdjdnsjf  you know what ia mean :D  ",
-          myMsg: true
-        },
-        2: {
-          msg: "another message oooh jeeeez, plesae can we go home rick ? ia don like this chat ",
-          myMsg: true
-        },
-        3: {
-          msg: "shut your mouth morty! you are dump and anoying like your father, i have better stuff to do then go home",
-          myMsg: false
-        },
-        4: {
-          msg: "lbla bla bla motherfucker! you undestand ? ",
-          myMsg: false
-        },
-        5: {
-          msg: "fhndusfgfsdjdnsjf  you know what ia mean :D  ",
-          myMsg: true
-        },
-        6: {
-          msg: "another message oooh jeeeez, plesae can we go home rick ? ia don like this chat ",
-          myMsg: true
-        },
-        7: {
-          msg: "shut your mouth morty! you are dump and anoying like your father, i have better stuff to do then go home",
-          myMsg: false
-        }
-      }
+      /*  messages:{
+          0:{
+            msg:"lbla bla bla motherfucker! you undestand ? ",
+            myMsg: false
+          },
+          1:{
+            msg:"fhndusfgfsdjdnsjf  you know what ia mean :D  ",
+            myMsg: true
+          },
+          2:{
+            msg:"another message oooh jeeeez, plesae can we go home rick ? ia don like this chat ",
+            myMsg: true
+          },
+          3:{
+            msg:"shut your mouth morty! you are dump and anoying like your father, i have better stuff to do then go home",
+            myMsg: false
+          },
+          4:{
+            msg:"lbla bla bla motherfucker! you undestand ? ",
+            myMsg: false
+          },
+          5:{
+            msg:"fhndusfgfsdjdnsjf  you know what ia mean :D  ",
+            myMsg: true
+          },
+          6:{
+            msg:"another message oooh jeeeez, plesae can we go home rick ? ia don like this chat ",
+            myMsg: true
+          },
+          7:{
+            msg:"shut your mouth morty! you are dump and anoying like your father, i have better stuff to do then go home",
+            myMsg: false
+          },
+        },*/
+      messages: {}
     };
   },
 
@@ -39585,6 +39586,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.conversation.name = user.conversationName;
       this.conversation.id = user.conversationID;
       this.conversation.userID = user.userID;
+      this.getMesages(user.conversationID);
     },
     sendMessage: function sendMessage() {
       if (this.inputText != '') {
@@ -39603,11 +39605,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       this.inputText = '';
     },
-    getMesages: function getMesages(chatID) {}
+    getMesages: function getMesages(chatID) {
+      axios.post(this.$path + '/getmesages', {
+        chatID: chatID,
+        pageID: 0
+      }).then(function (response) {
+        console.log(response.data);
+      });
+    }
   },
   created: function created() {
     this.getRequests();
     this.getFriends();
+    this.getMesages(this.conversation.id);
   },
   beforeUpdate: function beforeUpdate() {
     console.log(this.conversation);

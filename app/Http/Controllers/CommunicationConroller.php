@@ -87,8 +87,9 @@ class CommunicationConroller extends Controller
       return Auth::user()->sendMessage($request);
     }
 
-    public function messagePaginate()
+    public function messagePaginate(Request $request)
     {
-      return Auth::user()->messagePaginate();
+      //return $request;
+      return Auth::user()->messagePaginate($request['chatID'],6,$request['pageID']);
     }
 }

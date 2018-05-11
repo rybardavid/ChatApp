@@ -25,6 +25,7 @@ Route::post('/acceptrequest', 'UserController@acceptRequest');
 
 
 Route::post('/sendmessage', 'CommunicationConroller@sendMessage');
+Route::post('/getmesages', 'CommunicationConroller@messagePaginate');
 
 Route::get('/getconversations', 'CommunicationConroller@getConversations');
 

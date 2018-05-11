@@ -36,7 +36,7 @@
 
     <div class="chat_flex_mid conversation_wrapper">
         <div class="messages">
-            <div  v-for="(message, index) in messages" :key="index">              
+            <div  v-for="(message, index) in messages" :key="index">
               <message-card :messageProp="message.msg"
                             :myMsgProp="message.myMsg">
                             </message-card>
@@ -84,7 +84,7 @@ export default {
         id: 0,
       },
       inputText: "",
-      messages:{
+    /*  messages:{
         0:{
           msg:"lbla bla bla motherfucker! you undestand ? ",
           myMsg: false
@@ -117,7 +117,8 @@ export default {
           msg:"shut your mouth morty! you are dump and anoying like your father, i have better stuff to do then go home",
           myMsg: false
         },
-      },
+      },*/
+      messages:{},
     }
   },
   methods:{
@@ -191,6 +192,7 @@ export default {
         this.conversation.name = user.conversationName;
         this.conversation.id = user.conversationID;
         this.conversation.userID = user.userID;
+        this.getMesages(user.conversationID);
     },
     sendMessage: function()
     {
@@ -218,13 +220,22 @@ export default {
     },
     getMesages(chatID)
     {
+        axios.post(this.$path + '/getmesages',
+        {
+            chatID: chatID,
+            pageID: 0,
+        })
+        .then(response => {
+            console.log(response.data);
 
+        });
     }
 
   },
   created(){
       this.getRequests();
       this.getFriends();
+      this.getMesages(this.conversation.id);
   },
   beforeUpdate () {
     console.log(this.conversation);

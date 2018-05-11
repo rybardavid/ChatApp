@@ -91,10 +91,12 @@ trait Conversationable
        return $request;
     }
 
-    public function messagePaginate()
+    public function messagePaginate($conversationID,$perPages,$pageId)
     {
-      $conversationID =4;
-      return Messsage::LitPaginate($conversationID, 4, 3);
+      /*$conversationID =4;
+      $perPages = 8;
+      $pageId = 0;*/
+      return Messsage::LitPaginate($conversationID, $perPages, $pageId);
     }
 }
 
