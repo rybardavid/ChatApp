@@ -4,6 +4,7 @@ namespace App\Traits;
 use Illuminate\Support\Facades\Response;
 
 use App\ReugularConversation;
+use App\Events\MessageEvent;
 use App\friendship;
 use App\Messsage;
 use App\User;
@@ -59,6 +60,9 @@ trait Conversationable
        $message =  $request['message'];
        $convID = $request['convID'];
 
+
+       MessageEvent::dispatch($message,$friendID);
+
        $verif = friendship::where(function ($query) use($friendID)
                            {
                              $query->where(function ($query) use($friendID)
@@ -87,6 +91,8 @@ trait Conversationable
         {
           return 'friendship doesnt exists';
         }
+
+       //create laravel echo chanell Event
 
        return $request;
     }

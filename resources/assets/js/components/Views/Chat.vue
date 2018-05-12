@@ -118,7 +118,7 @@ export default {
           myMsg: false
         },
       },*/
-      messages:[],
+      messages: [],
     }
   },
   methods:{
@@ -204,8 +204,14 @@ export default {
             messageID: this.messages.length,
             myMsg: true
           };
-
-          this.messages.unshift(objMsg);
+          if(this.messages[0] == null)
+          {
+            this.messages = new Array(objMsg);
+          }
+          else
+          {
+            this.messages.unshift(objMsg);
+          }
           this.messages = this.messages;
           this.$forceUpdate();
 
@@ -241,16 +247,27 @@ export default {
         .then(response => {
 
             if(response.status == 200){
-               this.messages = Object.values(response.data);              
+               this.messages = Object.values(response.data);
             }
 
         });
     },
   },
   created(){
-      this.getRequests();
-      this.getFriends();
-      this.getMesages(this.conversation.id);
+
+      //seet larravel echo url
+      let authURL = this.$path + Echo.connector.pusher.config.authEndpoint;
+      Echo.connector.pusher.config.authEndpoint = authURL;
+  },
+  mounted(){
+    Echo.private('MessageChanel' + this.$user.id)
+        .listen('MessageEvent', e=>{
+              console.log(e);
+    });
+
+    this.getRequests();
+    this.getFriends();
+    this.getMesages(this.conversation.id);
   },
   beforeUpdate () {
     //console.log(this.messages);
