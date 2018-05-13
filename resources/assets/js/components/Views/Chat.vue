@@ -261,10 +261,8 @@ export default {
       //seet larravel echo url
       let authURL = this.$path + Echo.connector.pusher.config.authEndpoint;
       Echo.connector.pusher.config.authEndpoint = authURL;
-      Echo.private('MessageChanel' + this.$user.id)
-          .listen('MessageEvent', e=>{
-                console.log(e);
-      });
+
+
   },
   mounted(){
 
@@ -272,6 +270,11 @@ export default {
     this.getRequests();
     this.getFriends();
     this.getMesages(this.conversation.id);
+
+    Echo.private('MessageChanel.' + this.$user.id)
+        .listen('MessageEvent', e=>{
+              console.log(e);
+    });          
   },
   beforeUpdate () {
     //console.log(this.messages);

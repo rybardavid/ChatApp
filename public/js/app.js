@@ -44633,15 +44633,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     //seet larravel echo url
     var authURL = this.$path + Echo.connector.pusher.config.authEndpoint;
     Echo.connector.pusher.config.authEndpoint = authURL;
-    Echo.private('MessageChanel' + this.$user.id).listen('MessageEvent', function (e) {
-      console.log(e);
-    });
   },
   mounted: function mounted() {
 
     this.getRequests();
     this.getFriends();
     this.getMesages(this.conversation.id);
+
+    Echo.private('MessageChanel.' + this.$user.id).listen('MessageEvent', function (e) {
+      console.log(e);
+    });
   },
   beforeUpdate: function beforeUpdate() {
     //console.log(this.messages);
