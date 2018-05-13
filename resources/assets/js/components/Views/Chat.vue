@@ -6,7 +6,7 @@
           <p>Contacts</p>
       </div>
       <div class="chat_flex_mid">
-          <p>{{this.conversation.name}}</p>
+          <p>{{this.convName}}</p>
       </div>
       <div class="chat_flex_side">
           <p>Requests</p>
@@ -78,46 +78,10 @@ export default {
     return{
       requests:{},
       friends:{},
-      conversation:{
-        name: "",
-        userID: 0,
-        id: 0,
-      },
+      convName: "",
+      convUserID: 0,
+      convId: 0,
       inputText: "",
-    /*  messages:{
-        0:{
-          msg:"lbla bla bla motherfucker! you undestand ? ",
-          myMsg: false
-        },
-        1:{
-          msg:"fhndusfgfsdjdnsjf  you know what ia mean :D  ",
-          myMsg: true
-        },
-        2:{
-          msg:"another message oooh jeeeez, plesae can we go home rick ? ia don like this chat ",
-          myMsg: true
-        },
-        3:{
-          msg:"shut your mouth morty! you are dump and anoying like your father, i have better stuff to do then go home",
-          myMsg: false
-        },
-        4:{
-          msg:"lbla bla bla motherfucker! you undestand ? ",
-          myMsg: false
-        },
-        5:{
-          msg:"fhndusfgfsdjdnsjf  you know what ia mean :D  ",
-          myMsg: true
-        },
-        6:{
-          msg:"another message oooh jeeeez, plesae can we go home rick ? ia don like this chat ",
-          myMsg: true
-        },
-        7:{
-          msg:"shut your mouth morty! you are dump and anoying like your father, i have better stuff to do then go home",
-          myMsg: false
-        },
-      },*/
       messages: [],
     }
   },
@@ -136,16 +100,6 @@ export default {
     },
     removeReq: function(index)
     {
-      /*if(typeof(this.friends) == 'string')
-      {
-        this.friends = {};
-      }
-
-      let newContact = this.requests[index].requester;
-      let test = Object.getOwnPropertyNames(this.friends);
-      this.friends[test.length] = newContact;*/
-
-
       delete this.requests[index];
       //this.$forceUpdate();
       this.getFriends();
@@ -176,23 +130,22 @@ export default {
     {
         if(typeof(this.friends) == 'string')
         {
-          this.conversation.name = "Chat";
+          this.convName = "Chat";
         }
         else
         {
           let firstIndex = Object.keys(this.friends);
-          this.conversation.name = this.friends[firstIndex[0]].conversationName;
-          this.conversation.id = this.friends[firstIndex[0]].conversationID;
-          this.conversation.userID =  this.friends[firstIndex[0]].userID;
+          this.convName = this.friends[firstIndex[0]].conversationName;
+          this.convId = this.friends[firstIndex[0]].conversationID;
+          this.convUserID =  this.friends[firstIndex[0]].userID;
         }
     },
     openConversation: function(index)
     {
         let user = this.friends[index];
-        this.conversation.name = user.conversationName;
-        this.conversation.id = user.conversationID;
-        this.conversation.userID = user.userID;
-        this.getMesages(user.conversationID);
+        this.convName = user.conversationName;
+        this.convId = user.conversationID;
+        this.convUserID = user.userID;
     },
     sendMessage: function()
     {
@@ -218,8 +171,8 @@ export default {
           axios.post(this.$path + '/sendmessage',
           {
               message: this.inputText,
-              convID: this.conversation.id,
-              friendUserID: this.conversation.userID,
+              convID: this.convId,
+              friendUserID: this.convUserID,
           })
           .then(response => {
             console.log(response);
@@ -256,29 +209,40 @@ export default {
   },
   created(){
 
-      console.log(this.$user.id);
+      this.getFriends();
+      this.getRequests();
 
-      //seet larravel echo url
+      //set larravel echo url
       let authURL = this.$path + Echo.connector.pusher.config.authEndpoint;
       Echo.connector.pusher.config.authEndpoint = authURL;
 
 
   },
   mounted(){
-
-
-    this.getRequests();
-    this.getFriends();
-    this.getMesages(this.conversation.id);
-
     Echo.private('MessageChanel.' + this.$user.id)
         .listen('MessageEvent', e=>{
               console.log(e);
-    });          
+              let objMsg =  {
+                message:e.message,
+                messageID: this.messages.length,
+                myMsg: false
+              };
+              if(this.messages[0] == null)
+              {
+                this.messages = new Array(objMsg);
+              }
+              else
+              {
+                this.messages.unshift(objMsg);
+              }
+    });
   },
-  beforeUpdate () {
-    //console.log(this.messages);
-  },
+  watch:{
+    convId:function(val)
+    {
+      this.getMesages(val);
+    }
+  }
 
 }
 </script>

@@ -23,6 +23,7 @@ trait Conversationable
     public function getConversations()
     {
         $myID = $this->id;
+
         $friendships = friendship::where('status', 1)
                                  ->where(function($query) use($myID) {
                                            $query->where('requester', $myID)
@@ -99,7 +100,7 @@ trait Conversationable
     }
 
     public function messagePaginate($conversationID,$perPages,$pageId)
-    {
+    {      
       $msgResult = Messsage::LitPaginate($conversationID, $perPages, $pageId);
       $messages = $msgResult['messages'];
 
