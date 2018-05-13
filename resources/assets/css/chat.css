@@ -1,0 +1,121 @@
+.chat_wrappper{
+  flex: 15 15 0;
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  flex-flow: column;
+}
+
+.chat_header{
+  -webkit-box-flex: 1 1 0;
+  -webkit-flex: 1 1 0;
+  flex: 1 1 0;
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  flex-direction: row;
+  background-color: #e6e6e6;
+}
+
+.chat_flex_side{
+  -webkit-box-flex: 1 1 0;
+  -webkit-flex: 1 1 0;
+  flex: 1 1 0;
+}
+
+.chat_flex_mid{
+  -webkit-box-flex: 2.3 2.3 0;
+  -webkit-flex: 2.3 2.3 0;
+  flex: 2.3 2.3 0;
+}
+
+.chat_header > div{
+  height: 100%;
+  display:table;
+  color: #868686;
+  text-align: center;
+  border-right: 1px solid grey;
+}
+.chat_header > div:last-child{
+  border-right: none;
+}
+
+.chat_header > div p{
+  display: table-cell;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.chat_content{
+  flex: 15 15 0;
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  flex-direction: row;
+  background-color: #ccc;
+}
+
+.chat_content > div{
+  border-right: 1px solid grey;
+}
+
+.chat_content > div:last-child{
+  border-right: none;
+}
+
+.scrollbar{
+  overflow-y: scroll;
+}
+
+.conversation_wrapper{
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  flex-flow: column;
+}
+
+.messages{
+  flex: 10 10 0;
+  overflow-y: scroll;
+  transform: rotate(-180deg);
+}
+
+.input_msg{
+  flex: 0.8 0.8 0;
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  flex-flow: row;
+}
+
+.input_area{
+  flex: 10 10 0;
+}
+
+.send_BTN{
+  flex: 2 2 0;
+  background-color: #13C478;
+  color: white;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  border:0 none;
+  cursor:pointer;
+}
+
+.send_BTN:hover{
+  background-color: #14CC7C;
+}
+
+.data_status{
+  color: #868686;
+  text-align: center;
+}
+
+.link_firends{
+  color: #666666;
+}

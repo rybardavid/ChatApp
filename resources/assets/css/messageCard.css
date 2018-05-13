@@ -1,0 +1,32 @@
+.card_wrapper{
+  transform: rotate(180deg);
+  display: flex;
+  flex-flow: row;
+}
+
+.space{
+  flex: 2 2 0;
+}
+
+.send{
+  /*float:right;*/
+  background-color: #13C478;
+}
+
+.received{
+  /*float:left;*/
+  background-color: grey;
+}
+
+.message{
+  flex: 7 7 0;
+  color: white;
+  padding: 2px;
+  text-align: left;
+  margin: 8px;
+  border-radius: 4px;
+}
+.message p{
+  padding: 6px;
+  margin: 2px;
+}

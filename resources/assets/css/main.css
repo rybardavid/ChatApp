@@ -1,0 +1,45 @@
+body{
+  height: 100vh;
+}
+
+#app{
+  height: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+
+.app_wrapper{
+  height: 100%;
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  flex-flow: column;
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #686868;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: #a9a9a9;
+}
