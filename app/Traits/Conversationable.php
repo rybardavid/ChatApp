@@ -85,6 +85,7 @@ trait Conversationable
           $newMessage->user_id = $this->id;
           $newMessage->conversation_id = $convID;
           $newMessage->save();
+          return $friendID;
           return 'friendship exists';
         }
         else
@@ -94,7 +95,7 @@ trait Conversationable
 
        //create laravel echo chanell Event
 
-       return $request;
+
     }
 
     public function messagePaginate($conversationID,$perPages,$pageId)

@@ -222,6 +222,7 @@ export default {
               friendUserID: this.conversation.userID,
           })
           .then(response => {
+            console.log(response);
               if(response.status == 200)
               {
                 console.log('message was sent');
@@ -255,15 +256,18 @@ export default {
   },
   created(){
 
+      console.log(this.$user.id);
+
       //seet larravel echo url
       let authURL = this.$path + Echo.connector.pusher.config.authEndpoint;
       Echo.connector.pusher.config.authEndpoint = authURL;
+      Echo.private('MessageChanel' + this.$user.id)
+          .listen('MessageEvent', e=>{
+                console.log(e);
+      });
   },
   mounted(){
-    Echo.private('MessageChanel' + this.$user.id)
-        .listen('MessageEvent', e=>{
-              console.log(e);
-    });
+
 
     this.getRequests();
     this.getFriends();

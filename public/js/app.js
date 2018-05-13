@@ -44599,6 +44599,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           convID: this.conversation.id,
           friendUserID: this.conversation.userID
         }).then(function (response) {
+          console.log(response);
           if (response.status == 200) {
             console.log('message was sent');
           } else {
@@ -44627,14 +44628,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   created: function created() {
 
+    console.log(this.$user.id);
+
     //seet larravel echo url
     var authURL = this.$path + Echo.connector.pusher.config.authEndpoint;
     Echo.connector.pusher.config.authEndpoint = authURL;
-  },
-  mounted: function mounted() {
     Echo.private('MessageChanel' + this.$user.id).listen('MessageEvent', function (e) {
       console.log(e);
     });
+  },
+  mounted: function mounted() {
 
     this.getRequests();
     this.getFriends();
