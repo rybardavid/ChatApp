@@ -44466,7 +44466,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -44587,7 +44586,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   created: function created() {
     this.myId = this.$user.id;
-    console.log(this.myId);
     this.getFriends();
     this.getRequests();
 
@@ -44598,7 +44596,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mounted: function mounted() {
     var _this4 = this;
 
-    console.log(this.$user.id);
     Echo.private('MessageChanel.' + this.$user.id).listen('MessageEvent', function (e) {
       console.log(e);
       var objMsg = {
@@ -44699,11 +44696,6 @@ var render = function() {
                   "div",
                   { key: msg.messageID + "-" + index },
                   [
-                    _vm._v(
-                      "\r\n              " +
-                        _vm._s(msg.messageID + "-" + index) +
-                        "\r\n              "
-                    ),
                     _c("message-card", {
                       attrs: { messageProp: msg.message, myMsgProp: msg.myMsg }
                     })
@@ -56369,6 +56361,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
       return true;
     };
+
+    Echo.private('NotifyChanel.' + this.$user.id).listen('NotifyPrivateEvent', function (e) {
+      console.log(e);
+    });
   }
 });
 

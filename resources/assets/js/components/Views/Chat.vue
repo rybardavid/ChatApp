@@ -36,7 +36,7 @@
 
     <div class="chat_flex_mid conversation_wrapper">
         <div class="messages" v-if="myId != 'undefined'">
-            <div  v-for="(msg, index) in messages" :key="msg.messageID+`-`+index">               
+            <div  v-for="(msg, index) in messages" :key="msg.messageID+`-`+index">
               <message-card :messageProp="msg.message"
                             :myMsgProp="msg.myMsg">
                             </message-card>
@@ -212,7 +212,6 @@ export default {
   },
   created(){
       this.myId = this.$user.id;
-      console.log(this.myId);
       this.getFriends();
       this.getRequests();
 
@@ -223,7 +222,7 @@ export default {
 
   },
   mounted(){
-    console.log(this.$user.id);
+
     Echo.private('MessageChanel.' + this.$user.id)
         .listen('MessageEvent', e=>{
               console.log(e);

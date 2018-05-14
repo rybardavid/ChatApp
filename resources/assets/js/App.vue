@@ -35,6 +35,11 @@ export default {
       }
       return true;
     };
+
+    Echo.private('NotifyChanel.' + this.$user.id)
+        .listen('NotifyPrivateEvent', e=>{
+              console.log(e);
+    });
   }
 }
 </script>

@@ -5,6 +5,7 @@ namespace App\Traits;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\DB;
 
+use App\Events\NotifyPrivateEvent;
 use App\ReugularConversation;
 use App\Friendship;
 use App\User;
@@ -163,10 +164,13 @@ trait Friendable
 
       if(isset($friendship))
       {
-        $friendship->update([
+      /*  $friendship->update([
           'status' => 1
-        ]);       
+        ]);*/
 
+        $userName = User::find($this->id);
+      //  dd($userName);
+        NotifyPrivateEvent::dispatch($userName,$requesterId)->name;
         return Response::json('Request was accepted.', 200);
       }
 

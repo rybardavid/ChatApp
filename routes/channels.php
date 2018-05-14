@@ -18,3 +18,7 @@
 Broadcast::channel('MessageChanel.{userId}', function ($user, $id) {
     return true;
 });
+
+Broadcast::channel('NotifyChanel.{userId}', function ($user, $id) {
+    return true;
+});
