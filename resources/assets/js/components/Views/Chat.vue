@@ -35,8 +35,9 @@
     </div>
 
     <div class="chat_flex_mid conversation_wrapper">
-        <div class="messages">
-            <div  v-for="(msg, index) in messages" :key="msg.messageID">
+        <div class="messages" v-if="myId != 'undefined'">
+            <div  v-for="(msg, index) in messages" :key="msg.messageID+`-`+index"> <!--`${msg.messageID}-${this.myId}`-->
+              {{msg.messageID+`-`+index}}
               <message-card :messageProp="msg.message"
                             :myMsgProp="msg.myMsg">
                             </message-card>
@@ -76,6 +77,7 @@
 export default {
   data(){
     return{
+      myId:0,
       requests:{},
       friends:{},
       convName: "",
@@ -152,6 +154,8 @@ export default {
 
         if(this.inputText != '')
         {
+          /*if(this.messages.length != 0)
+            console.log(this.messages[this.messages.length-1].messageID);*/
           let objMsg =  {
             message:this.inputText,
             messageID: this.messages.length,
@@ -208,7 +212,8 @@ export default {
     },
   },
   created(){
-
+      this.myId = this.$user.id;
+      console.log(this.myId);
       this.getFriends();
       this.getRequests();
 
@@ -219,12 +224,13 @@ export default {
 
   },
   mounted(){
+    console.log(this.$user.id);
     Echo.private('MessageChanel.' + this.$user.id)
         .listen('MessageEvent', e=>{
               console.log(e);
               let objMsg =  {
-                message:e.message,
-                messageID: this.messages.length,
+                message:e.message.message,
+                messageID: e.message.id,
                 myMsg: false
               };
               if(this.messages[0] == null)
@@ -241,7 +247,11 @@ export default {
     convId:function(val)
     {
       this.getMesages(val);
-    }
+    },
+    myId:function(val)
+    {
+      return val;
+    },
   }
 
 }

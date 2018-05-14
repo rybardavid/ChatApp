@@ -62,8 +62,6 @@ trait Conversationable
        $convID = $request['convID'];
 
 
-       MessageEvent::dispatch($message,$friendID);
-
        $verif = friendship::where(function ($query) use($friendID)
                            {
                              $query->where(function ($query) use($friendID)
@@ -86,7 +84,11 @@ trait Conversationable
           $newMessage->user_id = $this->id;
           $newMessage->conversation_id = $convID;
           $newMessage->save();
-          return $friendID;
+          $msg = array(
+                        'message' => $message,
+                        'id' => $newMessage->id,
+                      );
+          MessageEvent::dispatch($msg,$friendID);
           return 'friendship exists';
         }
         else
@@ -100,7 +102,7 @@ trait Conversationable
     }
 
     public function messagePaginate($conversationID,$perPages,$pageId)
-    {      
+    {
       $msgResult = Messsage::LitPaginate($conversationID, $perPages, $pageId);
       $messages = $msgResult['messages'];
 
