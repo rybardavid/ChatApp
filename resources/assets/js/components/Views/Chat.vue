@@ -36,8 +36,7 @@
 
     <div class="chat_flex_mid conversation_wrapper">
         <div class="messages" v-if="myId != 'undefined'">
-            <div  v-for="(msg, index) in messages" :key="msg.messageID+`-`+index"> <!--`${msg.messageID}-${this.myId}`-->
-              {{msg.messageID+`-`+index}}
+            <div  v-for="(msg, index) in messages" :key="msg.messageID+`-`+index">               
               <message-card :messageProp="msg.message"
                             :myMsgProp="msg.myMsg">
                             </message-card>
