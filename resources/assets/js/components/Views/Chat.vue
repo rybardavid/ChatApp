@@ -68,7 +68,6 @@
     </div>
 
   </div>
-
 </div>
 </template>
 
@@ -209,6 +208,10 @@ export default {
 
         });
     },
+    afterLog: function()
+    {
+      console.log('hi after five seconds ? :D ');
+    },
   },
   created(){
       this.myId = this.$user.id;
@@ -250,7 +253,8 @@ export default {
     {
       return val;
     },
-  }
+  },
+
 
 }
 </script>

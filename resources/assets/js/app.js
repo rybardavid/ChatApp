@@ -15,6 +15,10 @@ import VueRouter from 'vue-router';
 
 window.Vue.use(VueRouter);
 
+import Vuex from 'vuex';
+
+Vue.use(Vuex);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -24,16 +28,34 @@ window.Vue.use(VueRouter);
 
 Vue.component('app', require('./App.vue'));
 Vue.component('navbar', require('./components/Basics/NavBar.vue'));
+Vue.component('notifications', require('./components/Basics/NotificationArea.vue'));
 Vue.component('account-card', require('./components/PeopleComponents/Account.vue'));
 Vue.component('friend-card', require('./components/ChatComponents/FriendCard.vue'));
 Vue.component('message-card', require('./components/ChatComponents/MessageCard.vue'));
 Vue.component('request-card', require('./components/ChatComponents/RequestCard.vue'));
 
 
+const store = new Vuex.Store({
+    state: {
+        notification: "",
+    },
+    mutations: {
+        setNotification(state, _notification){
+          state.notification = _notification;
+        }
+    },
+    actions : {
 
-
+    },
+    getters: {
+        notification(state){
+            return state.notification;
+        }
+    }
+});
 
 const app = new Vue({
     el: '#app',
-    router: router
+    router: router,
+    store: store
 });

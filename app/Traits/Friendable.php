@@ -168,9 +168,14 @@ trait Friendable
           'status' => 1
         ]);*/
 
-        $userName = User::find($this->id);
-      //  dd($userName);
-        NotifyPrivateEvent::dispatch($userName,$requesterId)->name;
+        $user = User::find($this->id);
+        $notificationObj = array(
+                                  'type' => 'acceptReuqest',
+                                  'user' => $user,
+                                  'conversation' => $friendship
+                                );
+
+        NotifyPrivateEvent::dispatch($notificationObj,$requesterId);
         return Response::json('Request was accepted.', 200);
       }
 

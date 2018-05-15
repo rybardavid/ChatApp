@@ -2,6 +2,7 @@
   <div class="app_wrapper">
     <navbar></navbar>
     <router-view> </router-view>
+    <notifications ref='notifiComp'></notifications>
   </div>
 </template>
 
@@ -38,7 +39,8 @@ export default {
 
     Echo.private('NotifyChanel.' + this.$user.id)
         .listen('NotifyPrivateEvent', e=>{
-              console.log(e);
+              this.$refs.notifiComp.refTest();
+              this.$store.commit('setNotification',e);
     });
   }
 }
