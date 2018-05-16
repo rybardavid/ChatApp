@@ -46,6 +46,9 @@ export default {
         if(type == "acceptReuqest"){
           return "acceptFriend";
         }
+        else if(type == "removedFriend"){
+          return "removedFriend";
+        }
       }
 
     },

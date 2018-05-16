@@ -29,6 +29,9 @@ export default {
       if(this.type == "acceptFriend"){
         return "accept your friend request."
       }
+      else if(this.type == "removedFriend"){
+        return "removed you from friends."
+      }
     }
   },
   methods:{

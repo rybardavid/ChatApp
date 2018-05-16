@@ -44541,7 +44541,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (this.$objIsEmpty(this.friends)) {
         this.friends = 'We can help you with finding new';
       }
-      this.$forceUpdate();
+      this.getMesages();
     },
     initConversation: function initConversation() {
       if (typeof this.friends == 'string') {
@@ -44614,10 +44614,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     addFriend: function addFriend(conv) {
       this.friends.push(conv);
     },
-    refTestChat: function refTestChat() {
-      console.log('ahooj');
+    callRemoveFriend: function callRemoveFriend(conv) {
+      var index = this.friends.indexOf(conv);
+      this.removeFriend(index);
     }
-
   },
   created: function created() {
     this.myId = this.$user.id;
@@ -57351,10 +57351,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       if (e.notification.type == "acceptReuqest") {
         if (_this.$route.path == "/chat") {
-          console.log(e);
           var conv = e.notification.conversation;
 
           _this.$refs.routeView.addFriend(conv);
+        }
+      } else if (e.notification.type == "removedFriend") {
+        console.log(e);
+        if (_this.$route.path == "/chat") {
+          var _conv = e.notification.conversation;
+          _this.$refs.routeView.callRemoveFriend(_conv);
         }
       }
     });
@@ -57738,7 +57743,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "/***List style***/\r\n.notifications{\r\n  position: absolute;\r\n  bottom: 0px; right: 20px;\r\n}\r\n\r\n.notifications ul{\r\n  list-style: none;\r\n}\r\n/***List style***/\r\n\r\n/***Card style***/\r\n.notification{\r\n  background-color: grey;\r\n  border-radius: 4px;\r\n  margin-top: 4%;\r\n  margin-bottom: 4%;\r\n  height: 80px;\r\n  width: 260px;\r\n}\r\n\r\n.notification p{\r\n    color: white;\r\n    margin: auto;\r\n    padding-right: 2%;\r\n    padding-left: 2%;\r\n    height: 60px;\r\n}\r\n\r\n.top_space{\r\n  padding-top: 4px;\r\n  height: 16px;\r\n}\r\n\r\n.top_space a{\r\n  float: right;\r\n  text-decoration: none;\r\n  padding-right: 2%;\r\n}\r\n\r\n.acceptFriend{\r\n    background-color: rgba(49, 221, 112, 0.91);\r\n}\r\n\r\n.acceptFriend p{\r\n    color: rgba(47, 154, 34, 1);\r\n}\r\n\r\n.acceptFriend a{\r\n    color: rgba(47, 154, 34, 1);\r\n}\r\n/***Card style***/\r\n", ""]);
+exports.push([module.i, "/***List style***/\r\n.notifications{\r\n  position: absolute;\r\n  bottom: 0px; right: 20px;\r\n}\r\n\r\n.notifications ul{\r\n  list-style: none;\r\n}\r\n/***List style***/\r\n\r\n/***Card style***/\r\n.notification{\r\n  background-color: grey;\r\n  border-radius: 4px;\r\n  margin-top: 4%;\r\n  margin-bottom: 4%;\r\n  height: 80px;\r\n  width: 260px;\r\n}\r\n\r\n.notification p{\r\n    color: white;\r\n    margin: auto;\r\n    padding-right: 2%;\r\n    padding-left: 2%;\r\n    height: 60px;\r\n}\r\n\r\n.top_space{\r\n  padding-top: 4px;\r\n  height: 16px;\r\n}\r\n\r\n.top_space a{\r\n  float: right;\r\n  text-decoration: none;\r\n  padding-right: 2%;\r\n}\r\n\r\n.acceptFriend{\r\n    background-color: rgba(49, 221, 112, 0.91);\r\n}\r\n\r\n.acceptFriend p{\r\n    color: rgba(47, 154, 34, 1);\r\n}\r\n\r\n.acceptFriend a{\r\n    color: rgba(47, 154, 34, 1);\r\n}\r\n\r\n.removedFriend{\r\n    background-color: rgba(238, 73, 46, 0.96);\r\n}\r\n\r\n.removedFriend p{\r\n    color: rgba(163, 36, 15, 1);\r\n}\r\n\r\n.removedFriend a{\r\n    color: rgba(163, 36, 15, 1);\r\n}\r\n/***Card style***/\r\n", ""]);
 
 // exports
 
@@ -57797,6 +57802,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (type) {
         if (type == "acceptReuqest") {
           return "acceptFriend";
+        } else if (type == "removedFriend") {
+          return "removedFriend";
         }
       }
     }
@@ -58753,7 +58760,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58791,6 +58798,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     message: function message() {
       if (this.type == "acceptFriend") {
         return "accept your friend request.";
+      } else if (this.type == "removedFriend") {
+        return "removed you from friends.";
       }
     }
   },

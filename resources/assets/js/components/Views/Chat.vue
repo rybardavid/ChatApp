@@ -125,7 +125,7 @@ export default {
       if(this.$objIsEmpty(this.friends)){
         this.friends = 'We can help you with finding new';
       }
-      this.$forceUpdate();
+      this.getMesages();
     },
     initConversation: function()
     {
@@ -217,9 +217,9 @@ export default {
     {
         this.friends.push(conv);
     },
-    refTestChat: function()
-    {
-      console.log('ahooj');
+    callRemoveFriend(conv){
+      let index = this.friends.indexOf(conv);
+      this.removeFriend(index);
     }
 
   },
@@ -231,8 +231,6 @@ export default {
       //set larravel echo url
       let authURL = this.$path + Echo.connector.pusher.config.authEndpoint;
       Echo.connector.pusher.config.authEndpoint = authURL;
-
-
   },
   mounted(){
 
@@ -253,7 +251,7 @@ export default {
                 this.messages.unshift(objMsg);
               }
     });
-  },  
+  },
   watch:{
     convId:function(val)
     {

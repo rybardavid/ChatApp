@@ -160,17 +160,17 @@ trait Friendable
                     'requested' => $requested,
                   );
       $listnerId = ($requester == $this->id) ? $requested : $requester;
+      $user = User::find($this->id);
       $notificationObj = array(
-                                'type' => 'removeFriend',
+                                'type' => 'removedFriend',
+                                'user' => $user,
                                 'conversation' => $conv,
-                                'requester' => $requester,
+
                               );
 
       NotifyPrivateEvent::dispatch($notificationObj,$listnerId);
 
-      return json_encode($obj , JSON_FORCE_OBJECT);
-
-      /*$friendships = DB::table('friendships');
+      $friendships = DB::table('friendships');
 
       $friendship = $friendships->where('status', 1)
                                 ->where(function($query) use($friendUserId) {
@@ -182,7 +182,7 @@ trait Friendable
                                         ->where('user_requested', $friendUserId);
                                 })->delete();
 
-      return Response::json('Friend was removed', 200);*/
+      return Response::json('Friend was removed', 200);
   }
 
   public function acceptRequest($requesterId)

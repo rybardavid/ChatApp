@@ -49,4 +49,16 @@
 .acceptFriend a{
     color: rgba(47, 154, 34, 1);
 }
+
+.removedFriend{
+    background-color: rgba(238, 73, 46, 0.96);
+}
+
+.removedFriend p{
+    color: rgba(163, 36, 15, 1);
+}
+
+.removedFriend a{
+    color: rgba(163, 36, 15, 1);
+}
 /***Card style***/
