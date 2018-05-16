@@ -49,6 +49,9 @@ export default {
         else if(type == "removedFriend"){
           return "removedFriend";
         }
+        else if(type == "updateRequests"){
+          return "updateRequests";
+        }
       }
 
     },

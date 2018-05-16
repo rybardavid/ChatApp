@@ -126,10 +126,21 @@ trait Friendable
         return Response::json('Request was sent before.', 202);
       }
 
-      $friendship = Friendship::create([
-        'requester' => $this->id,
-        'user_requested' => $userRequesedId,
-      ]);
+      $friendship = new Friendship;
+      $friendship->requester = $this->id;
+      $friendship->user_requested = $userRequesedId;
+      $friendship->save();
+
+      $user = User::find($this->id);
+      $request = array("request" => $friendship, "requester" => $user);
+      $notificationObj = array(
+                                'type' => 'updateRequests',
+                                'user' => $user,
+                                'request' => $request,
+
+                              );
+
+      NotifyPrivateEvent::dispatch($notificationObj,$userRequesedId);
 
       if($friendship){
         return Response::json('Request was sent.', 200);

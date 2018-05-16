@@ -76,7 +76,7 @@ export default {
   data(){
     return{
       myId:0,
-      requests:{},
+      requests:[],
       friends:[],
       convName: "",
       convUserID: 0,
@@ -98,9 +98,20 @@ export default {
                 }
             });
     },
+    addReuqest(request){
+      if(typeof(this.requests) == "string")
+      {
+        this.requests = [];
+        this.requests = new Array(request);
+      }
+      else {
+        this.requests.push(request);
+      }
+    },
     removeReq: function(index)
     {
-      delete this.requests[index];
+      //console.log(this.requests);
+      this.requests.splice(index,1);
       //this.$forceUpdate();
       this.getFriends();
       this.initConversation();
@@ -215,7 +226,14 @@ export default {
     },
     addFriend: function(conv)
     {
-        this.friends.push(conv);
+        if(typeof(this.friends) == "string")
+        {
+          this.friends = [];
+          this.friends = new Array(conv);
+        }
+        else {
+          this.friends.push(conv);
+        }
     },
     callRemoveFriend(conv){
       let index = this.friends.indexOf(conv);

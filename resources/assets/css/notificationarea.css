@@ -61,4 +61,16 @@
 .removedFriend a{
     color: rgba(163, 36, 15, 1);
 }
+
+.updateRequests{
+    background-color: rgba(93, 93, 93, 0.96);
+}
+
+.updateRequests p{
+    color: rgba(52, 52, 52, 1);
+}
+
+.updateRequests a{
+    color: rgba(52, 52, 52, 1);
+}
 /***Card style***/

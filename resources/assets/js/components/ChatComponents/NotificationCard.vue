@@ -32,6 +32,9 @@ export default {
       else if(this.type == "removedFriend"){
         return "removed you from friends."
       }
+      else if(this.type == "updateRequests"){
+        return "wants be your friend."
+      }
     }
   },
   methods:{

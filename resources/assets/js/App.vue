@@ -45,16 +45,23 @@ export default {
               if(e.notification.type == "acceptReuqest"){
                   if(this.$route.path == "/chat"){
                     let conv = e.notification.conversation;
-
                     this.$refs.routeView.addFriend(conv);
                   }
               }
               else if(e.notification.type == "removedFriend")
               {
-                console.log(e);
                 if(this.$route.path == "/chat"){
                   let conv = e.notification.conversation;
                   this.$refs.routeView.callRemoveFriend(conv);
+                }
+              }
+              else if(e.notification.type == "updateRequests")
+              {
+                //console.log(e);
+                if(this.$route.path == "/chat"){
+                  let req = e.notification.request;
+                  //console.log(req);
+                  this.$refs.routeView.addReuqest(req);
                 }
               }
 
