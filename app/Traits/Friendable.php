@@ -141,7 +141,36 @@ trait Friendable
 
   public function removeFriend($friendUserId)
   {
-      $friendships = DB::table('friendships');
+      $friendship =  friendship::where('status', 1)
+                                ->where(function($query) use($friendUserId) {
+                                  $query->where('requester', $friendUserId)
+                                        ->where('user_requested', $this->id);
+                                })
+                                ->orWhere(function($query) use($friendUserId) {
+                                  $query->where('requester', $this->id)
+                                        ->where('user_requested', $friendUserId);
+                                })->first();
+
+      $conv = $friendship->Conversation()->first();
+      $requester = $friendship->requester;
+      $requested = $friendship->user_requested;
+
+      $obj = array(
+                    'requester' => $requester,
+                    'requested' => $requested,
+                  );
+      $listnerId = ($requester == $this->id) ? $requested : $requester;
+      $notificationObj = array(
+                                'type' => 'removeFriend',
+                                'conversation' => $conv,
+                                'requester' => $requester,
+                              );
+
+      NotifyPrivateEvent::dispatch($notificationObj,$listnerId);
+
+      return json_encode($obj , JSON_FORCE_OBJECT);
+
+      /*$friendships = DB::table('friendships');
 
       $friendship = $friendships->where('status', 1)
                                 ->where(function($query) use($friendUserId) {
@@ -153,7 +182,7 @@ trait Friendable
                                         ->where('user_requested', $friendUserId);
                                 })->delete();
 
-      return Response::json('Friend was removed', 200);
+      return Response::json('Friend was removed', 200);*/
   }
 
   public function acceptRequest($requesterId)
@@ -164,15 +193,28 @@ trait Friendable
 
       if(isset($friendship))
       {
-      /*  $friendship->update([
+        $friendship->update([
           'status' => 1
-        ]);*/
+        ]);
 
         $user = User::find($this->id);
+
+        $conversation = $friendship->Conversation()->first();
+
+        if($conversation->name == "one to one")
+            $convName = $user->name;
+
+        $conversation = array(
+                               'userID' => $user->id,
+                               'userName' => $user->name,
+                               'conversationID' => $conversation->id,
+                               'conversationName' => $convName,
+                             );
+
         $notificationObj = array(
                                   'type' => 'acceptReuqest',
                                   'user' => $user,
-                                  'conversation' => $friendship
+                                  'conversation' => $conversation
                                 );
 
         NotifyPrivateEvent::dispatch($notificationObj,$requesterId);

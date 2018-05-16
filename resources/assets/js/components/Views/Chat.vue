@@ -77,7 +77,7 @@ export default {
     return{
       myId:0,
       requests:{},
-      friends:{},
+      friends:[],
       convName: "",
       convUserID: 0,
       convId: 0,
@@ -110,6 +110,7 @@ export default {
       axios.get(this.$path + '/getconversations')
           .then(response => {
             if(response.status == 200){
+               console.log(response.data);
                this.friends = response.data;
             }
             else if(response.status == 204) {
@@ -212,6 +213,15 @@ export default {
     {
       console.log('hi after five seconds ? :D ');
     },
+    addFriend: function(conv)
+    {
+        this.friends.push(conv);
+    },
+    refTestChat: function()
+    {
+      console.log('ahooj');
+    }
+
   },
   created(){
       this.myId = this.$user.id;
@@ -243,7 +253,7 @@ export default {
                 this.messages.unshift(objMsg);
               }
     });
-  },
+  },  
   watch:{
     convId:function(val)
     {

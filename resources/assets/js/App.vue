@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="app_wrapper">
     <navbar></navbar>
-    <router-view> </router-view>
+    <router-view ref='routeView'> </router-view>
     <notifications ref='notifiComp'></notifications>
   </div>
 </template>
@@ -39,9 +39,18 @@ export default {
 
     Echo.private('NotifyChanel.' + this.$user.id)
         .listen('NotifyPrivateEvent', e=>{
-              this.$refs.notifiComp.refTest();
-              this.$store.commit('setNotification',e);
-    });
+
+              this.$refs.notifiComp.refTest(e.notification);
+
+              if(e.notification.type == "acceptReuqest"){
+                  if(this.$route.path == "/chat"){
+                    console.log(e);
+                    let conv = e.notification.conversation;
+
+                    this.$refs.routeView.addFriend(conv);
+                  }
+              }
+          });
   }
 }
 </script>

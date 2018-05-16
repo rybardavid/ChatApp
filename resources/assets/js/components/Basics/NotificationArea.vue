@@ -1,11 +1,13 @@
 <template lang="html">
 
-  <div class="notifications">
-      {{notification}}
+  <div class="notifications ">
       <ul v-if="notifications.length > 0">
-        <li v-for="(notif, index) in notificationsComp" :key="index">
-          {{notif}}
-
+        <li v-for="(notif, index) in notifications" :key="index">
+            <notification-card :contentProp="notif.user.name"
+                               :typeProp="type"
+                               :indexProp="index"
+                               v-on:removeMe="remNotifi">
+            </notification-card>
         </li>
       </ul>
   </div>
@@ -16,35 +18,38 @@
 export default {
   data(){
     return{
+      notificationType: {},
       notifications:[],
     }
   },
   methods:{
-    remNotifi: function()
+    remNotifi: function(index)
     {
-      console.log('removing');
-       this.notifications.splice(0,1);
+       this.notifications.splice(index,1);
     },
-    refTest: function()
+    refTest: function(obj)
     {
-      console.log('test');
+      //console.log(obj);
+      this.notificationType = obj.type;
+      this.notifications.push(obj);
+      //this.notificationType = this.$store.getters.notification;
+      setTimeout(() => {this.remNotifi(0)},10000);
     }
   },
   computed:{
-    notification(){
-      var noitfi = this.$store.getters.notification;
-      if(noitfi !== "")
+
+    type(){
+      var type = this.notificationType;
+
+      if (type)
       {
-        console.log(noitfi);
-        this.notifications.push('accept'+this.notifications.length);
-        setTimeout(() => {this.remNotifi()},10000);
+        if(type == "acceptReuqest"){
+          return "acceptFriend";
+        }
       }
-      this.$store.commit('setNotification',"");
-      return;
+
     },
-    notificationsComp(){
-      return this.notifications;
-    },
+
   }
 
 }

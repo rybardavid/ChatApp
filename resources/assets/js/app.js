@@ -33,23 +33,24 @@ Vue.component('account-card', require('./components/PeopleComponents/Account.vue
 Vue.component('friend-card', require('./components/ChatComponents/FriendCard.vue'));
 Vue.component('message-card', require('./components/ChatComponents/MessageCard.vue'));
 Vue.component('request-card', require('./components/ChatComponents/RequestCard.vue'));
+Vue.component('notification-card', require('./components/ChatComponents/NotificationCard.vue'));
 
 
 const store = new Vuex.Store({
     state: {
-        notification: "",
+        newConv: "",
     },
     mutations: {
-        setNotification(state, _notification){
-          state.notification = _notification;
+        setNewConv(state, _newConv){
+          state.notification = _newConv;
         }
     },
     actions : {
 
     },
     getters: {
-        notification(state){
-            return state.notification;
+        newConv(state){
+          return state.newConv;
         }
     }
 });
