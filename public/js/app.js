@@ -44111,7 +44111,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.body{\r\n  background-color: #b5b5b5;\r\n  height: 100%;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\n}\n.welcome_card{\r\n  color: white;\r\n  margin: auto;\r\n  text-align: center;\n}\n.welcome_sign{\r\n  font-size: 48px;\r\n  margin: 0;\n}\n.name_home{\r\n  font-size: 36px;\r\n  margin: 0;\n}\n.email_home{\r\n  margin-top: 12px;\r\n  font-size: 24px;\n}\r\n", ""]);
 
 // exports
 
@@ -44159,6 +44159,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
@@ -44170,7 +44178,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Home view")])
+  return _c("div", { staticClass: "body" }, [
+    _c("div", { staticClass: "welcome_card" }, [
+      _c("h1", { staticClass: "welcome_sign" }, [_vm._v("Welcome back")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "name_home" }, [_vm._v(_vm._s(this.$user.name))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "email_home" }, [_vm._v(_vm._s(this.$user.email))])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -57608,18 +57624,6 @@ var render = function() {
               "router-link",
               { staticClass: "link ", attrs: { to: { path: "/chat" } } },
               [_c("p", [_vm._v("Chat")])]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          [
-            _c(
-              "router-link",
-              { staticClass: "link ", attrs: { to: { path: "/news" } } },
-              [_c("p", [_vm._v("News")])]
             )
           ],
           1

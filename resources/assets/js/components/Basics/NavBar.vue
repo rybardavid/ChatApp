@@ -19,14 +19,14 @@
             <p>Chat</p>
          </router-link>
         </li>
-
+        <!--
         <li>
           <router-link class="link "
            :to="{ path: '/news' }">
             <p>News</p>
          </router-link>
         </li>
-
+        -->
         <li>
             <router-link class="link "
             :to="{ path: '/people' }">
