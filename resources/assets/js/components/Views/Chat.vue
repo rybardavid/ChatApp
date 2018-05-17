@@ -64,7 +64,6 @@
                             </request-card>
             </div>
         </div>
-
     </div>
 
   </div>
@@ -72,22 +71,11 @@
 </template>
 
 <script>
-
-var objectToArray = function(obj)
-{
-    var _arr = [];
-
-    for (var key in obj) {
-        _arr.push(obj[key]);
-    }
-    return _arr;
-}
-
 export default {
   data(){
     return{
       myId:0,
-      requests:{},
+      requests:[],
       friends:[],
       convName: "",
       convUserID: 0,
@@ -103,19 +91,16 @@ export default {
             .then(response => {
               if(response.status == 200){
                  this.requests = response.data;
-                /* var obj = response.data;
-                 //var result = Object.values(objectResponse);
-                // var result = Array.from(Object.keys(objectResponse), k=>objectResponse[k]);
-
-                 this.requests = objectToArray(obj);*/
-                 console.log(this.requests);
               }
               else {
-                  this.requests = 'You dont have any friend requests.'
+                  this.requests = 'You dont have any friend requests.';
                 }
             });
     },
-    addReuqest(request){
+    addReuqest: function(request)
+    {
+      console.log('halo');
+      console.log(this.requests);
       if(typeof(this.requests) == "string")
       {
         this.requests = [];
@@ -125,16 +110,12 @@ export default {
         this.requests.push(request);
       }
     },
-    removeReq: function(index)
+    removeReq: function(index, conv)
     {
+      //console.log(conv);
+      this.$delete(this.requests, index);
       //console.log(this.requests);
-      console.log(index);
-      console.log(this.requests);
-      this.requests.splice(index,1);
-      console.log(this.requests);
-
-      //this.$forceUpdate();
-      this.getFriends();
+      this.addFriend(conv);
       this.initConversation();
     },
     getFriends: function()
@@ -142,7 +123,7 @@ export default {
       axios.get(this.$path + '/getconversations')
           .then(response => {
             if(response.status == 200){
-               console.log(response.data);
+               //console.log(response.data);
                this.friends = response.data;
             }
             else if(response.status == 204) {
@@ -153,7 +134,8 @@ export default {
     },
     removeFriend: function(index)
     {
-      this.friends.splice(index,1);
+      this.$delete(this.friends, index);
+
       if(this.$objIsEmpty(this.friends)){
         this.friends = 'We can help you with finding new';
       }
@@ -210,7 +192,6 @@ export default {
               friendUserID: this.convUserID,
           })
           .then(response => {
-            console.log(response);
               if(response.status == 200)
               {
                 console.log('message was sent');
@@ -242,7 +223,7 @@ export default {
         });
     },
     addFriend: function(conv)
-    {
+    {       
         if(typeof(this.friends) == "string")
         {
           this.friends = [];
@@ -255,8 +236,7 @@ export default {
     callRemoveFriend(conv){
       let index = this.friends.indexOf(conv);
       this.removeFriend(index);
-    }
-
+    },
   },
   created(){
       this.myId = this.$user.id;
@@ -271,7 +251,6 @@ export default {
 
     Echo.private('MessageChanel.' + this.$user.id)
         .listen('MessageEvent', e=>{
-              console.log(e);
               let objMsg =  {
                 message:e.message.message,
                 messageID: e.message.id,
@@ -297,7 +276,6 @@ export default {
       return val;
     },
   },
-
 
 }
 </script>

@@ -28,19 +28,19 @@ export default {
   methods:{
     acceptRequest: function()
     {
-      this.$emit('removeReqEvent', this.index);//deubgingen delete me uncoment axios
 
-      /*axios.post(this.$path + '/acceptrequest',
+      axios.post(this.$path + '/acceptrequest',
       {
           obj:this.request
       })
       .then(response => {
           if(response.status == 200)
           {
-            this.$emit('removeReqEvent', this.index);
+            
+            this.$emit('removeReqEvent', this.index, response.data);
           }
 
-      });*/
+      });
     }
   },
   created(){

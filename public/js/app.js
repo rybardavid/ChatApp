@@ -44489,23 +44489,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-
-
-var objectToArray = function objectToArray(obj) {
-  var _arr = [];
-
-  for (var key in obj) {
-    _arr.push(obj[key]);
-  }
-  return _arr;
-};
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       myId: 0,
-      requests: {},
+      requests: [],
       friends: [],
       convName: "",
       convUserID: 0,
@@ -44522,17 +44511,14 @@ var objectToArray = function objectToArray(obj) {
       axios.get(this.$path + '/getrequests').then(function (response) {
         if (response.status == 200) {
           _this.requests = response.data;
-          /* var obj = response.data;
-           //var result = Object.values(objectResponse);
-          // var result = Array.from(Object.keys(objectResponse), k=>objectResponse[k]);
-             this.requests = objectToArray(obj);*/
-          console.log(_this.requests);
         } else {
           _this.requests = 'You dont have any friend requests.';
         }
       });
     },
     addReuqest: function addReuqest(request) {
+      console.log('halo');
+      console.log(this.requests);
       if (typeof this.requests == "string") {
         this.requests = [];
         this.requests = new Array(request);
@@ -44540,16 +44526,11 @@ var objectToArray = function objectToArray(obj) {
         this.requests.push(request);
       }
     },
-
-    removeReq: function removeReq(index) {
+    removeReq: function removeReq(index, conv) {
+      //console.log(conv);
+      this.$delete(this.requests, index);
       //console.log(this.requests);
-      console.log(index);
-      console.log(this.requests);
-      this.requests.splice(index, 1);
-      console.log(this.requests);
-
-      //this.$forceUpdate();
-      this.getFriends();
+      this.addFriend(conv);
       this.initConversation();
     },
     getFriends: function getFriends() {
@@ -44557,7 +44538,7 @@ var objectToArray = function objectToArray(obj) {
 
       axios.get(this.$path + '/getconversations').then(function (response) {
         if (response.status == 200) {
-          console.log(response.data);
+          //console.log(response.data);
           _this2.friends = response.data;
         } else if (response.status == 204) {
           _this2.friends = 'We can help you with finding new';
@@ -44566,7 +44547,8 @@ var objectToArray = function objectToArray(obj) {
       });
     },
     removeFriend: function removeFriend(index) {
-      this.friends.splice(index, 1);
+      this.$delete(this.friends, index);
+
       if (this.$objIsEmpty(this.friends)) {
         this.friends = 'We can help you with finding new';
       }
@@ -44611,7 +44593,6 @@ var objectToArray = function objectToArray(obj) {
           convID: this.convId,
           friendUserID: this.convUserID
         }).then(function (response) {
-          console.log(response);
           if (response.status == 200) {
             console.log('message was sent');
           } else {
@@ -44663,7 +44644,6 @@ var objectToArray = function objectToArray(obj) {
     var _this4 = this;
 
     Echo.private('MessageChanel.' + this.$user.id).listen('MessageEvent', function (e) {
-      console.log(e);
       var objMsg = {
         message: e.message.message,
         messageID: e.message.id,
@@ -57391,7 +57371,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           _this.$refs.routeView.callRemoveFriend(_conv);
         }
       } else if (e.notification.type == "updateRequests") {
-        //console.log(e);
         if (_this.$route.path == "/chat") {
           var req = e.notification.request;
           //console.log(req);
@@ -58651,18 +58630,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['requestProp', 'indexProp'],
   methods: {
     acceptRequest: function acceptRequest() {
-      this.$emit('removeReqEvent', this.index); //deubgingen delete me uncoment axios
+      var _this = this;
 
-      /*axios.post(this.$path + '/acceptrequest',
-      {
-          obj:this.request
-      })
-      .then(response => {
-          if(response.status == 200)
-          {
-            this.$emit('removeReqEvent', this.index);
-          }
-        });*/
+      axios.post(this.$path + '/acceptrequest', {
+        obj: this.request
+      }).then(function (response) {
+        if (response.status == 200) {
+
+          _this.$emit('removeReqEvent', _this.index, response.data);
+        }
+      });
     }
   },
   created: function created() {

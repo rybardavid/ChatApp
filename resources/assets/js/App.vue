@@ -56,8 +56,7 @@ export default {
                 }
               }
               else if(e.notification.type == "updateRequests")
-              {
-                //console.log(e);
+              {                
                 if(this.$route.path == "/chat"){
                   let req = e.notification.request;
                   //console.log(req);

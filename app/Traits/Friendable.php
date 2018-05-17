@@ -9,6 +9,7 @@ use App\Events\NotifyPrivateEvent;
 use App\ReugularConversation;
 use App\friendship;
 use App\User;
+use Auth;
 
 trait Friendable
 {
@@ -99,7 +100,7 @@ trait Friendable
 
       if(isset($requestsInfo))
       {
-        return json_encode($requestsInfo , JSON_FORCE_OBJECT);
+        return $requestsInfo;
       }
       else
       {
@@ -152,7 +153,7 @@ trait Friendable
 
   public function removeFriend($friendUserId)
   {
-      $friendship =  friendship::where('status', 1)
+      $friendship = friendship::where('status', 1)
                                 ->where(function($query) use($friendUserId) {
                                   $query->where('requester', $friendUserId)
                                         ->where('user_requested', $this->id);
@@ -162,7 +163,12 @@ trait Friendable
                                         ->where('user_requested', $friendUserId);
                                 })->first();
 
-      $conv = $friendship->Conversation()->first();
+      if(!(isset($friendship)))
+      {
+          return "friendship doesnt exists";
+      }
+
+      $conv = $friendship->Conversation()->get();
       $requester = $friendship->requester;
       $requested = $friendship->user_requested;
 
@@ -229,7 +235,10 @@ trait Friendable
                                 );
 
         NotifyPrivateEvent::dispatch($notificationObj,$requesterId);
-        return Response::json('Request was accepted.', 200);
+
+        $conversation['userName'] = User::find($requesterId)->name;
+        $conversation['userID'] = $requesterId;
+        return json_encode($conversation , JSON_FORCE_OBJECT);
       }
 
       return Response::json('Acception of request faild.', 202);

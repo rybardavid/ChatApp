@@ -31,11 +31,12 @@ class UserController extends Controller
 
     public function removeFriend(Request $request)
     {
+        
         return Auth::user()->removeFriend($request['id']);
     }
 
     public function acceptRequest(Request $request)
-    {      
+    {
       $friendshipID = $request['obj']['request']['id'];
       $requesterID = $request['obj']['requester']['id'];
       $response = Auth::user()->createOneToOne($friendshipID);
