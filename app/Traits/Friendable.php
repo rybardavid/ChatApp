@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Events\NotifyPrivateEvent;
 use App\ReugularConversation;
-use App\Friendship;
+use App\friendship;
 use App\User;
 
 trait Friendable
@@ -40,10 +40,10 @@ trait Friendable
   public function getFriends()
   {
 
-      if( Friendship::where('status', 1)->exists())
+      if( friendship::where('status', 1)->exists())
       {
         $userId = $this->id;
-        $friendshipsList = Friendship::where('status', 1)
+        $friendshipsList = friendship::where('status', 1)
                                      ->where(function($query) use($userId) {
                                         $query->where('requester', $userId)
                                               ->orWhere('user_requested', $userId);
@@ -78,9 +78,9 @@ trait Friendable
 
   public function getRequests()
   {
-    if(Friendship::where('status', 0)->exists())
+    if(friendship::where('status', 0)->exists())
     {
-      $requests = Friendship::where('status', 0)
+      $requests = friendship::where('status', 0)
                                    ->where('user_requested', $this->id)
                                    ->get();
 
@@ -93,7 +93,7 @@ trait Friendable
         }
         else
         {
-          Friendship::where('requester', $request->requester)->delete();
+          friendship::where('requester', $request->requester)->delete();
         }
       }
 
@@ -113,7 +113,7 @@ trait Friendable
 
   public function sendRequest($userRequesedId)
   {
-      $request  = Friendship::where(function($query) use($userRequesedId){
+      $request  = friendship::where(function($query) use($userRequesedId){
                               $query->where('requester', $userRequesedId)
                                     ->where('user_requested', $this->id);
                             })
@@ -126,7 +126,7 @@ trait Friendable
         return Response::json('Request was sent before.', 202);
       }
 
-      $friendship = new Friendship;
+      $friendship = new friendship;
       $friendship->requester = $this->id;
       $friendship->user_requested = $userRequesedId;
       $friendship->save();
@@ -198,7 +198,7 @@ trait Friendable
 
   public function acceptRequest($requesterId)
   {
-      $friendship = Friendship::where('requester',$requesterId)
+      $friendship = friendship::where('requester',$requesterId)
                               ->where('user_requested',$this->id)
                               ->first();
 

@@ -9,13 +9,10 @@
 }
 
 .name p{
-  margin: 0;
-  padding: 4%;
+  margin: auto;
   color: #868686;
   font-family: sans-serif;
   text-align: center;
-  display: table-cell;
-  vertical-align: middle;
 }
 
 .name p span{
@@ -25,7 +22,7 @@
 .name{
   flex: 4 4 0;
   min-height: 40px;
-  display: table;
+  display: flex;
 }
 
 .acceptBTN{
@@ -33,14 +30,12 @@
   background-color: #13C478;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
-  padding: 2%;
-  display: table;
+  display: flex;
 }
 
 .acceptBTN a{
   text-decoration: none;
   color:  white;
   text-align: center;
-  display: table-cell;
-  vertical-align: middle;
+  flex: 1 1 0;
 }

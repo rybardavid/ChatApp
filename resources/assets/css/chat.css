@@ -33,7 +33,7 @@
 
 .chat_header > div{
   height: 100%;
-  display:table;
+  display:flex;
   color: #868686;
   text-align: center;
   border-right: 1px solid grey;
@@ -44,8 +44,9 @@
 
 .chat_header > div p{
   display: table-cell;
-  vertical-align: middle;
-  margin: 0;
+  /*vertical-align: middle;
+  margin: 0;*/
+  flex: 1 1 0;
 }
 
 .chat_content{
