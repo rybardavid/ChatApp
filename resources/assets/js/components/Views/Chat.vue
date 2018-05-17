@@ -72,11 +72,22 @@
 </template>
 
 <script>
+
+var objectToArray = function(obj)
+{
+    var _arr = [];
+
+    for (var key in obj) {
+        _arr.push(obj[key]);
+    }
+    return _arr;
+}
+
 export default {
   data(){
     return{
       myId:0,
-      requests:[],
+      requests:{},
       friends:[],
       convName: "",
       convUserID: 0,
@@ -92,6 +103,12 @@ export default {
             .then(response => {
               if(response.status == 200){
                  this.requests = response.data;
+                /* var obj = response.data;
+                 //var result = Object.values(objectResponse);
+                // var result = Array.from(Object.keys(objectResponse), k=>objectResponse[k]);
+
+                 this.requests = objectToArray(obj);*/
+                 console.log(this.requests);
               }
               else {
                   this.requests = 'You dont have any friend requests.'
@@ -111,7 +128,11 @@ export default {
     removeReq: function(index)
     {
       //console.log(this.requests);
+      console.log(index);
+      console.log(this.requests);
       this.requests.splice(index,1);
+      console.log(this.requests);
+
       //this.$forceUpdate();
       this.getFriends();
       this.initConversation();
@@ -219,10 +240,6 @@ export default {
             }
 
         });
-    },
-    afterLog: function()
-    {
-      console.log('hi after five seconds ? :D ');
     },
     addFriend: function(conv)
     {

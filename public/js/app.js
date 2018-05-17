@@ -44491,11 +44491,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+var objectToArray = function objectToArray(obj) {
+  var _arr = [];
+
+  for (var key in obj) {
+    _arr.push(obj[key]);
+  }
+  return _arr;
+};
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       myId: 0,
-      requests: [],
+      requests: {},
       friends: [],
       convName: "",
       convUserID: 0,
@@ -44512,6 +44522,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.get(this.$path + '/getrequests').then(function (response) {
         if (response.status == 200) {
           _this.requests = response.data;
+          /* var obj = response.data;
+           //var result = Object.values(objectResponse);
+          // var result = Array.from(Object.keys(objectResponse), k=>objectResponse[k]);
+             this.requests = objectToArray(obj);*/
+          console.log(_this.requests);
         } else {
           _this.requests = 'You dont have any friend requests.';
         }
@@ -44528,7 +44543,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     removeReq: function removeReq(index) {
       //console.log(this.requests);
+      console.log(index);
+      console.log(this.requests);
       this.requests.splice(index, 1);
+      console.log(this.requests);
+
       //this.$forceUpdate();
       this.getFriends();
       this.initConversation();
@@ -44617,9 +44636,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           _this3.messages = Object.values(response.data);
         }
       });
-    },
-    afterLog: function afterLog() {
-      console.log('hi after five seconds ? :D ');
     },
     addFriend: function addFriend(conv) {
       if (typeof this.friends == "string") {
@@ -58597,7 +58613,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, ".card{\r\n  margin: none;\r\n  margin: 4%;\r\n  display: flex;\r\n  flex-flow: column;\r\n  border-radius: 4px;\r\n  background-color: #e6e6e6;\r\n  border: 1px solid grey;\r\n}\r\n\r\n.name p{\r\n  margin: auto;\r\n  color: #868686;\r\n  font-family: sans-serif;\r\n  text-align: center;\r\n}\r\n\r\n.name p span{\r\n  display: block;\r\n}\r\n\r\n.name{\r\n  flex: 4 4 0;\r\n  min-height: 40px;\r\n  display: flex;\r\n}\r\n\r\n.acceptBTN{\r\n  flex: 1 1 0;\r\n  background-color: #13C478;\r\n  border-bottom-right-radius: 4px;\r\n  border-bottom-left-radius: 4px;\r\n  display: flex;\r\n}\r\n\r\n.acceptBTN a{\r\n  text-decoration: none;\r\n  color:  white;\r\n  text-align: center;\r\n  flex: 1 1 0;\r\n}\r\n", ""]);
+exports.push([module.i, ".card{\r\n  margin: none;\r\n  margin: 4%;\r\n  display: flex;\r\n  flex-flow: column;\r\n  border-radius: 4px;\r\n  background-color: #e6e6e6;\r\n  border: 1px solid grey;\r\n}\r\n\r\n.name p{\r\n  margin: auto;\r\n  color: #868686;\r\n  font-family: sans-serif;\r\n  text-align: center;\r\n}\r\n\r\n.name p span{\r\n  display: block;\r\n}\r\n\r\n.name{\r\n  flex: 4 4 0;\r\n  min-height: 40px;\r\n  display: flex;\r\n}\r\n\r\n.acceptBTN{  \r\n  background-color: #13C478;\r\n  border-bottom-right-radius: 4px;\r\n  border-bottom-left-radius: 4px;\r\n  display: flex;\r\n}\r\n\r\n.acceptBTN a{\r\n  text-decoration: none;\r\n  color:  white;\r\n  text-align: center;\r\n  flex: 1 1 0;\r\n}\r\n", ""]);
 
 // exports
 
@@ -58635,15 +58651,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['requestProp', 'indexProp'],
   methods: {
     acceptRequest: function acceptRequest() {
-      var _this = this;
+      this.$emit('removeReqEvent', this.index); //deubgingen delete me uncoment axios
 
-      axios.post(this.$path + '/acceptrequest', {
-        obj: this.request
-      }).then(function (response) {
-        if (response.status == 200) {
-          _this.$emit('removeReqEvent', _this.index);
-        }
-      });
+      /*axios.post(this.$path + '/acceptrequest',
+      {
+          obj:this.request
+      })
+      .then(response => {
+          if(response.status == 200)
+          {
+            this.$emit('removeReqEvent', this.index);
+          }
+        });*/
     }
   },
   created: function created() {

@@ -28,7 +28,9 @@ export default {
   methods:{
     acceptRequest: function()
     {
-      axios.post(this.$path + '/acceptrequest',
+      this.$emit('removeReqEvent', this.index);//deubgingen delete me uncoment axios
+
+      /*axios.post(this.$path + '/acceptrequest',
       {
           obj:this.request
       })
@@ -38,7 +40,7 @@ export default {
             this.$emit('removeReqEvent', this.index);
           }
 
-      });
+      });*/
     }
   },
   created(){
