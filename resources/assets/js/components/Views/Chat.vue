@@ -23,11 +23,11 @@
             </p>
         </div>
         <div v-else>
-            <div  v-for="(friend, index) in friends" :key="index">
+            <div  v-for="(friend, index) in conversationsComp" :key="friend['userID']">
               <friend-card  :indexProp="index"
                             :userProp="friend"
                             v-on:openConvEvent="openConversation"
-                            v-on:removeFriendEvent="removeFriend">
+                            v-on:updateCards="updateCards">
                             </friend-card>
             </div>
         </div>
@@ -57,10 +57,10 @@
             <p>{{this.requests}}</p>
         </div>
         <div v-else>
-            <div  v-for="(request, index) in requests" :key="index">
+            <div  v-for="(request, index) in requestsComp" :key="request.requester.email">
               <request-card :indexProp="index"
                             :requestProp="request"
-                            v-on:removeReqEvent='removeReq'>
+                            v-on:updateCards='updateCards'>
                             </request-card>
             </div>
         </div>
@@ -91,6 +91,10 @@ export default {
             .then(response => {
               if(response.status == 200){
                  this.requests = response.data;
+                 //console.log(response.data);
+              }
+              else if(response.status == 500){
+                 this.getRequests();
               }
               else {
                   this.requests = 'You dont have any friend requests.';
@@ -99,8 +103,6 @@ export default {
     },
     addReuqest: function(request)
     {
-      console.log('halo');
-      console.log(this.requests);
       if(typeof(this.requests) == "string")
       {
         this.requests = [];
@@ -110,12 +112,31 @@ export default {
         this.requests.push(request);
       }
     },
-    removeReq: function(index, conv)
+    updateCards: function(requests, conversations)
     {
       //console.log(conv);
-      this.$delete(this.requests, index);
+      //this.$delete(this.requests, index);
       //console.log(this.requests);
-      this.addFriend(conv);
+      //this.addFriend(conv);
+
+      if(requests.exception === null)
+      {
+        this.requests = "You dont have any friend requests.";
+      }
+      else{
+        this.requests = requests;
+      }
+
+      if(conversations.exception === null)
+      {
+        this.friends = 'We can help you with finding new';
+      }
+      else
+      {
+        this.friends = conversations;
+      }
+
+      this.$forceUpdate();
       this.initConversation();
     },
     getFriends: function()
@@ -125,6 +146,9 @@ export default {
             if(response.status == 200){
                //console.log(response.data);
                this.friends = response.data;
+            }
+            else if(response.status == 500){
+               this.getFriends();
             }
             else if(response.status == 204) {
                 this.friends = 'We can help you with finding new';
@@ -223,7 +247,7 @@ export default {
         });
     },
     addFriend: function(conv)
-    {       
+    {
         if(typeof(this.friends) == "string")
         {
           this.friends = [];
@@ -266,6 +290,12 @@ export default {
               }
     });
   },
+  beforeUpdate(){
+    /*console.log("requests:");
+    console.log(this.requests);
+    console.log("frineds:");
+    console.log(this.friends);*/
+  },
   watch:{
     convId:function(val)
     {
@@ -276,6 +306,14 @@ export default {
       return val;
     },
   },
+  computed:{
+    requestsComp(){
+      return this.requests;
+    },
+    conversationsComp(){
+      return this.friends;
+    }
+  }
 
 }
 </script>

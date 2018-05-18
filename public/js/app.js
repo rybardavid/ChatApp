@@ -44527,14 +44527,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.get(this.$path + '/getrequests').then(function (response) {
         if (response.status == 200) {
           _this.requests = response.data;
+          //console.log(response.data);
+        } else if (response.status == 500) {
+          _this.getRequests();
         } else {
           _this.requests = 'You dont have any friend requests.';
         }
       });
     },
     addReuqest: function addReuqest(request) {
-      console.log('halo');
-      console.log(this.requests);
       if (typeof this.requests == "string") {
         this.requests = [];
         this.requests = new Array(request);
@@ -44542,11 +44543,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.requests.push(request);
       }
     },
-    removeReq: function removeReq(index, conv) {
+    updateCards: function updateCards(requests, conversations) {
       //console.log(conv);
-      this.$delete(this.requests, index);
+      //this.$delete(this.requests, index);
       //console.log(this.requests);
-      this.addFriend(conv);
+      //this.addFriend(conv);
+
+      if (requests.exception === null) {
+        this.requests = "You dont have any friend requests.";
+      } else {
+        this.requests = requests;
+      }
+
+      if (conversations.exception === null) {
+        this.friends = 'We can help you with finding new';
+      } else {
+        this.friends = conversations;
+      }
+
+      this.$forceUpdate();
       this.initConversation();
     },
     getFriends: function getFriends() {
@@ -44556,6 +44571,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         if (response.status == 200) {
           //console.log(response.data);
           _this2.friends = response.data;
+        } else if (response.status == 500) {
+          _this2.getFriends();
         } else if (response.status == 204) {
           _this2.friends = 'We can help you with finding new';
         }
@@ -44672,6 +44689,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     });
   },
+  beforeUpdate: function beforeUpdate() {
+    /*console.log("requests:");
+    console.log(this.requests);
+    console.log("frineds:");
+    console.log(this.friends);*/
+  },
 
   watch: {
     convId: function convId(val) {
@@ -44679,6 +44702,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     myId: function myId(val) {
       return val;
+    }
+  },
+  computed: {
+    requestsComp: function requestsComp() {
+      return this.requests;
+    },
+    conversationsComp: function conversationsComp() {
+      return this.friends;
     }
   }
 
@@ -44729,16 +44760,16 @@ var render = function() {
             ])
           : _c(
               "div",
-              _vm._l(_vm.friends, function(friend, index) {
+              _vm._l(_vm.conversationsComp, function(friend, index) {
                 return _c(
                   "div",
-                  { key: index },
+                  { key: friend["userID"] },
                   [
                     _c("friend-card", {
                       attrs: { indexProp: index, userProp: friend },
                       on: {
                         openConvEvent: _vm.openConversation,
-                        removeFriendEvent: _vm.removeFriend
+                        updateCards: _vm.updateCards
                       }
                     })
                   ],
@@ -44817,14 +44848,14 @@ var render = function() {
             ])
           : _c(
               "div",
-              _vm._l(_vm.requests, function(request, index) {
+              _vm._l(_vm.requestsComp, function(request, index) {
                 return _c(
                   "div",
-                  { key: index },
+                  { key: request.requester.email },
                   [
                     _c("request-card", {
                       attrs: { indexProp: index, requestProp: request },
-                      on: { removeReqEvent: _vm.removeReq }
+                      on: { updateCards: _vm.updateCards }
                     })
                   ],
                   1
@@ -57358,6 +57389,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       url = url.slice(0, found.index);
       return url;
     }
+
   },
   created: function created() {
     var _this = this;
@@ -57373,24 +57405,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
 
     Echo.private('NotifyChanel.' + this.$user.id).listen('NotifyPrivateEvent', function (e) {
-
-      _this.$refs.notifiComp.refTest(e.notification);
+      var notification = {
+        type: e.notification.type,
+        name: e.notification.name
+      };
+      _this.$refs.notifiComp.refTest(notification);
 
       if (e.notification.type == "acceptReuqest") {
         if (_this.$route.path == "/chat") {
           var conv = e.notification.conversation;
-          _this.$refs.routeView.addFriend(conv);
+          var conversations = e.notification.conversations;
+          var requests = e.notification.requests;
+          _this.$refs.routeView.updateCards(requests, conversations);
         }
       } else if (e.notification.type == "removedFriend") {
         if (_this.$route.path == "/chat") {
-          var _conv = e.notification.conversation;
-          _this.$refs.routeView.callRemoveFriend(_conv);
+          var _conversations = e.notification.conversations;
+          var _requests = e.notification.requests;
+          _this.$refs.routeView.updateCards(_requests, _conversations);
         }
       } else if (e.notification.type == "updateRequests") {
         if (_this.$route.path == "/chat") {
           var req = e.notification.request;
-          //console.log(req);
-          _this.$refs.routeView.addReuqest(req);
+          var _conversations2 = e.notification.conversations;
+          var _requests2 = e.notification.requests;
+          _this.$refs.routeView.updateCards(_requests2, _conversations2);
         }
       }
     });
@@ -57805,9 +57844,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     refTest: function refTest(obj) {
       var _this = this;
 
-      //console.log(obj);
+      console.log(obj);
       this.notificationType = obj.type;
-      this.notifications.push(obj);
+      this.notifications.push(obj.name);
       //this.notificationType = this.$store.getters.notification;
       setTimeout(function () {
         _this.remNotifi(0);
@@ -57844,14 +57883,14 @@ var render = function() {
     _vm.notifications.length > 0
       ? _c(
           "ul",
-          _vm._l(_vm.notifications, function(notif, index) {
+          _vm._l(_vm.notifications, function(notify, index) {
             return _c(
               "li",
               { key: index },
               [
                 _c("notification-card", {
                   attrs: {
-                    contentProp: notif.user.name,
+                    contentProp: notify,
                     typeProp: _vm.type,
                     indexProp: index
                   },
@@ -58234,7 +58273,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         id: this.user.userID
       }).then(function (response) {
         if (response.status == 200) {
-          _this.$emit('removeFriendEvent', _this.index);
+          var data = response.data;
+          _this.$emit('updateCards', data.requests, data.conversations);
         }
       });
     },
@@ -58640,8 +58680,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         obj: this.request
       }).then(function (response) {
         if (response.status == 200) {
-
-          _this.$emit('removeReqEvent', _this.index, response.data);
+          var data = response.data;
+          _this.$emit('updateCards', data.requests, data.conversations);
         }
       });
     }

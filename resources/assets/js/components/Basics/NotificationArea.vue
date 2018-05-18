@@ -2,8 +2,8 @@
 
   <div class="notifications ">
       <ul v-if="notifications.length > 0">
-        <li v-for="(notif, index) in notifications" :key="index">
-            <notification-card :contentProp="notif.user.name"
+        <li v-for="(notify, index) in notifications" :key="index">
+            <notification-card :contentProp="notify"
                                :typeProp="type"
                                :indexProp="index"
                                v-on:removeMe="remNotifi">
@@ -29,9 +29,9 @@ export default {
     },
     refTest: function(obj)
     {
-      //console.log(obj);
+      console.log(obj);
       this.notificationType = obj.type;
-      this.notifications.push(obj);
+      this.notifications.push(obj.name);
       //this.notificationType = this.$store.getters.notification;
       setTimeout(() => {this.remNotifi(0)},10000);
     }

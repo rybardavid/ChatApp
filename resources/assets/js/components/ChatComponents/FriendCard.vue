@@ -46,7 +46,8 @@ export default {
           })
           .then(response => {
              if(response.status == 200){
-                this.$emit('removeFriendEvent', this.index);
+                let data = response.data;
+                this.$emit('updateCards', data.requests, data.conversations);
              }
           });
 

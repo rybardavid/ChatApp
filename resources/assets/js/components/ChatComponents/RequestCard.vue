@@ -36,8 +36,8 @@ export default {
       .then(response => {
           if(response.status == 200)
           {
-            
-            this.$emit('removeReqEvent', this.index, response.data);
+            let data = response.data;            
+            this.$emit('updateCards', data.requests, data.conversations);
           }
 
       });

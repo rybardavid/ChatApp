@@ -132,15 +132,15 @@ trait Friendable
       $friendship->user_requested = $userRequesedId;
       $friendship->save();
 
-      $user = User::find($this->id);
-      $request = array("request" => $friendship, "requester" => $user);
+      $conversations = User::find($userRequesedId)->getConversations();
+      $requests = User::find($userRequesedId)->getRequests();
       $notificationObj = array(
                                 'type' => 'updateRequests',
-                                'user' => $user,
-                                'request' => $request,
+                                'name' => Auth::user()->name,
+                                'conversations' => $conversations,
+                                'requests' => $requests,
 
                               );
-
       NotifyPrivateEvent::dispatch($notificationObj,$userRequesedId);
 
       if($friendship){
@@ -177,15 +177,6 @@ trait Friendable
                     'requested' => $requested,
                   );
       $listnerId = ($requester == $this->id) ? $requested : $requester;
-      $user = User::find($this->id);
-      $notificationObj = array(
-                                'type' => 'removedFriend',
-                                'user' => $user,
-                                'conversation' => $conv,
-
-                              );
-
-      NotifyPrivateEvent::dispatch($notificationObj,$listnerId);
 
       $friendships = DB::table('friendships');
 
@@ -199,7 +190,18 @@ trait Friendable
                                         ->where('user_requested', $friendUserId);
                                 })->delete();
 
-      return Response::json('Friend was removed', 200);
+
+      $conversations = User::find($listnerId)->getConversations();
+      $requests = User::find($listnerId)->getRequests();
+      $notificationObj = array(
+                                'type' => 'removedFriend',
+                                'name' => Auth::user()->name,
+                                'conversations' => $conversations,
+                                'requests' => $requests,
+
+                              );
+     NotifyPrivateEvent::dispatch($notificationObj,$listnerId);
+     return true;
   }
 
   public function acceptRequest($requesterId)
@@ -210,15 +212,18 @@ trait Friendable
 
       if(isset($friendship))
       {
-        $friendship->update([
+        /*$friendship->update([
           'status' => 1
-        ]);
+        ]);*/
+        $friendship->status = 1;
+        $friendship->save();
 
-        $user = User::find($this->id);
+        /*$user = User::find($this->id);
 
-        $conversation = $friendship->Conversation()->first();
+        $conversation = $friendship->Conversation()->first();*/
 
-        if($conversation->name == "one to one")
+
+        /*if($conversation->name == "one to one")
             $convName = $user->name;
 
         $conversation = array(
@@ -226,19 +231,20 @@ trait Friendable
                                'userName' => $user->name,
                                'conversationID' => $conversation->id,
                                'conversationName' => $convName,
-                             );
+                             );*/
+        $conversations = User::find($requesterId)->getConversations();
+        $requests = User::find($requesterId)->getRequests();
 
         $notificationObj = array(
                                   'type' => 'acceptReuqest',
-                                  'user' => $user,
-                                  'conversation' => $conversation
+                                  'name' => Auth::user()->name,
+                                  'conversations' => $conversations,
+                                  'requests' => $requests,
                                 );
 
         NotifyPrivateEvent::dispatch($notificationObj,$requesterId);
 
-        $conversation['userName'] = User::find($requesterId)->name;
-        $conversation['userID'] = $requesterId;
-        return json_encode($conversation , JSON_FORCE_OBJECT);
+        return true;
       }
 
       return Response::json('Acception of request faild.', 202);
