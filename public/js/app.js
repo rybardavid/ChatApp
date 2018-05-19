@@ -58285,7 +58285,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   created: function created() {
     this.isOnline = Boolean(Math.floor(Math.random() * 2));
     this.user = this.userProp;
+    console.log(this.user);
     this.index = this.indexProp;
+
+    Echo.private('UserStatusChanel.' + this.user.userID).listen('UserStatusEvent', function (e) {
+      console.log(e);
+    });
   }
 });
 

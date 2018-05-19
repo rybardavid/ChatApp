@@ -39,7 +39,7 @@ export default {
     };
 
     Echo.private('NotifyChanel.' + this.$user.id)
-        .listen('NotifyPrivateEvent', e=>{            
+        .listen('NotifyPrivateEvent', e=>{
               let notification = {
                 type:e.notification.type,
                 name:e.notification.name,
@@ -72,7 +72,7 @@ export default {
                 }
               }
 
-          });
+          });        
   }
 }
 </script>

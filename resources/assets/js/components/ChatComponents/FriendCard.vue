@@ -60,8 +60,15 @@ export default {
   created(){
     this.isOnline = Boolean(Math.floor(Math.random() * 2));
     this.user = this.userProp;
+    console.log(this.user);
     this.index = this.indexProp;
+
+    Echo.private('UserStatusChanel.' + this.user.userID)
+        .listen('UserStatusEvent', e=>{
+            console.log(e);
+        });
   },
+  
 }
 </script>
 
