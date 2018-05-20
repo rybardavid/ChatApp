@@ -15,6 +15,14 @@
     return (int) $user->id === (int) $id;
 });*/
 
-Broadcast::channel('MessageChanel.{userId}', function ($user, $id) {
+Broadcast::channel('MessageChanel.{userId}', function () {
+    return true;
+});
+
+Broadcast::channel('NotifyChanel.{userId}', function () {
+    return true;
+});//($user, $id)
+
+Broadcast::channel('UserStatusChanel.{userId}', function () {
     return true;
 });

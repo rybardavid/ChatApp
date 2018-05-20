@@ -13,8 +13,8 @@
                 <a href="" v-on:click.prevent='removeFriend()'><p>Remove friend</p></a>
               </div>
               <div class="status"
-                  :class="{'online': (isOnline == true),
-                           'offline': (isOnline == false) }">
+                  :class="{'online': (statusComp == true),
+                           'offline': (statusComp == false) }">
                 <p> </p>
               </div>
 
@@ -46,7 +46,8 @@ export default {
           })
           .then(response => {
              if(response.status == 200){
-                this.$emit('removeFriendEvent', this.index);
+                let data = response.data;
+                this.$emit('updateCards', data.requests, data.conversations);
              }
           });
 
@@ -56,11 +57,23 @@ export default {
       this.$emit('openConvEvent', this.index);
     },
   },
-  created(){
-    this.isOnline = Boolean(Math.floor(Math.random() * 2));
-    this.user = this.userProp;
-    this.index = this.indexProp;
+  computed:{
+    statusComp(){
+      return this.isOnline;
+    }
   },
+  created(){
+    this.user = this.userProp;
+    this.isOnline = this.user.status;
+    this.index = this.indexProp;
+    console.log(this.user);
+
+    Echo.private('UserStatusChanel.' + this.user.userID)
+        .listen('UserStatusEvent', e=>{
+            this.isOnline = e.status;
+        });
+  },
+
 }
 </script>
 

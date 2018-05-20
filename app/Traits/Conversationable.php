@@ -38,16 +38,20 @@ trait Conversationable
 
             $conversation = $friendship->Conversation()->first();
 
-            $userName = User::find($usersID)->name;
+            $convUser =  User::find($usersID);
+            $userName = $convUser->name;
 
             if($conversation->name == "one to one")
                 $convName = $userName;
+
+            $status  = $convUser->Status()->first();
 
             $conversations[] = array(
                                       'userID' => $usersID,
                                       'userName' => $userName,
                                       'conversationID' => $conversation->id,
                                       'conversationName' => $convName,
+                                      'status' => $status->online,
                                     );
         }
 
@@ -108,10 +112,12 @@ trait Conversationable
 
       foreach ($messages as $key => $message)
       {
+
         $myMessage = ($message->user_id == $this->id) ? true : false;
         $result[] = array(
                           'messageID' => $message->id,
                           'message' => $message->body,
+                          'timeStamp' => $message->created_at,
                           'myMsg' => $myMessage
                          );
       }

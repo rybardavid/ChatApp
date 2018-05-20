@@ -1,0 +1,76 @@
+/***List style***/
+.notifications{
+  position: absolute;
+  bottom: 0px; right: 20px;
+}
+
+.notifications ul{
+  list-style: none;
+}
+/***List style***/
+
+/***Card style***/
+.notification{
+  background-color: grey;
+  border-radius: 4px;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  height: 80px;
+  width: 260px;
+}
+
+.notification p{
+    color: white;
+    margin: auto;
+    padding-right: 2%;
+    padding-left: 2%;
+    height: 60px;
+}
+
+.top_space{
+  padding-top: 4px;
+  height: 16px;
+}
+
+.top_space a{
+  float: right;
+  text-decoration: none;
+  padding-right: 2%;
+}
+
+.acceptFriend{
+    background-color: rgba(49, 221, 112, 0.91);
+}
+
+.acceptFriend p{
+    color: rgba(47, 154, 34, 1);
+}
+
+.acceptFriend a{
+    color: rgba(47, 154, 34, 1);
+}
+
+.removedFriend{
+    background-color: rgba(238, 73, 46, 0.96);
+}
+
+.removedFriend p{
+    color: rgba(163, 36, 15, 1);
+}
+
+.removedFriend a{
+    color: rgba(163, 36, 15, 1);
+}
+
+.updateRequests{
+    background-color: rgba(93, 93, 93, 0.96);
+}
+
+.updateRequests p{
+    color: rgba(52, 52, 52, 1);
+}
+
+.updateRequests a{
+    color: rgba(52, 52, 52, 1);
+}
+/***Card style***/

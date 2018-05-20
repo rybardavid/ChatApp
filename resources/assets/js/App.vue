@@ -1,7 +1,8 @@
 <template lang="html">
   <div class="app_wrapper">
     <navbar></navbar>
-    <router-view> </router-view>
+    <router-view ref='routeView'> </router-view>
+    <notifications ref='notifiComp'></notifications>
   </div>
 </template>
 
@@ -20,7 +21,8 @@ export default {
       found.index--;
       url = url.slice(0,found.index);
       return url;
-    }
+    },
+
   },
   created(){
     Vue.prototype.$appName = this.appNameProp;
@@ -35,6 +37,42 @@ export default {
       }
       return true;
     };
+
+    Echo.private('NotifyChanel.' + this.$user.id)
+        .listen('NotifyPrivateEvent', e=>{
+              let notification = {
+                type:e.notification.type,
+                name:e.notification.name,
+              };
+              this.$refs.notifiComp.refTest(notification);
+
+              if(e.notification.type == "acceptReuqest"){
+                  if(this.$route.path == "/chat"){
+                    let conv = e.notification.conversation;
+                    let conversations = e.notification.conversations;
+                    let requests = e.notification.requests;
+                    this.$refs.routeView.updateCards(requests,conversations);
+                  }
+              }
+              else if(e.notification.type == "removedFriend")
+              {
+                if(this.$route.path == "/chat"){
+                  let conversations = e.notification.conversations;
+                  let requests = e.notification.requests;
+                  this.$refs.routeView.updateCards(requests,conversations);
+                }
+              }
+              else if(e.notification.type == "updateRequests")
+              {
+                if(this.$route.path == "/chat"){
+                  let req = e.notification.request;
+                  let conversations = e.notification.conversations;
+                  let requests = e.notification.requests;
+                  this.$refs.routeView.updateCards(requests,conversations);
+                }
+              }
+
+          });        
   }
 }
 </script>

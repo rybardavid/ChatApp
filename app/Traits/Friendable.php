@@ -5,9 +5,11 @@ namespace App\Traits;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\DB;
 
+use App\Events\NotifyPrivateEvent;
 use App\ReugularConversation;
-use App\Friendship;
+use App\friendship;
 use App\User;
+use Auth;
 
 trait Friendable
 {
@@ -39,10 +41,10 @@ trait Friendable
   public function getFriends()
   {
 
-      if( Friendship::where('status', 1)->exists())
+      if( friendship::where('status', 1)->exists())
       {
         $userId = $this->id;
-        $friendshipsList = Friendship::where('status', 1)
+        $friendshipsList = friendship::where('status', 1)
                                      ->where(function($query) use($userId) {
                                         $query->where('requester', $userId)
                                               ->orWhere('user_requested', $userId);
@@ -77,9 +79,9 @@ trait Friendable
 
   public function getRequests()
   {
-    if(Friendship::where('status', 0)->exists())
+    if(friendship::where('status', 0)->exists())
     {
-      $requests = Friendship::where('status', 0)
+      $requests = friendship::where('status', 0)
                                    ->where('user_requested', $this->id)
                                    ->get();
 
@@ -92,13 +94,13 @@ trait Friendable
         }
         else
         {
-          Friendship::where('requester', $request->requester)->delete();
+          friendship::where('requester', $request->requester)->delete();
         }
       }
 
       if(isset($requestsInfo))
       {
-        return json_encode($requestsInfo , JSON_FORCE_OBJECT);
+        return $requestsInfo;
       }
       else
       {
@@ -112,7 +114,7 @@ trait Friendable
 
   public function sendRequest($userRequesedId)
   {
-      $request  = Friendship::where(function($query) use($userRequesedId){
+      $request  = friendship::where(function($query) use($userRequesedId){
                               $query->where('requester', $userRequesedId)
                                     ->where('user_requested', $this->id);
                             })
@@ -125,10 +127,21 @@ trait Friendable
         return Response::json('Request was sent before.', 202);
       }
 
-      $friendship = Friendship::create([
-        'requester' => $this->id,
-        'user_requested' => $userRequesedId,
-      ]);
+      $friendship = new friendship;
+      $friendship->requester = $this->id;
+      $friendship->user_requested = $userRequesedId;
+      $friendship->save();
+
+      $conversations = User::find($userRequesedId)->getConversations();
+      $requests = User::find($userRequesedId)->getRequests();
+      $notificationObj = array(
+                                'type' => 'updateRequests',
+                                'name' => Auth::user()->name,
+                                'conversations' => $conversations,
+                                'requests' => $requests,
+
+                              );
+      NotifyPrivateEvent::dispatch($notificationObj,$userRequesedId);
 
       if($friendship){
         return Response::json('Request was sent.', 200);
@@ -140,6 +153,31 @@ trait Friendable
 
   public function removeFriend($friendUserId)
   {
+      $friendship = friendship::where('status', 1)
+                                ->where(function($query) use($friendUserId) {
+                                  $query->where('requester', $friendUserId)
+                                        ->where('user_requested', $this->id);
+                                })
+                                ->orWhere(function($query) use($friendUserId) {
+                                  $query->where('requester', $this->id)
+                                        ->where('user_requested', $friendUserId);
+                                })->first();
+
+      if(!(isset($friendship)))
+      {
+          return "friendship doesnt exists";
+      }
+
+      $conv = $friendship->Conversation()->get();
+      $requester = $friendship->requester;
+      $requested = $friendship->user_requested;
+
+      $obj = array(
+                    'requester' => $requester,
+                    'requested' => $requested,
+                  );
+      $listnerId = ($requester == $this->id) ? $requested : $requester;
+
       $friendships = DB::table('friendships');
 
       $friendship = $friendships->where('status', 1)
@@ -152,22 +190,61 @@ trait Friendable
                                         ->where('user_requested', $friendUserId);
                                 })->delete();
 
-      return Response::json('Friend was removed', 200);
+
+      $conversations = User::find($listnerId)->getConversations();
+      $requests = User::find($listnerId)->getRequests();
+      $notificationObj = array(
+                                'type' => 'removedFriend',
+                                'name' => Auth::user()->name,
+                                'conversations' => $conversations,
+                                'requests' => $requests,
+
+                              );
+     NotifyPrivateEvent::dispatch($notificationObj,$listnerId);
+     return true;
   }
 
   public function acceptRequest($requesterId)
   {
-      $friendship = Friendship::where('requester',$requesterId)
+      $friendship = friendship::where('requester',$requesterId)
                               ->where('user_requested',$this->id)
                               ->first();
 
       if(isset($friendship))
       {
-        $friendship->update([
+        /*$friendship->update([
           'status' => 1
-        ]);       
+        ]);*/
+        $friendship->status = 1;
+        $friendship->save();
 
-        return Response::json('Request was accepted.', 200);
+        /*$user = User::find($this->id);
+
+        $conversation = $friendship->Conversation()->first();*/
+
+
+        /*if($conversation->name == "one to one")
+            $convName = $user->name;
+
+        $conversation = array(
+                               'userID' => $user->id,
+                               'userName' => $user->name,
+                               'conversationID' => $conversation->id,
+                               'conversationName' => $convName,
+                             );*/
+        $conversations = User::find($requesterId)->getConversations();
+        $requests = User::find($requesterId)->getRequests();
+
+        $notificationObj = array(
+                                  'type' => 'acceptReuqest',
+                                  'name' => Auth::user()->name,
+                                  'conversations' => $conversations,
+                                  'requests' => $requests,
+                                );
+
+        NotifyPrivateEvent::dispatch($notificationObj,$requesterId);
+
+        return true;
       }
 
       return Response::json('Acception of request faild.', 202);

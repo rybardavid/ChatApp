@@ -30,9 +30,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
+
     public function Messages()
     {
         return $this->hasMany('App\Messsage');
+    }
+
+    public function Status()
+    {
+        return $this->hasOne('App\UserStatus');
     }
 }
