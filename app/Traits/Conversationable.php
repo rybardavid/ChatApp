@@ -112,10 +112,12 @@ trait Conversationable
 
       foreach ($messages as $key => $message)
       {
+
         $myMessage = ($message->user_id == $this->id) ? true : false;
         $result[] = array(
                           'messageID' => $message->id,
                           'message' => $message->body,
+                          'timeStamp' => $message->created_at,
                           'myMsg' => $myMessage
                          );
       }

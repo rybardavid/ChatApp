@@ -36,9 +36,10 @@
 
     <div class="chat_flex_mid conversation_wrapper">
         <div class="messages" v-if="myId != 'undefined'">
-            <div  v-for="(msg, index) in messages" :key="msg.messageID+`-`+index">
+            <div  v-for="(msg, index) in messagesComp" :key="msg.messageID"><!--msg.messageID+`-`+index-->
               <message-card :messageProp="msg.message"
-                            :myMsgProp="msg.myMsg">
+                            :myMsgProp="msg.myMsg"
+                            :timeStampProp="msg.timeStamp">
                             </message-card>
             </div>
         </div>
@@ -67,6 +68,7 @@
     </div>
 
   </div>
+  <!--<span>{{ new Date() | moment("dddd, MMMM Do YYYY") }}</span>-->
 </div>
 </template>
 
@@ -312,6 +314,9 @@ export default {
     },
     conversationsComp(){
       return this.friends;
+    },
+    messagesComp(){
+      return this.messages;
     }
   }
 
