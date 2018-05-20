@@ -13,8 +13,8 @@
                 <a href="" v-on:click.prevent='removeFriend()'><p>Remove friend</p></a>
               </div>
               <div class="status"
-                  :class="{'online': (isOnline == true),
-                           'offline': (isOnline == false) }">
+                  :class="{'online': (statusComp == true),
+                           'offline': (statusComp == false) }">
                 <p> </p>
               </div>
 
@@ -57,18 +57,23 @@ export default {
       this.$emit('openConvEvent', this.index);
     },
   },
+  computed:{
+    statusComp(){
+      return this.isOnline;
+    }
+  },
   created(){
-    this.isOnline = Boolean(Math.floor(Math.random() * 2));
     this.user = this.userProp;
-    console.log(this.user);
+    this.isOnline = this.user.status;
     this.index = this.indexProp;
+    console.log(this.user);
 
     Echo.private('UserStatusChanel.' + this.user.userID)
         .listen('UserStatusEvent', e=>{
-            console.log(e);
+            this.isOnline = e.status;
         });
   },
-  
+
 }
 </script>
 

@@ -58282,14 +58282,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$emit('openConvEvent', this.index);
     }
   },
+  computed: {
+    statusComp: function statusComp() {
+      return this.isOnline;
+    }
+  },
   created: function created() {
-    this.isOnline = Boolean(Math.floor(Math.random() * 2));
+    var _this2 = this;
+
     this.user = this.userProp;
-    console.log(this.user);
+    this.isOnline = this.user.status;
     this.index = this.indexProp;
+    console.log(this.user);
 
     Echo.private('UserStatusChanel.' + this.user.userID).listen('UserStatusEvent', function (e) {
-      console.log(e);
+      _this2.isOnline = e.status;
     });
   }
 });
@@ -58344,8 +58351,8 @@ var render = function() {
           {
             staticClass: "status",
             class: {
-              online: _vm.isOnline == true,
-              offline: _vm.isOnline == false
+              online: _vm.statusComp == true,
+              offline: _vm.statusComp == false
             }
           },
           [_c("p")]

@@ -16,13 +16,22 @@ class MainController extends Controller
     }
     else
     {
-      UserStatusEvent::dispatch(true,Auth::id());
+      $user = Auth::user();
+      $status = $user->Status()->first();
+      $status->online = true;
+      $status->save();
+      UserStatusEvent::dispatch(true,$user->id);
+
       return view('main');
     }
   }
 
   public function logout(){
-    UserStatusEvent::dispatch(false,Auth::id());
+    $user = Auth::user();
+    $status = $user->Status()->first();
+    $status->online = false;
+    $status->save();
+    UserStatusEvent::dispatch(false,$user->id);
     Auth::logout();
     return redirect('/login');
   }
