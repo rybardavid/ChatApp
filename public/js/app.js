@@ -75350,7 +75350,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, ".card_wrapper{\r\n  transform: rotate(180deg);\r\n  display: flex;\r\n  flex-flow: row;\r\n}\r\n\r\n.space{\r\n  flex: 2 2 0;\r\n}\r\n\r\n.send{\r\n  /*float:right;*/\r\n  background-color: #13C478;\r\n}\r\n\r\n.received{\r\n  /*float:left;*/\r\n  background-color: grey;\r\n}\r\n\r\n.message{\r\n  flex: 7 7 0;\r\n  color: white;\r\n  padding: 2px;\r\n  text-align: left;\r\n  margin: 8px;\r\n  border-radius: 4px;\r\n}\r\n.message p{\r\n  padding: 6px;\r\n  margin: 2px;\r\n}\r\n\r\nsmall{\r\n  float: right;\r\n  padding-right: 4px;\r\n  padding-bottom: 2px;\r\n  font-size: 12px;\r\n  color: #addfb6;\r\n}\r\n\r\n.send small{\r\n  color: #addfb6;\r\n}\r\n\r\n.received small{\r\n  color: #a0a0a0;\r\n}\r\n", ""]);
+exports.push([module.i, ".card_wrapper{\r\n  transform: rotate(180deg);\r\n  display: flex;\r\n  flex-flow: row;\r\n}\r\n\r\n.space{\r\n  flex: 2 2 0;\r\n}\r\n\r\n.send{\r\n  /*float:right;*/\r\n  background-color: #13C478;\r\n}\r\n\r\n.received{\r\n  /*float:left;*/\r\n  background-color: grey;\r\n}\r\n\r\n.message{\r\n  flex: 7 7 0;\r\n  color: white;\r\n  padding: 2px;\r\n  text-align: left;\r\n  margin: 8px;\r\n  border-radius: 4px;\r\n}\r\n.message p{\r\n  padding: 6px;\r\n  margin: 2px;\r\n}\r\n\r\n.card_wrapper small{\r\n  float: right;\r\n  padding-right: 4px;\r\n  padding-bottom: 2px;\r\n  font-size: 12px;\r\n  color: #addfb6;\r\n}\r\n\r\n.send small{\r\n  color: #addfb6;\r\n}\r\n\r\n.received small{\r\n  color: #a0a0a0;\r\n}\r\n", ""]);
 
 // exports
 
